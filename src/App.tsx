@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   Shield, 
@@ -13,6 +13,7 @@ import {
   AlertTriangle, 
   HelpCircle,
   TrendingUp,
+  ArrowUp,
   FileCheck2,
   Users2,
   Sliders,
@@ -37,6 +38,19 @@ export default function App() {
   const [modalOpen, setModalOpen] = useState(false);
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [hoveredCapability, setHoveredCapability] = useState<number | null>(null);
+  const [showScrollUp, setShowScrollUp] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowScrollUp(true);
+      } else {
+        setShowScrollUp(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleScrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -178,33 +192,35 @@ export default function App() {
         
         {/* Left Side: Typography Intro */}
         <div className="lg:col-span-7 space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-bastion-azure/10 border border-bastion-azure/20 rounded-full text-[10.5px] text-bastion-azure-light font-mono font-semibold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-indigo-50 border border-indigo-100 rounded-full text-[10.5px] text-indigo-700 font-mono font-semibold uppercase tracking-wider">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             Built for Financial Services. Engineered for Trust.
+            <ArrowUp className="w-3.5 h-3.5 text-indigo-600 stroke-[3] ml-1 animate-bounce" />
           </div>
 
-          <h1 className="font-display font-black text-4xl sm:text-5xl lg:text-5.5xl text-slate-900 tracking-tight leading-[1.08] max-w-2xl">
-            Control <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-850">Autonomous AI</span> Before It Creates Risk
+          <h1 className="font-display font-black text-4xl sm:text-5xl lg:text-6xl text-slate-900 tracking-tight leading-[1.08] max-w-2xl">
+            AI Control Plane <br className="hidden sm:inline" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-850">for Autonomous Agents.</span>
           </h1>
 
           <p className="text-sm md:text-base text-bastion-text-muted leading-relaxed max-w-xl font-normal">
-            Bastion Audit is the AI Control Plane for Autonomous Agents. Monitor ownership, certification, trust, evidence, access, and compliance across enterprise AI ecosystems.
+            Govern, monitor, and secure the execution of autonomous AI agents with enterprise-grade observability, continuous alignment validation, and immediate veto protocols. The single source of truth for autonomous systems.
           </p>
 
           {/* Action Row */}
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <button
               onClick={() => setModalOpen(true)}
-              className="bg-bastion-azure hover:bg-bastion-azure-light text-white text-xs font-bold px-6 py-3.5 rounded-lg border border-white/10 shadow-xl cursor-pointer transition-all text-center flex items-center justify-center gap-2"
+              className="bg-bastion-azure hover:bg-indigo-700 text-white text-xs font-bold px-6 py-3.5 rounded-lg border border-white/10 shadow-xl cursor-pointer transition-all text-center flex items-center justify-center gap-2"
             >
-              Request Design Partner Review <span className="bg-sky-400/20 text-sky-300 font-mono text-[9px] px-1.5 py-0.5 rounded ml-1">CISO Advisory</span>
+              Request a Demo <span className="bg-sky-400/20 text-indigo-900 font-mono text-[9px] px-1.5 py-0.5 rounded ml-1 font-bold animate-pulse">CISO Review</span>
             </button>
 
             <button
-              onClick={() => handleScrollTo('architecture')}
-              className="bg-bastion-bg-secondary hover:bg-bastion-bg-tertiary text-bastion-text-bright text-xs font-bold px-6 py-3.5 rounded-lg border border-bastion-border hover:border-bastion-border-hover transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer"
+              onClick={() => handleScrollTo('interactive-demo')}
+              className="bg-white hover:bg-slate-50 text-slate-800 text-xs font-bold px-6 py-3.5 rounded-lg border border-slate-200 shadow-sm transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer"
             >
-              Explore Platform Architecture <ArrowRight className="w-3.5 h-3.5 text-bastion-text-muted" />
+              Get Started <ArrowRight className="w-3.5 h-3.5 text-slate-500" />
             </button>
           </div>
 
@@ -813,6 +829,25 @@ export default function App() {
         isOpen={modalOpen} 
         onClose={() => setModalOpen(false)} 
       />
+
+      {/* Floating Scroll up indicator - A brightly colored up arrow! */}
+      <AnimatePresence>
+        {showScrollUp && (
+          <motion.button
+            key="scroll-up-btn"
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 20 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="fixed bottom-6 right-6 z-50 p-3.5 rounded-full bg-gradient-to-r from-pink-500 via-rose-500 to-amber-500 text-white shadow-2xl shadow-pink-500/30 border border-white/20 flex items-center justify-center cursor-pointer hover:shadow-pink-500/50 transition-shadow"
+            title="Scroll to top"
+          >
+            <ArrowUp className="w-5 h-5 stroke-[3.5] animate-bounce" />
+          </motion.button>
+        )}
+      </AnimatePresence>
 
     </div>
   );
