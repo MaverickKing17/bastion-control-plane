@@ -229,15 +229,15 @@ export default function App() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
           {/* Column 1: Current Platforms Scope */}
-          <div className="lg:col-span-6 bg-slate-950/70 border border-white/5 p-6 sm:p-8 rounded-3xl relative flex flex-col justify-between h-[420px]">
-            <div className="space-y-4">
-              <span className="text-[10px] font-mono text-slate-400 uppercase font-black block tracking-widest bg-slate-900 border border-white/5 px-2.5 py-1 rounded inline-block">
+          <div className="lg:col-span-6 bg-[#0b1d33] border border-[#0078D4]/30 hover:border-[#0078D4]/60 hover:shadow-[0_0_30px_rgba(0,120,212,0.25)] shadow-[0_12px_40px_rgba(0,0,0,0.5)] p-6 sm:p-8 rounded-3xl relative flex flex-col justify-between min-h-[460px] transition-all duration-300 group">
+            <div className="space-y-5">
+              <span className="text-[10px] font-mono text-sky-400 uppercase font-black block tracking-widest bg-slate-900 border border-white/10 px-2.5 py-1 rounded inline-block">
                 FOUNDATIONAL LAYER
               </span>
               <h3 className="text-lg sm:text-xl font-bold font-display text-white tracking-tight">
                 Current Platforms Secure Under-Layers:
               </h3>
-              <p className="text-xs text-slate-300 leading-relaxed font-light">
+              <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-light">
                 Existing security infrastructures (SIEM, Firewalls, IAM) protect physical endpoints. They verify packets, but cannot govern autonomous execution intentions.
               </p>
 
@@ -249,29 +249,29 @@ export default function App() {
                   { label: "Networks Traffic", desc: "Port restrictions & SIEM" },
                   { label: "Applications Controls", desc: "Binary static checks" }
                 ].map((item, idx) => (
-                  <div key={idx} className="p-3 bg-slate-900 rounded-xl border border-white/5">
-                    <span className="text-[#0078D4] block uppercase text-[10px] font-black">{item.label}</span>
-                    <span className="text-[9.5px] text-slate-400 block font-normal mt-0.5">{item.desc}</span>
+                  <div key={idx} className="p-3 bg-[#071524] rounded-xl border border-white/10 transition-colors hover:border-[#0078D4]/50">
+                    <span className="text-sky-400 block uppercase text-[10px] font-black">{item.label}</span>
+                    <span className="text-[10px] text-slate-200 block font-normal mt-1">{item.desc}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="pt-4 border-t border-white/5 text-[10px] font-mono text-slate-500">
+            <div className="pt-4 border-t border-white/10 text-[10.5px] font-mono text-slate-400 mt-4">
               * Status: Effective for infrastructure. Blind to autonomous agency logic.
             </div>
           </div>
 
           {/* Column 2: New AI Vulnerabilities Scope */}
-          <div className="lg:col-span-6 bg-[#0078D4]/5 border border-[#0078D4]/20 p-6 sm:p-8 rounded-3xl relative flex flex-col justify-between h-[420px] shadow-[0_15px_35px_rgba(0,120,212,0.05)]">
-            <div className="space-y-4">
-              <span className="text-[10px] font-mono text-rose-450 uppercase font-bold bg-rose-500/10 border border-rose-500/20 px-2.5 py-1 rounded inline-block">
+          <div className="lg:col-span-6 bg-[#0b1d33] border-2 border-amber-500/70 shadow-[0_0_30px_rgba(245,158,11,0.35),0_12px_40px_rgba(0,0,0,0.6)] hover:border-amber-400 hover:shadow-[0_0_45px_rgba(245,158,11,0.55),0_12px_40px_rgba(0,0,0,0.6)] p-6 sm:p-8 rounded-3xl relative flex flex-col justify-between min-h-[460px] transition-all duration-300 group">
+            <div className="space-y-5">
+              <span className="text-[10px] font-mono text-amber-300 uppercase font-bold bg-amber-500/20 border border-amber-500/40 px-2.5 py-1 rounded inline-block animate-pulse">
                 CRITICAL VULNERABILITY GAP
               </span>
               <h3 className="text-lg sm:text-xl font-bold font-display text-white tracking-tight">
                 Autonomous AI Introduces High-Risk Voids:
               </h3>
-              <p className="text-xs text-slate-300 leading-relaxed font-light">
+              <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-light">
                 Multi-hop AI systems operate recursively, write unstructured completions, and mutate database rows, introducing dangerous liabilities.
               </p>
 
@@ -284,15 +284,15 @@ export default function App() {
                   { label: "Regulatory Exposure", desc: "Is customer privacy safe?" },
                   { label: "Evidence Obligations", desc: "Can you produce SEC-level proofs?" }
                 ].map((item, idx) => (
-                  <div key={idx} className={`p-3 bg-slate-950 rounded-xl border border-white/5 hover:border-rose-400/20 transition-colors ${idx === 4 ? 'col-span-2' : ''}`}>
-                    <span className="text-rose-405 block uppercase text-[10px] font-black">{item.label}</span>
-                    <span className="text-[9.5px] text-slate-400 block font-normal mt-0.5">{item.desc}</span>
+                  <div key={idx} className={`p-3 bg-[#071524] rounded-xl border border-white/10 hover:border-amber-500/50 transition-colors ${idx === 4 ? 'col-span-2' : ''}`}>
+                    <span className="text-amber-400 block uppercase text-[10px] font-black">{item.label}</span>
+                    <span className="text-[10px] text-slate-200 block font-normal mt-1">{item.desc}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="pt-4 border-t border-white/5 text-[10.5px] font-mono text-[#0078D4] font-semibold">
+            <div className="pt-4 border-t border-white/10 text-[10.5px] font-mono text-amber-400 font-semibold mt-4">
               &gt; Bastion is the missing governance layer governing cognitive executors.
             </div>
           </div>
