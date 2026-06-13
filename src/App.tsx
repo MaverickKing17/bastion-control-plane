@@ -157,6 +157,9 @@ export default function App() {
 
           {/* Desktop Nav Items */}
           <div className="hidden lg:flex items-center gap-7 text-xs font-semibold tracking-wide text-bastion-text-muted">
+            <span className="hover:text-indigo-600 transition-colors cursor-pointer flex items-center gap-1" onClick={() => handleScrollTo('features')}>
+              Features
+            </span>
             <span className="hover:text-indigo-600 transition-colors cursor-pointer flex items-center gap-1" onClick={() => handleScrollTo('why-bastion')}>
               Platform <ChevronDown className="w-3 h-3 text-bastion-text-muted/60" />
             </span>
@@ -200,7 +203,7 @@ export default function App() {
 
           <h1 className="font-display font-black text-4xl sm:text-5xl lg:text-6xl text-slate-900 tracking-tight leading-[1.08] max-w-2xl">
             AI Control Plane <br className="hidden sm:inline" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-850">for Autonomous Agents.</span>
+            <span className="text-blue-600 font-black">for Autonomous Agents.</span>
           </h1>
 
           <p className="text-sm md:text-base text-bastion-text-muted leading-relaxed max-w-xl font-normal">
@@ -328,6 +331,103 @@ export default function App() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* SECTION: Features Showcase */}
+      <section id="features" className="bg-white border-b border-slate-200 py-20 px-6">
+        <div className="max-w-7xl mx-auto space-y-16">
+          
+          <div className="text-center max-w-3xl mx-auto space-y-4">
+            <span className="text-[10px] font-mono tracking-widest text-[#2563eb] font-bold uppercase block">Core Operational Pillars</span>
+            <h2 className="font-display font-black text-2.5xl sm:text-4xl text-slate-900 tracking-tight leading-snug">
+              Enterprise Feature Suite
+            </h2>
+            <p className="text-sm text-bastion-text-muted max-w-2xl mx-auto font-normal">
+              A comprehensive system of record engineered to deliver ultimate safety, orchestration control, and compliance confidence across your entire agentic workforce.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
+            
+            {/* Feature 1: Autonomous Agent Orchestration */}
+            <div className="bg-slate-50/50 border border-slate-200 rounded-xl p-6 flex flex-col justify-between hover:shadow-md transition-shadow relative overflow-hidden group">
+              <div className="space-y-4">
+                <div className="w-10 h-10 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                  <Cpu className="w-5 h-5 stroke-[2]" />
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-base font-bold text-slate-900 font-display">Autonomous Agent Orchestration</h3>
+                  <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                    Binds agentic networks directly to strict, mission-based validation paths. Ensures recursion limits and operational scopes remain tightly constrained.
+                  </p>
+                </div>
+              </div>
+              <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
+                <span className="text-[10px] font-mono font-semibold text-indigo-600">MISSION CONTROL</span>
+                <span className="text-[9.5px] text-slate-400 font-normal">Prevents loops & drift</span>
+              </div>
+            </div>
+
+            {/* Feature 2: Real-time Monitoring & Analytics */}
+            <div className="bg-slate-50/50 border border-slate-200 rounded-xl p-6 flex flex-col justify-between hover:shadow-md transition-shadow relative overflow-hidden group">
+              <div className="space-y-4">
+                <div className="w-10 h-10 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                  <Activity className="w-5 h-5 stroke-[2]" />
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-base font-bold text-slate-900 font-display">Real-time Monitoring & Analytics</h3>
+                  <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                    Active stream capturing thought vectors, context window states, tool-calling chains, and safety scores with zero latency overhead.
+                  </p>
+                </div>
+              </div>
+              <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
+                <span className="text-[10px] font-mono font-semibold text-indigo-600">LIVE TELEMETRY</span>
+                <span className="text-[9.5px] text-slate-400 font-normal">Instant vector audit</span>
+              </div>
+            </div>
+
+            {/* Feature 3: Automated Compliance & Security */}
+            <div className="bg-slate-50/50 border border-slate-200 rounded-xl p-6 flex flex-col justify-between hover:shadow-md transition-shadow relative overflow-hidden group">
+              <div className="space-y-4">
+                <div className="w-10 h-10 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                  <Lock className="w-5 h-5 stroke-[2]" />
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-base font-bold text-slate-900 font-display">Automated Compliance & Security</h3>
+                  <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                    Auto-validates decision-logs against regulatory rules. Enforces custom compliance thresholds with inline agent veto filters.
+                  </p>
+                </div>
+              </div>
+              <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
+                <span className="text-[10px] font-mono font-semibold text-indigo-600">ZERO TRUST AUDIT</span>
+                <span className="text-[9.5px] text-slate-400 font-normal">Veto rogue actions</span>
+              </div>
+            </div>
+
+            {/* Feature 4: Scalable Infrastructure Management */}
+            <div className="bg-slate-50/50 border border-slate-200 rounded-xl p-6 flex flex-col justify-between hover:shadow-md transition-shadow relative overflow-hidden group">
+              <div className="space-y-4">
+                <div className="w-10 h-10 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                  <Layers className="w-5 h-5 stroke-[2]" />
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-base font-bold text-slate-900 font-display">Scalable Infrastructure Management</h3>
+                  <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                    Manages distributed model limits, failover nodes, credential boundaries, and isolated transaction zones across hybrid cluster networks.
+                  </p>
+                </div>
+              </div>
+              <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
+                <span className="text-[10px] font-mono font-semibold text-indigo-600">RUNTIME CONTROL</span>
+                <span className="text-[9.5px] text-slate-400 font-normal">Enterprise isolation</span>
+              </div>
+            </div>
+
+          </div>
+
         </div>
       </section>
 
