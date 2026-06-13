@@ -24,7 +24,9 @@ import {
   Download,
   Terminal,
   Clock,
-  Sparkles
+  Sparkles,
+  Cloud,
+  Database
 } from 'lucide-react';
 
 import DashboardDemo from './components/DashboardDemo';
@@ -119,13 +121,13 @@ export default function App() {
   ];
 
   const integrationLogos = [
-    { name: 'Microsoft Azure', detail: 'Cloud Infrastructure' },
-    { name: 'Microsoft Entra ID', detail: 'Identity & Access' },
-    { name: 'Microsoft Sentinel', detail: 'SIEM Integration' },
-    { name: 'Microsoft Purview', detail: 'Data Governance' },
-    { name: 'ServiceNow', detail: 'ITSM Workflows' },
-    { name: 'Jira Software', detail: 'Project Tracking' },
-    { name: 'GitHub Enterprise', detail: 'Repository Secure' }
+    { name: 'Microsoft Azure', detail: 'Cloud Infrastructure', icon: Cloud, glow: 'hover:shadow-cyan-400/20' },
+    { name: 'Microsoft Entra ID', detail: 'Identity & Access', icon: Shield, glow: 'hover:shadow-emerald-400/20' },
+    { name: 'Microsoft Sentinel', detail: 'SIEM Integration', icon: Activity, glow: 'hover:shadow-rose-400/20' },
+    { name: 'Microsoft Purview', detail: 'Data Governance', icon: Database, glow: 'hover:shadow-amber-400/20' },
+    { name: 'ServiceNow', detail: 'ITSM Workflows', icon: Sliders, glow: 'hover:shadow-sky-400/20' },
+    { name: 'Jira Software', detail: 'Project Tracking', icon: Layers, glow: 'hover:shadow-blue-400/20' },
+    { name: 'GitHub Enterprise', detail: 'Repository Secure', icon: GitBranch, glow: 'hover:shadow-indigo-400/20' }
   ];
 
   return (
@@ -308,28 +310,54 @@ export default function App() {
       </header>
 
       {/* Integration Logos Panel (As styled in mockup bottom-left of hero) */}
-      <section className="bg-slate-100/55 border-y border-bastion-border py-8 px-6 overflow-hidden">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div className="text-left md:max-w-xs">
-            <span className="text-[10px] font-mono tracking-wider text-indigo-600 font-bold block uppercase">Seamless Native Intercepts</span>
-            <p className="text-xs text-bastion-text-muted mt-1 font-normal">Connects out-of-the-box with leading enterprise environments and LLM gateways.</p>
+      <section className="bg-slate-50/75 border-y border-slate-250 py-10 px-6 relative overflow-hidden">
+        {/* Subtle executive tech grid overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.03)_1px,transparent_1px)] bg-[size:14px_14px] pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-stretch justify-between gap-8 relative z-10">
+          <div className="text-left lg:w-1/4 flex flex-col justify-center space-y-2.5">
+            <div className="inline-flex self-start items-center gap-1.5 px-2.5 py-1 rounded-full bg-indigo-50 border border-indigo-150/70 text-[9.5px] font-mono font-bold text-indigo-700 tracking-wider">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              SECURE CONNECTORS
+            </div>
+            <h3 className="text-sm font-mono font-extrabold text-slate-800 tracking-wider uppercase">Seamless Native Intercepts</h3>
+            <p className="text-[11.5px] text-slate-550 font-normal leading-relaxed">
+              Zero-latency native connectors linking securely to leading enterprise directory structures and cloud gateway environments.
+            </p>
           </div>
           
-          {/* Logo Train */}
-          <div className="flex flex-wrap items-center gap-x-8 gap-y-4 md:flex-1 md:justify-end text-slate-600 font-display font-medium text-xs">
-            {integrationLogos.map((logo, idx) => (
-              <div 
-                key={idx} 
-                className="flex items-center gap-1.5 opacity-80 hover:opacity-100 transition-all cursor-crosshair group"
-                title={`${logo.name} Integrated Context Provider`}
-              >
-                <div className="w-1.5 h-1.5 rounded-full bg-indigo-600" />
-                <div>
-                  <span className="text-slate-900 font-semibold text-[11.5px] block">{logo.name}</span>
-                  <span className="text-[9px] text-[#64748b] font-mono block opacity-80 leading-none group-hover:text-indigo-600 transition-colors">{logo.detail}</span>
+          {/* Logo Grid/Cards */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-7 gap-4 lg:w-3/4 items-stretch">
+            {integrationLogos.map((logo, idx) => {
+              const Icon = logo.icon;
+              return (
+                <div 
+                  key={idx} 
+                  className={`glowing-card rounded-xl p-4 flex flex-col justify-between h-32 relative overflow-visible group cursor-pointer ${logo.glow}`}
+                  title={`${logo.name} Integrated Context Provider`}
+                >
+                  <div className="relative z-10 flex flex-col justify-between h-full">
+                    <div className="flex items-center justify-between gap-1.5">
+                      <div className="w-7 h-7 rounded-lg bg-indigo-50/80 border border-indigo-100 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white group-hover:scale-110 transition-all duration-300">
+                        <Icon className="w-4 h-4" />
+                      </div>
+                      <span className="text-[7.5px] font-mono text-emerald-600 bg-emerald-50 border border-emerald-100 px-1 py-0.5 rounded font-extrabold tracking-wider uppercase leading-none">
+                        ACTIVE
+                      </span>
+                    </div>
+
+                    <div className="space-y-0.5 mt-auto">
+                      <span className="text-slate-900 font-extrabold text-[11px] block tracking-tight truncate leading-tight group-hover:text-indigo-600 transition-colors">
+                        {logo.name}
+                      </span>
+                      <span className="text-[9px] text-slate-400 font-mono block leading-tight">
+                        {logo.detail}
+                      </span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
