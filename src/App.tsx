@@ -35,6 +35,7 @@ import ArchitectureDiagram from './components/ArchitectureDiagram';
 import DesignPartnerModal from './components/DesignPartnerModal';
 import ThreatHeatmap from './components/ThreatHeatmap';
 import CognitiveShieldDemo from './components/CognitiveShieldDemo';
+import AuthorityMetricsBar from './components/AuthorityMetricsBar';
 
 // Reference the generated ballroom meetings photo safely
 const boardroomImg = '/src/assets/images/boardroom_meeting_1781371964505.jpg';
@@ -255,6 +256,9 @@ export default function App() {
         </div>
 
       </header>
+
+      {/* Dynamic Animated C-suite Authority Metrics */}
+      <AuthorityMetricsBar />
 
       {/* Integration Logos Panel (As styled in mockup bottom-left of hero) */}
       <section className="bg-slate-50/75 border-y border-slate-250 py-10 px-6 relative overflow-hidden">
