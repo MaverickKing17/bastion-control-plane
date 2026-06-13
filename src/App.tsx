@@ -115,7 +115,7 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-bastion-bg text-white font-sans selection:bg-bastion-azure selection:text-white">
+    <div className="min-h-screen bg-bastion-bg text-bastion-text-bright font-sans selection:bg-bastion-azure selection:text-white">
       
       {/* Dynamic Background Glow Spots */}
       <div className="absolute top-0 left-1/4 w-96 h-96 ambient-glow rounded-full opacity-60 pointer-events-none" />
@@ -134,28 +134,28 @@ export default function App() {
               <Shield className="w-5 h-5 text-white stroke-[2.5]" />
             </div>
             <div>
-              <div className="font-display font-extrabold text-[#ffffff] tracking-wider text-sm flex items-center gap-1.5 uppercase">
-                BASTION <span className="text-[#0078D4] font-medium tracking-normal text-xs">AUDIT</span>
+              <div className="font-display font-extrabold text-slate-900 tracking-wider text-sm flex items-center gap-1.5 uppercase">
+                BASTION <span className="text-indigo-600 font-medium tracking-normal text-xs">AUDIT</span>
               </div>
-              <p className="text-[8.5px] font-mono tracking-widest text-[#8fa3b7]/80 uppercase mt-0.5 leading-none">AI Control Plane</p>
+              <p className="text-[8.5px] font-mono tracking-widest text-slate-500 uppercase mt-0.5 leading-none">AI Control Plane</p>
             </div>
           </div>
 
           {/* Desktop Nav Items */}
           <div className="hidden lg:flex items-center gap-7 text-xs font-semibold tracking-wide text-bastion-text-muted">
-            <span className="hover:text-white transition-colors cursor-pointer flex items-center gap-1" onClick={() => handleScrollTo('why-bastion')}>
+            <span className="hover:text-indigo-600 transition-colors cursor-pointer flex items-center gap-1" onClick={() => handleScrollTo('why-bastion')}>
               Platform <ChevronDown className="w-3 h-3 text-bastion-text-muted/60" />
             </span>
-            <span className="hover:text-white transition-colors cursor-pointer flex items-center gap-1" onClick={() => handleScrollTo('capabilities')}>
+            <span className="hover:text-indigo-600 transition-colors cursor-pointer flex items-center gap-1" onClick={() => handleScrollTo('capabilities')}>
               Capabilities <ChevronDown className="w-3 h-3 text-bastion-text-muted/60" />
             </span>
-            <span className="hover:text-white transition-colors cursor-pointer flex items-center gap-1" onClick={() => handleScrollTo('interactive-demo')}>
+            <span className="hover:text-indigo-600 transition-colors cursor-pointer flex items-center gap-1" onClick={() => handleScrollTo('interactive-demo')}>
               Interactive Demo
             </span>
-            <span className="hover:text-white transition-colors cursor-pointer flex items-center gap-1" onClick={() => handleScrollTo('architecture')}>
+            <span className="hover:text-indigo-600 transition-colors cursor-pointer flex items-center gap-1" onClick={() => handleScrollTo('architecture')}>
               Architecture <ChevronDown className="w-3 h-3 text-bastion-text-muted/60" />
             </span>
-            <span className="hover:text-white transition-colors cursor-pointer text-[#0078D4]" onClick={() => handleScrollTo('design-partners')}>
+            <span className="hover:text-indigo-600 transition-colors cursor-pointer text-indigo-600" onClick={() => handleScrollTo('design-partners')}>
               Design Partner Program
             </span>
           </div>
@@ -183,8 +183,8 @@ export default function App() {
             Built for Financial Services. Engineered for Trust.
           </div>
 
-          <h1 className="font-display font-black text-4xl sm:text-5xl lg:text-5.5xl text-white tracking-tight leading-[1.08] max-w-2xl">
-            Control <span className="text-transparent bg-clip-text bg-gradient-to-r from-bastion-azure-light to-[#0078D4]">Autonomous AI</span> Before It Creates Risk
+          <h1 className="font-display font-black text-4xl sm:text-5xl lg:text-5.5xl text-slate-900 tracking-tight leading-[1.08] max-w-2xl">
+            Control <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-indigo-850">Autonomous AI</span> Before It Creates Risk
           </h1>
 
           <p className="text-sm md:text-base text-bastion-text-muted leading-relaxed max-w-xl font-normal">
@@ -211,15 +211,15 @@ export default function App() {
           {/* Fast Stats summary */}
           <div className="pt-8 grid grid-cols-3 gap-6 max-w-md border-t border-bastion-border/40">
             <div>
-              <p className="text-xl md:text-2xl font-black font-display text-white">60%+</p>
+              <p className="text-xl md:text-2xl font-black font-display text-slate-900">60%+</p>
               <p className="text-[10px] text-bastion-text-muted font-mono tracking-wider uppercase mt-0.5">Risk Restraint</p>
             </div>
             <div>
-              <p className="text-xl md:text-2xl font-black font-display text-white">10.2k</p>
+              <p className="text-xl md:text-2xl font-black font-display text-slate-900">10.2k</p>
               <p className="text-[10px] text-bastion-text-muted font-mono tracking-wider uppercase mt-0.5">Audit Traces</p>
             </div>
             <div>
-              <p className="text-xl md:text-2xl font-black font-display text-white">Realtime</p>
+              <p className="text-xl md:text-2xl font-black font-display text-slate-900">Realtime</p>
               <p className="text-[10px] text-bastion-text-muted font-mono tracking-wider uppercase mt-0.5">CISO Monitoring</p>
             </div>
           </div>
@@ -289,25 +289,25 @@ export default function App() {
       </header>
 
       {/* Integration Logos Panel (As styled in mockup bottom-left of hero) */}
-      <section className="bg-[#0b1e32]/30 border-y border-bastion-border py-8 px-6 overflow-hidden">
+      <section className="bg-slate-100/55 border-y border-bastion-border py-8 px-6 overflow-hidden">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="text-left md:max-w-xs">
-            <span className="text-[10px] font-mono tracking-wider text-bastion-azure font-bold block uppercase">Seamless Native Intercepts</span>
+            <span className="text-[10px] font-mono tracking-wider text-indigo-600 font-bold block uppercase">Seamless Native Intercepts</span>
             <p className="text-xs text-bastion-text-muted mt-1 font-normal">Connects out-of-the-box with leading enterprise environments and LLM gateways.</p>
           </div>
           
           {/* Logo Train */}
-          <div className="flex flex-wrap items-center gap-x-8 gap-y-4 md:flex-1 md:justify-end text-slate-400 font-display font-medium text-xs">
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-4 md:flex-1 md:justify-end text-slate-600 font-display font-medium text-xs">
             {integrationLogos.map((logo, idx) => (
               <div 
                 key={idx} 
-                className="flex items-center gap-1.5 opacity-65 hover:opacity-100 transition-all cursor-crosshair group"
+                className="flex items-center gap-1.5 opacity-80 hover:opacity-100 transition-all cursor-crosshair group"
                 title={`${logo.name} Integrated Context Provider`}
               >
-                <div className="w-1.5 h-1.5 rounded-full bg-[#0078D4]" />
+                <div className="w-1.5 h-1.5 rounded-full bg-indigo-600" />
                 <div>
-                  <span className="text-white font-semibold text-[11.5px] block">{logo.name}</span>
-                  <span className="text-[9px] text-[#8fa3b7] font-mono block opacity-60 leading-none group-hover:text-bastion-azure-light transition-colors">{logo.detail}</span>
+                  <span className="text-slate-900 font-semibold text-[11.5px] block">{logo.name}</span>
+                  <span className="text-[9px] text-[#64748b] font-mono block opacity-80 leading-none group-hover:text-indigo-600 transition-colors">{logo.detail}</span>
                 </div>
               </div>
             ))}
@@ -320,8 +320,8 @@ export default function App() {
         
         {/* Headings */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="text-[10px] font-mono tracking-widest text-[#0078D4] font-bold uppercase block">Architectural Gap Analysis</span>
-          <h2 className="font-display font-black text-2.5xl sm:text-4xl text-white tracking-tight leading-snug">
+          <span className="text-[10px] font-mono tracking-widest text-[#4f46e5] font-bold uppercase block">Architectural Gap Analysis</span>
+          <h2 className="font-display font-black text-2.5xl sm:text-4xl text-slate-900 tracking-tight leading-snug">
             Why Existing Security Platforms Are Not Enough
           </h2>
           <p className="text-sm text-bastion-text-muted max-w-2xl mx-auto font-normal">
@@ -333,10 +333,10 @@ export default function App() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
           
           {/* Traditional Perimeter Box */}
-          <div className="bg-bastion-bg-secondary/25 border border-bastion-border rounded-xl p-6 md:p-8 flex flex-col justify-between space-y-6">
+          <div className="bg-slate-100 border border-slate-200 rounded-xl p-6 md:p-8 flex flex-col justify-between space-y-6">
             <div className="space-y-3">
               <span className="text-[10px] font-mono text-slate-500 uppercase block font-semibold">FOUNDATIONAL INTEGRITY LAYER</span>
-              <h3 className="text-lg font-bold text-white font-display">Traditional Enterprise Security</h3>
+              <h3 className="text-lg font-bold text-slate-900 font-display">Traditional Enterprise Security</h3>
               <p className="text-xs text-bastion-text-muted leading-relaxed font-normal">
                 Configured to monitor networks, block unauthorized IP ports, inspect static binaries, and secure employee logins. They understand machine packages, but are completely blind to agent intent.
               </p>
@@ -348,8 +348,8 @@ export default function App() {
                 { label: 'SIEM / Microsoft Sentinel', status: 'Monitors infrastructure alerts but cannot parse unstructured adversarial prompt injection payloads.' },
                 { label: 'Cloud Firewalls', status: 'Blocks port traffic but cannot detect continuous overprivileged database reads by certified agents.' }
               ].map((item, id) => (
-                <div key={id} className="p-3 bg-bastion-bg-secondary/40 rounded border border-bastion-border/40 text-xs">
-                  <span className="font-mono font-semibold text-slate-300 block">{item.label}</span>
+                <div key={id} className="p-3 bg-white rounded border border-slate-200 text-xs">
+                  <span className="font-mono font-semibold text-slate-800 block">{item.label}</span>
                   <p className="text-[#8fa3b7] text-[11px] mt-1 font-light leading-snug">{item.status}</p>
                 </div>
               ))}
@@ -361,15 +361,15 @@ export default function App() {
           </div>
 
           {/* Bastion Auditing Layer */}
-          <div className="bg-bastion-bg-secondary border border-bastion-azure rounded-xl p-6 md:p-8 flex flex-col justify-between space-y-6 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-bastion-azure/10 to-transparent pointer-events-none" />
+          <div className="bg-white border border-indigo-500 rounded-xl p-6 md:p-8 flex flex-col justify-between space-y-6 relative overflow-hidden shadow-sm">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-indigo-500/10 to-transparent pointer-events-none" />
             
             <div className="space-y-3">
               <div className="flex justify-between items-center">
-                <span className="text-[10px] font-mono text-bastion-azure uppercase font-bold tracking-widest">Cognitive Control Ring</span>
-                <span className="text-[9px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-1.5 py-0.2 rounded font-mono uppercase font-bold">Bastion Domain</span>
+                <span className="text-[10px] font-mono text-indigo-600 uppercase font-bold tracking-widest">Cognitive Control Ring</span>
+                <span className="text-[9px] bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 px-1.5 py-0.2 rounded font-mono uppercase font-bold">Bastion Domain</span>
               </div>
-              <h3 className="text-lg font-bold text-white font-display">Bastion Audit Protection</h3>
+              <h3 className="text-lg font-bold text-slate-900 font-display">Bastion Audit Protection</h3>
               <p className="text-xs text-bastion-text-muted leading-relaxed font-normal">
                 Inspects real-time instructions, validates agent actions against certified boundaries, and prevents data breaches before commands hitting legacy database gateways can execute.
               </p>
@@ -381,8 +381,8 @@ export default function App() {
                 { label: 'Cognitive Access Control', status: 'Binds agent identities directly to Entra ID, ensuring model executions match explicit user authorizations.' },
                 { label: 'Instant API Veto Gateways', status: 'Automatically intercepts and isolates rogue database rows mutations or unapproved transactions.' }
               ].map((item, id) => (
-                <div key={id} className="p-3 bg-bastion-bg/60 rounded border border-bastion-azure/30 text-xs">
-                  <span className="font-mono font-semibold text-bastion-azure-light block">{item.label}</span>
+                <div key={id} className="p-3 bg-indigo-50/50 rounded border border-indigo-100 text-xs">
+                  <span className="font-mono font-semibold text-indigo-700 block">{item.label}</span>
                   <p className="text-[#8fa3b7] text-[11px] mt-1 font-light leading-snug">{item.status}</p>
                 </div>
               ))}
@@ -396,12 +396,12 @@ export default function App() {
         </div>
 
         {/* Display-Grade stripe/palantir style core message banner */}
-        <div className="p-8 md:p-12 bg-gradient-to-r from-bastion-bg-secondary via-[#0b1d30] to-bastion-bg-secondary rounded-xl border border-bastion-border text-center space-y-4">
-          <p className="text-[10.5px] font-mono tracking-widest text-[#0078D4] uppercase font-bold">Unified Executive Verdict</p>
-          <blockquote className="font-display font-extrabold text-[#fff] text-lg sm:text-2xl tracking-normal max-w-4xl mx-auto leading-relaxed">
+        <div className="p-8 md:p-12 bg-gradient-to-r from-slate-100 via-indigo-50/20 to-slate-100 rounded-xl border border-slate-200 text-center space-y-4">
+          <p className="text-[10.5px] font-mono tracking-widest text-indigo-600 uppercase font-bold">Unified Executive Verdict</p>
+          <blockquote className="font-display font-extrabold text-slate-900 text-lg sm:text-2xl tracking-normal max-w-4xl mx-auto leading-relaxed">
             &ldquo;Legacy systems secure databases, ports, and servers. Bastion certifies, audits, and controls autonomous agents operating across that secure infrastructure.&rdquo;
           </blockquote>
-          <div className="pt-2 flex justify-center items-center gap-1 text-slate-400 font-mono text-[10px]">
+          <div className="pt-2 flex justify-center items-center gap-1 text-slate-500 font-mono text-[10px]">
             <span>Calibrated Baseline</span>
             <div className="w-1 h-1 rounded-full bg-[#0078D4]" />
             <span>Fiduciary AI Guardrails</span>
@@ -415,8 +415,8 @@ export default function App() {
         
         {/* Headings */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="text-[10px] font-mono tracking-widest text-bastion-azure font-bold uppercase block">Technical Capabilities</span>
-          <h2 className="font-display font-black text-2.5xl sm:text-4xl text-white tracking-tight leading-snug">
+          <span className="text-[10px] font-mono tracking-widest text-indigo-600 font-bold uppercase block">Technical Capabilities</span>
+          <h2 className="font-display font-black text-2.5xl sm:text-4xl text-slate-900 tracking-tight leading-snug">
             Platform Capabilities
           </h2>
           <p className="text-sm text-bastion-text-muted font-normal max-w-2xl mx-auto">
@@ -447,7 +447,7 @@ export default function App() {
                     <Icon className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-white font-display uppercase">{cap.title}</h4>
+                    <h4 className="text-sm font-bold text-slate-900 font-display uppercase">{cap.title}</h4>
                     <p className="text-[11.5px] text-bastion-text-muted mt-2 leading-relaxed font-normal">{cap.desc}</p>
                   </div>
                 </div>
@@ -463,13 +463,13 @@ export default function App() {
       </section>
 
       {/* Embedded Live Interactive Demo Section (Command Center) */}
-      <section id="interactive-demo" className="bg-[#05111d] border-y border-bastion-border py-20 px-6">
+      <section id="interactive-demo" className="bg-slate-100 border-y border-slate-200 py-20 px-6">
         <div className="max-w-7xl mx-auto space-y-10">
           
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 border-b border-bastion-border pb-6">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 border-b border-slate-200 pb-6">
             <div className="space-y-1">
-              <span className="text-[10px] font-mono tracking-widest text-[#0078D4] font-bold block uppercase">Live Operational Sandbox</span>
-              <h2 className="font-display font-black text-2xl sm:text-3.5xl text-white tracking-tight">
+              <span className="text-[10px] font-mono tracking-widest text-[#4f46e5] font-bold block uppercase">Live Operational Sandbox</span>
+              <h2 className="font-display font-black text-2xl sm:text-3.5xl text-slate-900 tracking-tight">
                 Interactive Control Plane Demonstration
               </h2>
               <p className="text-xs text-bastion-text-muted max-w-2xl font-normal mt-0.5">
@@ -498,8 +498,8 @@ export default function App() {
         
         {/* Headings */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="text-[10px] font-mono tracking-widest text-[#0078D4] font-bold uppercase block">Technical Framework pipeline</span>
-          <h2 className="font-display font-black text-2.5xl sm:text-4xl text-white tracking-tight leading-snug">
+          <span className="text-[10px] font-mono tracking-widest text-[#4f46e5] font-bold uppercase block">Technical Framework pipeline</span>
+          <h2 className="font-display font-black text-2.5xl sm:text-4xl text-slate-900 tracking-tight leading-snug">
             How Bastion Works
           </h2>
           <p className="text-sm text-bastion-text-muted max-w-xl mx-auto font-normal">
@@ -513,19 +513,19 @@ export default function App() {
       </section>
 
       {/* SECTION 5: Design Partner Program */}
-      <section id="design-partners" className="bg-[#05111d] border-t border-bastion-border py-20 md:py-28 px-6 relative overflow-hidden">
-        <div className="absolute top-0 right-1/4 w-[400px] h-[400px] ambient-glow rounded-full opacity-30 pointer-events-none" />
+      <section id="design-partners" className="bg-slate-50 border-t border-slate-200 py-20 md:py-28 px-6 relative overflow-hidden">
+        <div className="absolute top-0 right-1/4 w-[400px] h-[400px] ambient-glow rounded-full opacity-35 pointer-events-none" />
 
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Left Side: Program description and structured bullets */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-[10px] text-amber-500 font-mono font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-[10px] text-amber-600 font-mono font-bold uppercase tracking-wider">
               <Sparkles className="w-3 h-3" /> Design Partner Program
             </div>
 
-            <h2 className="font-display font-black text-3xl sm:text-4.5xl text-white tracking-tight leading-tight">
-              Seeking 4 Financial Services <span className="text-transparent bg-clip-text bg-gradient-to-r from-bastion-azure-light to-[#0078D4]">Design Partners</span>
+            <h2 className="font-display font-black text-3xl sm:text-4.5xl text-slate-900 tracking-tight leading-tight">
+              Seeking 4 Financial Services <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-indigo-700">Design Partners</span>
             </h2>
 
             <p className="text-sm text-bastion-text-muted leading-relaxed font-normal max-w-xl">
@@ -542,11 +542,11 @@ export default function App() {
                 { title: 'Direct influence on product roadmap', desc: 'Customize core compliance rules and security formats to fit your exact legal parameters.' }
               ].map((bullet, idx) => (
                 <div key={idx} className="flex items-start gap-3">
-                  <div className="p-1.5 bg-bastion-azure/10 text-bastion-azure border border-bastion-azure/10 rounded-full mt-0.5">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#0078D4]" />
+                  <div className="p-1.5 bg-indigo-50 text-indigo-600 border border-indigo-100 rounded-full mt-0.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#4f46e5]" />
                   </div>
                   <div>
-                    <strong className="text-xs text-white block font-display uppercase">{bullet.title}</strong>
+                    <strong className="text-xs text-slate-800 block font-display uppercase">{bullet.title}</strong>
                     <p className="text-[11.5px] text-bastion-text-muted mt-0.5 leading-snug">{bullet.desc}</p>
                   </div>
                 </div>
@@ -565,27 +565,27 @@ export default function App() {
 
           {/* Right Side: Professional Boardroom Photo (Desaturated corporate style) */}
           <div className="lg:col-span-5 relative">
-            <div className="absolute inset-0 bg-gradient-to-t from-bastion-bg to-transparent opacity-80 z-10 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-500/10 to-transparent opacity-80 z-10 pointer-events-none" />
             
-            <div className="relative rounded-xl border border-bastion-border shadow-2xl overflow-hidden group">
+            <div className="relative rounded-xl border border-slate-200 shadow-2xl overflow-hidden group">
               {/* Premium desaturated monochrome overlay with dark tint */}
-              <div className="absolute inset-0 bg-[#071524]/60 mix-blend-multiply group-hover:bg-[#071524]/40 transition-all z-10 duration-500" />
+              <div className="absolute inset-0 bg-slate-900/10 mix-blend-multiply group-hover:bg-slate-900/5 transition-all z-10 duration-500" />
               
               <img 
                 src={boardroomImg} 
                 alt="Advisory Boardroom and Financial Security Meeting" 
-                className="w-full h-auto object-cover grayscale opacity-75 group-hover:scale-[1.03] transition-all duration-700 max-h-[380px]"
+                className="w-full h-auto object-cover opacity-85 group-hover:scale-[1.03] transition-all duration-700 max-h-[380px]"
                 id="design-partner-img"
               />
 
               {/* Secure Stamp Graphic */}
-              <div className="absolute bottom-4 left-4 z-20 p-2 bg-black/60 border border-bastion-azure/40 backdrop-blur-md rounded font-mono text-[9.5px] space-y-0.5 text-[#8fa3b7]">
+              <div className="absolute bottom-4 left-4 z-20 p-2.5 bg-slate-900/90 border border-indigo-400/30 backdrop-blur-md rounded font-mono text-[9.5px] space-y-0.5 text-slate-300">
                 <div className="flex items-center gap-1 text-white font-bold text-[10px]">
-                  <Building className="w-3.5 h-3.5 text-bastion-azure-light" />
+                  <Building className="w-3.5 h-3.5 text-indigo-400" />
                   <span>Bastion Advisory Group</span>
                 </div>
                 <div className="text-[9px]">Scope: Financial Institutions</div>
-                <div className="text-[9px] text-[#0078D4] font-semibold">STATUS: OPEN FOR DESIGN PARTNERS</div>
+                <div className="text-[9px] text-indigo-400 font-semibold">STATUS: OPEN FOR DESIGN PARTNERS</div>
               </div>
             </div>
 
@@ -604,8 +604,8 @@ export default function App() {
         
         {/* Headings */}
         <div className="text-center max-w-2xl mx-auto space-y-3">
-          <span className="text-[10px] font-mono tracking-widest text-[#0078D4] font-bold uppercase block">Measurable Performance</span>
-          <h2 className="font-display font-black text-2.5xl sm:text-4xl text-white tracking-tight leading-snug">
+          <span className="text-[10px] font-mono tracking-widest text-indigo-650 font-bold uppercase block">Measurable Performance</span>
+          <h2 className="font-display font-black text-2.5xl sm:text-4xl text-slate-900 tracking-tight leading-snug">
             Executive Outcomes
           </h2>
           <p className="text-sm text-bastion-text-muted font-normal">
@@ -616,40 +616,40 @@ export default function App() {
         {/* Metrics Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch font-sans">
           
-          <div className="p-5 rounded-lg border border-bastion-border bg-bastion-bg-secondary/40 space-y-4 flex flex-col justify-between">
+          <div className="p-5 rounded-lg border border-slate-200 bg-white shadow-xs space-y-4 flex flex-col justify-between">
             <div className="space-y-2">
-              <span className="text-xs font-mono text-[#0078D4] tracking-widest font-bold uppercase">REDUCED RISK</span>
-              <p className="text-3.5xl md:text-4xl font-extrabold font-display text-white">60%+</p>
+              <span className="text-xs font-mono text-indigo-650 tracking-widest font-bold uppercase">REDUCED RISK</span>
+              <p className="text-3.5xl md:text-4xl font-extrabold font-display text-slate-900">60%+</p>
             </div>
             <p className="text-[11.5px] text-bastion-text-muted leading-relaxed font-normal">
               Average reduction in cognitive vulnerabilities, policy boundaries breaches, and credential abuse incidents.
             </p>
           </div>
 
-          <div className="p-5 rounded-lg border border-bastion-border bg-bastion-bg-secondary/40 space-y-4 flex flex-col justify-between">
+          <div className="p-5 rounded-lg border border-slate-200 bg-white shadow-xs space-y-4 flex flex-col justify-between">
             <div className="space-y-2">
-              <span className="text-xs font-mono text-[#0078D4] tracking-widest font-bold uppercase">AUDIT READINESS</span>
-              <p className="text-3.5xl md:text-4xl font-extrabold font-display text-white">75%+</p>
+              <span className="text-xs font-mono text-indigo-650 tracking-widest font-bold uppercase">AUDIT READINESS</span>
+              <p className="text-3.5xl md:text-4xl font-extrabold font-display text-slate-900">75%+</p>
             </div>
             <p className="text-[11.5px] text-bastion-text-muted leading-relaxed font-normal">
               Faster generation of validated regulatory compliance evidence and reporting outputs for board stakeholders.
             </p>
           </div>
 
-          <div className="p-5 rounded-lg border border-bastion-border bg-bastion-bg-secondary/40 space-y-4 flex flex-col justify-between">
+          <div className="p-5 rounded-lg border border-slate-200 bg-white shadow-xs space-y-4 flex flex-col justify-between">
             <div className="space-y-2">
-              <span className="text-xs font-mono text-[#0078D4] tracking-widest font-bold uppercase">EFFORT REDUCTION</span>
-              <p className="text-3.5xl md:text-4xl font-extrabold font-display text-white">80%+</p>
+              <span className="text-xs font-mono text-indigo-650 tracking-widest font-bold uppercase">EFFORT REDUCTION</span>
+              <p className="text-3.5xl md:text-4xl font-extrabold font-display text-slate-900">80%+</p>
             </div>
             <p className="text-[11.5px] text-bastion-text-muted leading-relaxed font-normal">
               Decrease in manual compliance overhead, log tracing, and executive reports preparation time.
             </p>
           </div>
 
-          <div className="p-5 rounded-lg border border-bastion-border bg-bastion-bg-secondary/40 space-y-4 flex flex-col justify-between">
-            <div className="space-y-2">
-              <span className="text-xs font-mono text-[#0078D4] tracking-widest font-bold uppercase">CISO VISIBILITY</span>
-              <p className="text-3.5xl md:text-4xl font-extrabold font-display text-white">100%</p>
+          <div className="p-5 rounded-lg border border-slate-200 bg-white shadow-xs space-y-4 flex flex-col justify-between">
+            <div className="space-y-2 font-sans">
+              <span className="text-xs font-mono text-indigo-600 tracking-widest font-bold uppercase">CISO VISIBILITY</span>
+              <p className="text-3.5xl md:text-4xl font-extrabold font-display text-slate-900">100%</p>
             </div>
             <p className="text-[11.5px] text-bastion-text-muted leading-relaxed font-normal">
               Continuous dashboard visibility and real-time alerts stream regarding model behavior across all channels.
@@ -661,12 +661,12 @@ export default function App() {
       </section>
 
       {/* FAQ Accordion Section for trust establishment */}
-      <section className="bg-bastion-bg-secondary/20 border-t border-bastion-border py-20 px-6">
+      <section className="bg-slate-150/40 border-t border-slate-200 py-20 px-6">
         <div className="max-w-4xl mx-auto space-y-12">
           
           <div className="text-center space-y-3">
-            <span className="text-[10px] font-mono tracking-widest text-[#0078D4] font-bold block uppercase">Strategic FAQ</span>
-            <h2 className="font-display font-black text-2xl sm:text-3xl text-white tracking-tight">
+            <span className="text-[10px] font-mono tracking-widest text-indigo-600 font-bold block uppercase">Strategic FAQ</span>
+            <h2 className="font-display font-black text-2xl sm:text-3xl text-slate-900 tracking-tight">
               Enterprise Governance FAQ
             </h2>
             <p className="text-xs text-bastion-text-muted max-w-lg mx-auto font-normal">
@@ -691,13 +691,13 @@ export default function App() {
             ].map((faq, idx) => {
               const isOpen = activeFaq === idx;
               return (
-                <div key={idx} className="border border-bastion-border bg-bastion-bg-secondary/40 rounded-lg overflow-hidden">
+                <div key={idx} className="border border-slate-200 bg-white rounded-lg overflow-hidden shadow-xs">
                   <button
                     onClick={() => setActiveFaq(isOpen ? null : idx)}
-                    className="w-full p-4 text-left font-display font-bold text-xs sm:text-sm text-white flex justify-between items-center bg-[#071321]/20 hover:bg-[#071321]/40 cursor-pointer transition-colors"
+                    className="w-full p-4 text-left font-display font-bold text-xs sm:text-sm text-slate-900 flex justify-between items-center bg-white hover:bg-slate-50 cursor-pointer transition-colors"
                   >
                     <span>{faq.q}</span>
-                    <ChevronDown className={`w-4 h-4 text-bastion-text-muted transition-transform ${isOpen ? 'rotate-180 text-bastion-azure' : ''}`} />
+                    <ChevronDown className={`w-4 h-4 text-[#64748b] transition-transform ${isOpen ? 'rotate-180 text-indigo-600' : ''}`} />
                   </button>
                   
                   <AnimatePresence>
@@ -706,7 +706,7 @@ export default function App() {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        className="overflow-hidden border-t border-bastion-border/40"
+                        className="overflow-hidden border-t border-slate-100"
                       >
                         <p className="p-4 text-xs text-bastion-text-muted leading-relaxed font-normal">
                           {faq.a}

@@ -80,7 +80,7 @@ export default function ArchitectureDiagram() {
   ];
 
   return (
-    <div className="w-full bg-bastion-bg rounded-lg border border-bastion-border p-6 md:p-8 relative overflow-hidden">
+    <div id="architecture-diagram" className="w-full bg-bastion-bg rounded-lg border border-bastion-border p-6 md:p-8 relative overflow-hidden">
       <div className="absolute inset-0 bg-radial from-bastion-azure/5 to-transparent pointer-events-none" />
       
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 border-b border-bastion-border pb-4">

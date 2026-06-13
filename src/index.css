@@ -6,15 +6,15 @@
   --font-display: "Plus Jakarta Sans", "Inter", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
-  --color-bastion-bg: #071524;
-  --color-bastion-bg-secondary: #0b1e32;
-  --color-bastion-bg-tertiary: #112942;
-  --color-bastion-azure: #0078D4;
-  --color-bastion-azure-light: #3a9bf2;
-  --color-bastion-border: rgba(255, 255, 255, 0.08);
-  --color-bastion-border-hover: rgba(255, 255, 255, 0.16);
-  --color-bastion-text-muted: #8fa3b7;
-  --color-bastion-text-bright: #ffffff;
+  --color-bastion-bg: #f8fafc;
+  --color-bastion-bg-secondary: #ffffff;
+  --color-bastion-bg-tertiary: #f1f5f9;
+  --color-bastion-azure: #4f46e5;
+  --color-bastion-azure-light: #6366f1;
+  --color-bastion-border: #e2e8f0;
+  --color-bastion-border-hover: #cbd5e1;
+  --color-bastion-text-muted: #64748b;
+  --color-bastion-text-bright: #0f172a;
 }
 
 /* Custom premium scrollbar for high-end feel */
@@ -23,19 +23,49 @@
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #071524;
+  background: #f8fafc;
 }
 ::-webkit-scrollbar-thumb {
-  background: #112942;
+  background: #cbd5e1;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #0078D4;
+  background: #4f46e5;
 }
 
 /* Soft ambient glows resembling Palantir and Apple visuals */
 .ambient-glow {
-  background: radial-gradient(circle at 50% 50%, rgba(0, 120, 212, 0.15) 0%, rgba(7, 21, 36, 0) 70%);
+  background: radial-gradient(circle at 50% 50%, rgba(79, 70, 229, 0.06) 0%, rgba(248, 250, 252, 0) 70%);
+}
+
+/* Scoped dark theme overrides for the interactive-dashboard and architecture-diagram to ensure they remain elite dark console visuals */
+#interactive-dashboard,
+#architecture-diagram,
+#design-partner-modal {
+  --color-bastion-bg: #030712; /* Extreme dark Slate 950 */
+  --color-bastion-bg-secondary: #0f172a; /* Slate 900 */
+  --color-bastion-bg-tertiary: #1e293b; /* Slate 800 */
+  --color-bastion-azure: #4f46e5; /* Indigo 600 */
+  --color-bastion-azure-light: #6366f1; /* Indigo 500 */
+  --color-bastion-border: rgba(255, 255, 255, 0.09);
+  --color-bastion-border-hover: rgba(255, 255, 255, 0.18);
+  --color-bastion-text-muted: #94a3b8; /* Slate 400 */
+  --color-bastion-text-bright: #f8fafc; /* Slate 50 */
+  
+  color: #f8fafc;
+}
+
+#interactive-dashboard select, 
+#interactive-dashboard input, 
+#interactive-dashboard button,
+#architecture-diagram select,
+#architecture-diagram input,
+#architecture-diagram button,
+#design-partner-modal select,
+#design-partner-modal input,
+#design-partner-modal textarea,
+#design-partner-modal button {
+  color-scheme: dark;
 }
 
 .radar-sweep {

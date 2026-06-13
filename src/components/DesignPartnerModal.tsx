@@ -65,11 +65,12 @@ export default function DesignPartnerModal({ isOpen, onClose }: DesignPartnerMod
 
           {/* Modal Container */}
           <motion.div
+            id="design-partner-modal"
             initial={{ opacity: 0, scale: 0.95, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 15 }}
             transition={{ type: 'spring', duration: 0.4 }}
-            className="relative w-full max-w-xl bg-[#081827] border border-bastion-border rounded-xl shadow-2xl overflow-hidden font-sans z-10"
+            className="relative w-full max-w-xl bg-slate-900 border border-bastion-border rounded-xl shadow-2xl overflow-hidden font-sans z-10"
           >
             {/* Top Security Line Accent */}
             <div className="h-1 w-full bg-gradient-to-r from-bastion-azure via-sky-400 to-emerald-500" />
