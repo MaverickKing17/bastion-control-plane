@@ -351,78 +351,86 @@ export default function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
             
             {/* Feature 1: Autonomous Agent Orchestration */}
-            <div className="bg-slate-50/50 border border-slate-200 rounded-xl p-6 flex flex-col justify-between hover:shadow-md transition-shadow relative overflow-hidden group">
-              <div className="space-y-4">
-                <div className="w-10 h-10 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
-                  <Cpu className="w-5 h-5 stroke-[2]" />
+            <div className="glowing-card rounded-xl p-6 relative overflow-visible group">
+              <div className="relative z-10 flex flex-col justify-between h-full space-y-6">
+                <div className="space-y-4">
+                  <div className="w-11 h-11 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white group-hover:scale-110 transition-all duration-300">
+                    <Cpu className="w-5.5 h-5.5 stroke-[2]" />
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="text-base font-bold text-slate-900 font-display group-hover:text-indigo-600 transition-colors">Autonomous Agent Orchestration</h3>
+                    <p className="text-xs text-slate-650 leading-relaxed font-normal">
+                      Binds agentic networks directly to strict, mission-based validation paths. Ensures recursion limits and operational scopes remain tightly constrained.
+                    </p>
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <h3 className="text-base font-bold text-slate-900 font-display">Autonomous Agent Orchestration</h3>
-                  <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                    Binds agentic networks directly to strict, mission-based validation paths. Ensures recursion limits and operational scopes remain tightly constrained.
-                  </p>
+                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-[10px] font-mono font-bold text-indigo-600 tracking-wider">MISSION CONTROL</span>
+                  <span className="text-[10px] text-slate-400 font-normal">Prevents loops & drift</span>
                 </div>
-              </div>
-              <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
-                <span className="text-[10px] font-mono font-semibold text-indigo-600">MISSION CONTROL</span>
-                <span className="text-[9.5px] text-slate-400 font-normal">Prevents loops & drift</span>
               </div>
             </div>
 
             {/* Feature 2: Real-time Monitoring & Analytics */}
-            <div className="bg-slate-50/50 border border-slate-200 rounded-xl p-6 flex flex-col justify-between hover:shadow-md transition-shadow relative overflow-hidden group">
-              <div className="space-y-4">
-                <div className="w-10 h-10 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
-                  <Activity className="w-5 h-5 stroke-[2]" />
+            <div className="glowing-card rounded-xl p-6 relative overflow-visible group">
+              <div className="relative z-10 flex flex-col justify-between h-full space-y-6">
+                <div className="space-y-4">
+                  <div className="w-11 h-11 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white group-hover:scale-110 transition-all duration-300">
+                    <Activity className="w-5.5 h-5.5 stroke-[2]" />
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="text-base font-bold text-slate-900 font-display group-hover:text-indigo-600 transition-colors">Real-time Monitoring & Analytics</h3>
+                    <p className="text-xs text-slate-650 leading-relaxed font-normal">
+                      Active stream capturing thought vectors, context window states, tool-calling chains, and safety scores with zero latency overhead.
+                    </p>
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <h3 className="text-base font-bold text-slate-900 font-display">Real-time Monitoring & Analytics</h3>
-                  <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                    Active stream capturing thought vectors, context window states, tool-calling chains, and safety scores with zero latency overhead.
-                  </p>
+                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-[10px] font-mono font-bold text-indigo-600 tracking-wider">LIVE TELEMETRY</span>
+                  <span className="text-[10px] text-slate-400 font-normal">Instant vector audit</span>
                 </div>
-              </div>
-              <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
-                <span className="text-[10px] font-mono font-semibold text-indigo-600">LIVE TELEMETRY</span>
-                <span className="text-[9.5px] text-slate-400 font-normal">Instant vector audit</span>
               </div>
             </div>
 
             {/* Feature 3: Automated Compliance & Security */}
-            <div className="bg-slate-50/50 border border-slate-200 rounded-xl p-6 flex flex-col justify-between hover:shadow-md transition-shadow relative overflow-hidden group">
-              <div className="space-y-4">
-                <div className="w-10 h-10 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
-                  <Lock className="w-5 h-5 stroke-[2]" />
+            <div className="glowing-card rounded-xl p-6 relative overflow-visible group">
+              <div className="relative z-10 flex flex-col justify-between h-full space-y-6">
+                <div className="space-y-4">
+                  <div className="w-11 h-11 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white group-hover:scale-110 transition-all duration-300">
+                    <Lock className="w-5.5 h-5.5 stroke-[2]" />
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="text-base font-bold text-slate-900 font-display group-hover:text-indigo-600 transition-colors">Automated Compliance & Security</h3>
+                    <p className="text-xs text-slate-650 leading-relaxed font-normal">
+                      Auto-validates decision-logs against regulatory rules. Enforces custom compliance thresholds with inline agent veto filters.
+                    </p>
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <h3 className="text-base font-bold text-slate-900 font-display">Automated Compliance & Security</h3>
-                  <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                    Auto-validates decision-logs against regulatory rules. Enforces custom compliance thresholds with inline agent veto filters.
-                  </p>
+                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-[10px] font-mono font-bold text-indigo-600 tracking-wider">ZERO TRUST AUDIT</span>
+                  <span className="text-[10px] text-slate-400 font-normal">Veto rogue actions</span>
                 </div>
-              </div>
-              <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
-                <span className="text-[10px] font-mono font-semibold text-indigo-600">ZERO TRUST AUDIT</span>
-                <span className="text-[9.5px] text-slate-400 font-normal">Veto rogue actions</span>
               </div>
             </div>
 
             {/* Feature 4: Scalable Infrastructure Management */}
-            <div className="bg-slate-50/50 border border-slate-200 rounded-xl p-6 flex flex-col justify-between hover:shadow-md transition-shadow relative overflow-hidden group">
-              <div className="space-y-4">
-                <div className="w-10 h-10 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
-                  <Layers className="w-5 h-5 stroke-[2]" />
+            <div className="glowing-card rounded-xl p-6 relative overflow-visible group">
+              <div className="relative z-10 flex flex-col justify-between h-full space-y-6">
+                <div className="space-y-4">
+                  <div className="w-11 h-11 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white group-hover:scale-110 transition-all duration-300">
+                    <Layers className="w-5.5 h-5.5 stroke-[2]" />
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="text-base font-bold text-slate-900 font-display group-hover:text-indigo-600 transition-colors">Scalable Infrastructure Management</h3>
+                    <p className="text-xs text-slate-650 leading-relaxed font-normal">
+                      Manages distributed model limits, failover nodes, credential boundaries, and isolated transaction zones across hybrid cluster networks.
+                    </p>
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <h3 className="text-base font-bold text-slate-900 font-display">Scalable Infrastructure Management</h3>
-                  <p className="text-xs text-slate-600 leading-relaxed font-normal">
-                    Manages distributed model limits, failover nodes, credential boundaries, and isolated transaction zones across hybrid cluster networks.
-                  </p>
+                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-[10px] font-mono font-bold text-indigo-600 tracking-wider">RUNTIME CONTROL</span>
+                  <span className="text-[10px] text-slate-400 font-normal">Enterprise isolation</span>
                 </div>
-              </div>
-              <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
-                <span className="text-[10px] font-mono font-semibold text-indigo-600">RUNTIME CONTROL</span>
-                <span className="text-[9.5px] text-slate-400 font-normal">Enterprise isolation</span>
               </div>
             </div>
 
@@ -449,64 +457,67 @@ export default function App() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
           
           {/* Traditional Perimeter Box */}
-          <div className="bg-slate-100 border border-slate-200 rounded-xl p-6 md:p-8 flex flex-col justify-between space-y-6">
-            <div className="space-y-3">
-              <span className="text-[10px] font-mono text-slate-500 uppercase block font-semibold">FOUNDATIONAL INTEGRITY LAYER</span>
-              <h3 className="text-lg font-bold text-slate-900 font-display">Traditional Enterprise Security</h3>
-              <p className="text-xs text-bastion-text-muted leading-relaxed font-normal">
-                Configured to monitor networks, block unauthorized IP ports, inspect static binaries, and secure employee logins. They understand machine packages, but are completely blind to agent intent.
+          <div className="glowing-card rounded-xl p-6 md:p-8 relative overflow-visible group">
+            <div className="relative z-10 flex flex-col justify-between h-full space-y-6">
+              <div className="space-y-3">
+                <span className="text-[10px] font-mono text-slate-500 uppercase block font-bold tracking-wider">FOUNDATIONAL INTEGRITY LAYER</span>
+                <h3 className="text-lg font-bold text-slate-900 font-display group-hover:text-indigo-600 transition-colors">Traditional Enterprise Security</h3>
+                <p className="text-xs text-bastion-text-muted leading-relaxed font-normal">
+                  Configured to monitor networks, block unauthorized IP ports, inspect static binaries, and secure employee logins. They understand machine packages, but are completely blind to agent intent.
+                </p>
+              </div>
+
+              <div className="space-y-2.5">
+                {[
+                  { label: 'Active Directory / Entra', status: 'Verifies employee logins but cannot audit whether an LLM is drifting into fiduciary liability.' },
+                  { label: 'SIEM / Microsoft Sentinel', status: 'Monitors infrastructure alerts but cannot parse unstructured adversarial prompt injection payloads.' },
+                  { label: 'Cloud Firewalls', status: 'Blocks port traffic but cannot detect continuous overprivileged database reads by certified agents.' }
+                ].map((item, id) => (
+                  <div key={id} className="p-3 bg-slate-50 rounded border border-slate-200 text-xs hover:border-slate-350 hover:bg-slate-100/55 transition-all">
+                    <span className="font-mono font-semibold text-slate-800 block">{item.label}</span>
+                    <p className="text-[#64748b] text-[11px] mt-1 font-normal leading-snug">{item.status}</p>
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-xs text-slate-400 italic font-mono pt-3 border-t border-slate-200 text-[11px]">
+                &gt; Conclusion: Secures underlying infrastructure. Blind to cognitive execution logic.
               </p>
             </div>
-
-            <div className="space-y-2.5">
-              {[
-                { label: 'Active Directory / Entra', status: 'Verifies employee logins but cannot audit whether an LLM is drifting into fiduciary liability.' },
-                { label: 'SIEM / Microsoft Sentinel', status: 'Monitors infrastructure alerts but cannot parse unstructured adversarial prompt injection payloads.' },
-                { label: 'Cloud Firewalls', status: 'Blocks port traffic but cannot detect continuous overprivileged database reads by certified agents.' }
-              ].map((item, id) => (
-                <div key={id} className="p-3 bg-white rounded border border-slate-200 text-xs">
-                  <span className="font-mono font-semibold text-slate-800 block">{item.label}</span>
-                  <p className="text-[#8fa3b7] text-[11px] mt-1 font-light leading-snug">{item.status}</p>
-                </div>
-              ))}
-            </div>
-
-            <p className="text-xs text-slate-400 italic font-mono pt-3 border-t border-bastion-border/20 text-[11px]">
-              &gt; Conclusion: Secures underlying infrastructure. Blind to cognitive execution logic.
-            </p>
           </div>
 
           {/* Bastion Auditing Layer */}
-          <div className="bg-white border border-indigo-500 rounded-xl p-6 md:p-8 flex flex-col justify-between space-y-6 relative overflow-hidden shadow-sm">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-indigo-500/10 to-transparent pointer-events-none" />
-            
-            <div className="space-y-3">
-              <div className="flex justify-between items-center">
-                <span className="text-[10px] font-mono text-indigo-600 uppercase font-bold tracking-widest">Cognitive Control Ring</span>
-                <span className="text-[9px] bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 px-1.5 py-0.2 rounded font-mono uppercase font-bold">Bastion Domain</span>
+          <div className="glowing-card rounded-xl p-6 md:p-8 relative overflow-visible shadow-sm group">
+            <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-indigo-50/20 to-transparent pointer-events-none" />
+            <div className="relative z-10 flex flex-col justify-between h-full space-y-6">
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-[10px] font-mono text-indigo-600 uppercase font-bold tracking-widest">Cognitive Control Ring</span>
+                  <span className="text-[9px] bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 px-2 py-0.5 rounded font-mono uppercase font-bold">Bastion Domain</span>
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 font-display group-hover:text-indigo-600 transition-colors">Bastion Audit Protection</h3>
+                <p className="text-xs text-bastion-text-muted leading-relaxed font-normal">
+                  Inspects real-time instructions, validates agent actions against certified boundaries, and prevents data breaches before commands hitting legacy database gateways can execute.
+                </p>
               </div>
-              <h3 className="text-lg font-bold text-slate-900 font-display">Bastion Audit Protection</h3>
-              <p className="text-xs text-bastion-text-muted leading-relaxed font-normal">
-                Inspects real-time instructions, validates agent actions against certified boundaries, and prevents data breaches before commands hitting legacy database gateways can execute.
+
+              <div className="space-y-2.5">
+                {[
+                  { label: 'Prompt Injection Defense', status: 'Intercepts adversarial token overrides and malicious system prompts in milliseconds.' },
+                  { label: 'Cognitive Access Control', status: 'Binds agent identities directly to Entra ID, ensuring model executions match explicit user authorizations.' },
+                  { label: 'Instant API Veto Gateways', status: 'Automatically intercepts and isolates rogue database rows mutations or unapproved transactions.' }
+                ].map((item, id) => (
+                  <div key={id} className="p-3 bg-indigo-50/50 rounded border border-indigo-100 text-xs hover:bg-indigo-50 hover:border-indigo-200 transition-all">
+                    <span className="font-mono font-bold text-indigo-700 block">{item.label}</span>
+                    <p className="text-slate-600 text-[11px] mt-1 font-normal leading-snug">{item.status}</p>
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-xs text-indigo-600 italic font-mono pt-3 border-t border-indigo-200 text-[11px]">
+                &gt; Conclusion: Bastion governs independent agents operating across secure infrastructures.
               </p>
             </div>
-
-            <div className="space-y-2.5">
-              {[
-                { label: 'Prompt Injection Defense', status: 'Intercepts adversarial token overrides and malicious system prompts in milliseconds.' },
-                { label: 'Cognitive Access Control', status: 'Binds agent identities directly to Entra ID, ensuring model executions match explicit user authorizations.' },
-                { label: 'Instant API Veto Gateways', status: 'Automatically intercepts and isolates rogue database rows mutations or unapproved transactions.' }
-              ].map((item, id) => (
-                <div key={id} className="p-3 bg-indigo-50/50 rounded border border-indigo-100 text-xs">
-                  <span className="font-mono font-semibold text-indigo-700 block">{item.label}</span>
-                  <p className="text-[#8fa3b7] text-[11px] mt-1 font-light leading-snug">{item.status}</p>
-                </div>
-              ))}
-            </div>
-
-            <p className="text-xs text-bastion-azure-light italic font-mono pt-3 border-t border-bastion-border/40 text-[11px]">
-              &gt; Conclusion: Bastion governs independent agents operating across secure infrastructures.
-            </p>
           </div>
 
         </div>
@@ -550,26 +561,22 @@ export default function App() {
                 key={cap.id}
                 onMouseEnter={() => setHoveredCapability(idx)}
                 onMouseLeave={() => setHoveredCapability(null)}
-                className={`p-5 rounded-lg border transition-all flex flex-col justify-between h-72 ${
-                  isHovered 
-                    ? 'bg-bastion-bg-secondary border-bastion-azure scale-[1.02] shadow-xl' 
-                    : 'bg-bastion-bg-secondary/40 border-bastion-border/60 hover:border-bastion-border/90'
-                }`}
+                className="glowing-card rounded-xl p-5 flex flex-col justify-between h-72 relative overflow-visible group cursor-pointer"
               >
-                <div className="space-y-4">
-                  <div className={`w-9 h-9 rounded-lg flex items-center justify-center transition-colors ${
-                    isHovered ? 'bg-bastion-azure text-white' : 'bg-bastion-bg-tertiary text-bastion-azure'
-                  }`}>
-                    <Icon className="w-5 h-5" />
+                <div className="relative z-10 flex flex-col justify-between h-full">
+                  <div className="space-y-4">
+                    <div className="w-10 h-10 rounded-lg bg-indigo-50 border border-indigo-100/80 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white group-hover:scale-110 transition-all duration-300">
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-extrabold text-slate-900 font-display tracking-wider uppercase group-hover:text-indigo-600 transition-colors">{cap.title}</h4>
+                      <p className="text-[11.5px] text-bastion-text-muted mt-2 leading-relaxed font-normal">{cap.desc}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="text-sm font-bold text-slate-900 font-display uppercase">{cap.title}</h4>
-                    <p className="text-[11.5px] text-bastion-text-muted mt-2 leading-relaxed font-normal">{cap.desc}</p>
-                  </div>
-                </div>
 
-                <div className="pt-3 border-t border-bastion-border/40 text-[10px] font-mono text-[#8fa3b7]/60 leading-tight">
-                  {cap.details}
+                  <div className="pt-3 border-t border-slate-100 text-[10px] font-mono text-[#8fa3b7] leading-tight">
+                    {cap.details}
+                  </div>
                 </div>
               </div>
             );
@@ -732,44 +739,52 @@ export default function App() {
         {/* Metrics Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch font-sans">
           
-          <div className="p-5 rounded-lg border border-slate-200 bg-white shadow-xs space-y-4 flex flex-col justify-between">
-            <div className="space-y-2">
-              <span className="text-xs font-mono text-indigo-650 tracking-widest font-bold uppercase">REDUCED RISK</span>
-              <p className="text-3.5xl md:text-4xl font-extrabold font-display text-slate-900">60%+</p>
+          <div className="glowing-card rounded-xl p-6 relative overflow-visible group flex flex-col justify-between cursor-pointer shadow-xs">
+            <div className="relative z-10 flex flex-col justify-between h-full space-y-4">
+              <div className="space-y-1">
+                <span className="text-[10px] font-mono text-indigo-650 tracking-widest font-extrabold uppercase block">REDUCED RISK</span>
+                <p className="text-3.5xl md:text-4xl font-black font-display text-slate-900 group-hover:text-indigo-600 group-hover:scale-105 origin-left transition-all duration-300">60%+</p>
+              </div>
+              <p className="text-[11.5px] text-slate-605 leading-relaxed font-normal">
+                Average reduction in cognitive vulnerabilities, policy boundaries breaches, and credential abuse incidents.
+              </p>
             </div>
-            <p className="text-[11.5px] text-bastion-text-muted leading-relaxed font-normal">
-              Average reduction in cognitive vulnerabilities, policy boundaries breaches, and credential abuse incidents.
-            </p>
           </div>
 
-          <div className="p-5 rounded-lg border border-slate-200 bg-white shadow-xs space-y-4 flex flex-col justify-between">
-            <div className="space-y-2">
-              <span className="text-xs font-mono text-indigo-650 tracking-widest font-bold uppercase">AUDIT READINESS</span>
-              <p className="text-3.5xl md:text-4xl font-extrabold font-display text-slate-900">75%+</p>
+          <div className="glowing-card rounded-xl p-6 relative overflow-visible group flex flex-col justify-between cursor-pointer shadow-xs">
+            <div className="relative z-10 flex flex-col justify-between h-full space-y-4">
+              <div className="space-y-1">
+                <span className="text-[10px] font-mono text-indigo-650 tracking-widest font-extrabold uppercase block">AUDIT READINESS</span>
+                <p className="text-3.5xl md:text-4xl font-black font-display text-slate-900 group-hover:text-indigo-600 group-hover:scale-105 origin-left transition-all duration-300">75%+</p>
+              </div>
+              <p className="text-[11.5px] text-slate-605 leading-relaxed font-normal">
+                Faster generation of validated regulatory compliance evidence and reporting outputs for board stakeholders.
+              </p>
             </div>
-            <p className="text-[11.5px] text-bastion-text-muted leading-relaxed font-normal">
-              Faster generation of validated regulatory compliance evidence and reporting outputs for board stakeholders.
-            </p>
           </div>
 
-          <div className="p-5 rounded-lg border border-slate-200 bg-white shadow-xs space-y-4 flex flex-col justify-between">
-            <div className="space-y-2">
-              <span className="text-xs font-mono text-indigo-650 tracking-widest font-bold uppercase">EFFORT REDUCTION</span>
-              <p className="text-3.5xl md:text-4xl font-extrabold font-display text-slate-900">80%+</p>
+          <div className="glowing-card rounded-xl p-6 relative overflow-visible group flex flex-col justify-between cursor-pointer shadow-xs">
+            <div className="relative z-10 flex flex-col justify-between h-full space-y-4">
+              <div className="space-y-1">
+                <span className="text-[10px] font-mono text-indigo-650 tracking-widest font-extrabold uppercase block">EFFORT REDUCTION</span>
+                <p className="text-3.5xl md:text-4xl font-black font-display text-slate-900 group-hover:text-indigo-600 group-hover:scale-105 origin-left transition-all duration-300">80%+</p>
+              </div>
+              <p className="text-[11.5px] text-slate-605 leading-relaxed font-normal">
+                Decrease in manual compliance overhead, log tracing, and executive reports preparation time.
+              </p>
             </div>
-            <p className="text-[11.5px] text-bastion-text-muted leading-relaxed font-normal">
-              Decrease in manual compliance overhead, log tracing, and executive reports preparation time.
-            </p>
           </div>
 
-          <div className="p-5 rounded-lg border border-slate-200 bg-white shadow-xs space-y-4 flex flex-col justify-between">
-            <div className="space-y-2 font-sans">
-              <span className="text-xs font-mono text-indigo-600 tracking-widest font-bold uppercase">CISO VISIBILITY</span>
-              <p className="text-3.5xl md:text-4xl font-extrabold font-display text-slate-900">100%</p>
+          <div className="glowing-card rounded-xl p-6 relative overflow-visible group flex flex-col justify-between cursor-pointer shadow-xs">
+            <div className="relative z-10 flex flex-col justify-between h-full space-y-4">
+              <div className="space-y-1">
+                <span className="text-[10px] font-mono text-indigo-600 tracking-widest font-extrabold uppercase block font-sans">CISO VISIBILITY</span>
+                <p className="text-3.5xl md:text-4xl font-black font-display text-slate-900 group-hover:text-indigo-600 group-hover:scale-105 origin-left transition-all duration-300">100%</p>
+              </div>
+              <p className="text-[11.5px] text-slate-605 leading-relaxed font-normal">
+                Continuous dashboard visibility and real-time alerts stream regarding model behavior across all channels.
+              </p>
             </div>
-            <p className="text-[11.5px] text-bastion-text-muted leading-relaxed font-normal">
-              Continuous dashboard visibility and real-time alerts stream regarding model behavior across all channels.
-            </p>
           </div>
 
         </div>
