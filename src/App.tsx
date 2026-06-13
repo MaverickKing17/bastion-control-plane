@@ -32,6 +32,7 @@ import {
 import DashboardDemo from './components/DashboardDemo';
 import ArchitectureDiagram from './components/ArchitectureDiagram';
 import DesignPartnerModal from './components/DesignPartnerModal';
+import ThreatHeatmap from './components/ThreatHeatmap';
 
 // Reference the generated ballroom meetings photo safely
 const boardroomImg = '/src/assets/images/boardroom_meeting_1781371964505.jpg';
@@ -609,6 +610,11 @@ export default function App() {
               </div>
             );
           })}
+        </div>
+
+        {/* Global Threat Heatmap Visualization Tool for C-Suite appeal */}
+        <div className="pt-10 border-t border-slate-200">
+          <ThreatHeatmap />
         </div>
 
       </section>
