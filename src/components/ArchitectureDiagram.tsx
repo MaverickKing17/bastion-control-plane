@@ -177,7 +177,7 @@ export default function ArchitectureDiagram() {
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
         
         {/* LEFT COLUMN: Enterprise Ecosystem (Col-span 3) */}
-        <div className="lg:col-span-3 bg-slate-950/60 border border-purple-500/10 rounded-xl p-5 space-y-4 flex flex-col justify-between shadow-md backdrop-blur-md">
+        <div className="lg:col-span-3 bg-slate-950/60 border-2 border-yellow-400/90 shadow-[0_0_30px_rgba(234,179,8,0.35),0_12px_45px_rgba(0,0,0,0.6)] hover:border-yellow-300 hover:shadow-[0_0_45px_rgba(234,179,8,0.55),0_12px_45px_rgba(0,0,0,0.6)] rounded-xl p-5 space-y-4 flex flex-col justify-between backdrop-blur-md transition-all duration-300">
           <div>
             <div className="flex items-center gap-2 border-b border-purple-500/10 pb-3 mb-4">
               <div className="p-1.5 bg-slate-900 rounded-lg border border-slate-800 text-slate-300">
@@ -256,7 +256,7 @@ export default function ArchitectureDiagram() {
         <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
           
           {/* Box 1: Cognitive Signal processing (Cyan & Purple themes) */}
-          <div className="bg-slate-950/60 border border-purple-500/10 rounded-xl p-5 flex flex-col justify-between space-y-4 shadow-md backdrop-blur-md">
+          <div className="bg-slate-950/60 border-2 border-yellow-400/90 shadow-[0_0_30px_rgba(234,179,8,0.35),0_12px_45px_rgba(0,0,0,0.6)] hover:border-yellow-300 hover:shadow-[0_0_45px_rgba(234,179,8,0.55),0_12px_45px_rgba(0,0,0,0.6)] rounded-xl p-5 flex flex-col justify-between space-y-4 backdrop-blur-md transition-all duration-300">
             <div>
               <div className="flex justify-between items-center border-b border-purple-500/10 pb-3 mb-2">
                 <div className="flex items-center gap-1.5">
@@ -347,7 +347,7 @@ export default function ArchitectureDiagram() {
           </div>
 
           {/* Box 2: Response Loop & Enforcement Rings */}
-          <div className="bg-slate-950/60 border border-purple-500/10 rounded-xl p-5 flex flex-col justify-between space-y-4 shadow-md backdrop-blur-md">
+          <div className="bg-slate-950/60 border-2 border-yellow-400/90 shadow-[0_0_30px_rgba(234,179,8,0.35),0_12px_45px_rgba(0,0,0,0.6)] hover:border-yellow-300 hover:shadow-[0_0_45px_rgba(234,179,8,0.55),0_12px_45px_rgba(0,0,0,0.6)] rounded-xl p-5 flex flex-col justify-between space-y-4 backdrop-blur-md transition-all duration-300">
             <div>
               <div className="flex justify-between items-center border-b border-purple-500/10 pb-3 mb-2">
                 <div className="flex items-center gap-1.5">

@@ -379,7 +379,7 @@ export default function App() {
 
         <div className="max-w-7xl mx-auto relative z-10">
           
-          <div className="bg-gradient-to-b from-slate-900 to-slate-950 rounded-3xl border border-white/5 shadow-2xl p-6 sm:p-10 lg:p-14 relative overflow-hidden">
+          <div className="bg-gradient-to-b from-[#0b1d33] to-[#071524] rounded-3xl border-2 border-yellow-400/90 shadow-[0_0_35px_rgba(234,179,8,0.35),0_15px_50px_rgba(0,0,0,0.7)] hover:border-yellow-300 hover:shadow-[0_0_50px_rgba(234,179,8,0.55),0_15px_50px_rgba(0,0,0,0.7)] p-6 sm:p-10 lg:p-14 relative overflow-hidden transition-all duration-300">
             <div className="absolute top-0 left-0 w-full h-[3.5px] bg-gradient-to-r from-teal-500 via-[#0078D4] to-teal-500" />
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
