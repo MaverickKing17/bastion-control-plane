@@ -13,7 +13,14 @@ import {
   Server,
   TrendingUp,
   Sliders,
-  Play
+  Play,
+  Pause,
+  RefreshCw,
+  Compass,
+  Radio,
+  Eye,
+  ShieldAlert,
+  Fingerprint
 } from 'lucide-react';
 
 interface ThreatNode {
@@ -24,8 +31,8 @@ interface ThreatNode {
   y: number; // percentage height
   ip: string;
   threatsToday: number;
-  activeStatus: 'SECURE' | 'MITIGATING' | 'DEFLECTING';
-  threatLevel: 'LOW' | 'MEDIUM' | 'HIGH';
+  activeStatus: 'SECURE' | 'MITIGATING' | 'DEFLECTING' | 'ISOLATING';
+  threatLevel: 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
   recentThreatType: string;
   lastVetoTime: string;
 }
@@ -44,313 +51,434 @@ export default function ThreatHeatmap() {
   const [selectedNodeId, setSelectedNodeId] = useState<string>('node-1');
   const [activeFilter, setActiveFilter] = useState<string>('ALL');
   const [simulationActive, setSimulationActive] = useState<boolean>(true);
-  const [simulatedLoad, setSimulatedLoad] = useState<number>(34); // current events scaling
-  const [inspectedTokens, setInspectedTokens] = useState<number>(148293040);
-  const [vetoedAttemptsState, setVetoedAttemptsState] = useState<number>(8492);
-  const [sparklineData, setSparklineData] = useState<number[]>([12, 18, 14, 25, 22, 19, 31, 28, 35, 30]);
+  const [simulatedLoad, setSimulatedLoad] = useState<number>(31);
+  const [inspectedTokens, setInspectedTokens] = useState<number>(148715963);
+  const [deflectionsToday, setDeflectionsToday] = useState<number>(8555);
+  const [activeScenario, setActiveScenario] = useState<string>('Standard Monitor');
+  const [radarDegree, setRadarDegree] = useState<number>(0);
+  
+  const [sparklineData, setSparklineData] = useState<number[]>([
+    25, 28, 22, 35, 42, 38, 45, 52, 48, 62, 55, 68, 70, 64, 58, 60, 65, 78, 85, 90
+  ]);
 
   const [nodes, setNodes] = useState<ThreatNode[]>([
     {
       id: 'node-1',
       city: 'San Francisco',
       country: 'USA',
-      x: 18,
+      x: 15,
       y: 35,
       ip: '107.151.22.84',
-      threatsToday: 1840,
+      threatsToday: 1845,
       activeStatus: 'DEFLECTING',
       threatLevel: 'HIGH',
-      recentThreatType: 'Adversarial Prompt Injection',
-      lastVetoTime: '0.8ms ago'
+      recentThreatType: 'Direct Prompt Injection Overdrive',
+      lastVetoTime: '0.8ms'
     },
     {
       id: 'node-2',
       city: 'New York',
       country: 'USA',
-      x: 32,
-      y: 36,
+      x: 28,
+      y: 34,
       ip: '184.22.140.109',
       threatsToday: 912,
       activeStatus: 'SECURE',
       threatLevel: 'MEDIUM',
       recentThreatType: 'PII Leakage Containment',
-      lastVetoTime: '1.2ms ago'
+      lastVetoTime: '1.2ms'
     },
     {
       id: 'node-3',
       city: 'London',
       country: 'UK',
       x: 48,
-      y: 28,
+      y: 26,
       ip: '82.165.12.24',
       threatsToday: 1245,
       activeStatus: 'DEFLECTING',
       threatLevel: 'HIGH',
-      recentThreatType: 'Recursive Agent Loop Veto',
-      lastVetoTime: '0.4ms ago'
+      recentThreatType: 'Hierarchical Agent Boundary Slip',
+      lastVetoTime: '0.4ms'
     },
     {
       id: 'node-4',
       city: 'Frankfurt',
       country: 'Germany',
       x: 52,
-      y: 30,
+      y: 28,
       ip: '46.12.254.19',
       threatsToday: 620,
       activeStatus: 'SECURE',
       threatLevel: 'LOW',
-      recentThreatType: 'Credential Boundary Leak',
-      lastVetoTime: '1.4ms ago'
+      recentThreatType: 'System Credential Extraction Attempt',
+      lastVetoTime: '1.4ms'
     },
     {
       id: 'node-5',
       city: 'Tokyo',
       country: 'Japan',
-      x: 84,
-      y: 38,
+      x: 82,
+      y: 36,
       ip: '122.211.5.83',
       threatsToday: 1530,
-      activeStatus: 'MITIGATING',
-      threatLevel: 'HIGH',
-      recentThreatType: 'Systemic Prompt Override Attempt',
-      lastVetoTime: '0.9ms ago'
+      activeStatus: 'ISOLATING',
+      threatLevel: 'CRITICAL',
+      recentThreatType: 'Infinite Recursive Cognitive Execution Loop',
+      lastVetoTime: '0.6ms'
     },
     {
       id: 'node-6',
       city: 'Singapore',
       country: 'Singapore',
-      x: 76,
+      x: 74,
       y: 58,
       ip: '210.14.99.141',
       threatsToday: 822,
-      activeStatus: 'SECURE',
-      threatLevel: 'MEDIUM',
-      recentThreatType: 'Unauthorized SQL Read Prevention',
-      lastVetoTime: '1.1ms ago'
+      activeStatus: 'DEFLECTING',
+      threatLevel: 'HIGH',
+      recentThreatType: 'Unauthorized CloudSQL Read Hijack',
+      lastVetoTime: '1.1ms'
     },
     {
       id: 'node-7',
       city: 'Sydney',
       country: 'Australia',
-      x: 89,
+      x: 88,
       y: 78,
       ip: '101.167.24.12',
       threatsToday: 412,
       activeStatus: 'SECURE',
       threatLevel: 'LOW',
-      recentThreatType: 'LLM Model Drift Quarantined',
-      lastVetoTime: '2.4ms ago'
+      recentThreatType: 'Model State Drift Anomaly',
+      lastVetoTime: '2.4ms'
     },
     {
       id: 'node-8',
       city: 'São Paulo',
       country: 'Brazil',
-      x: 39,
+      x: 36,
       y: 72,
       ip: '177.200.41.9',
       threatsToday: 518,
       activeStatus: 'DEFLECTING',
       threatLevel: 'MEDIUM',
-      recentThreatType: 'Toxic Output Boundary Execution',
-      lastVetoTime: '1.5ms ago'
+      recentThreatType: 'Toxic Response Serialization Attempt',
+      lastVetoTime: '1.5ms'
     }
   ]);
 
   const [logs, setLogs] = useState<LogEntry[]>([
-    { id: '1', time: '10:59:12', node: 'San Francisco', threatType: 'Prompt Injection Overdrive', status: 'VETOED', severity: 'HIGH', latency: '0.8ms' },
-    { id: '2', time: '10:59:04', node: 'Tokyo', threatType: 'Recursive Agent Loop', status: 'CONTAINED', severity: 'CRITICAL', latency: '1.1ms' },
-    { id: '3', time: '10:58:51', node: 'London', threatType: 'GDPR PII Export Attempt', status: 'VETOED', severity: 'HIGH', latency: '0.4ms' },
-    { id: '4', time: '10:58:34', node: 'Frankfurt', threatType: 'Database Mutation Drift', status: 'CALIBRATED', severity: 'MEDIUM', latency: '1.4ms' },
-    { id: '5', time: '10:58:15', node: 'Singapore', threatType: 'System prompt extraction', status: 'VETOED', severity: 'HIGH', latency: '1.1ms' }
+    { id: '1', time: '11:15:20', node: 'Tokyo', threatType: 'Infinite loop threshold hit', status: 'VETOED', severity: 'CRITICAL', latency: '0.6ms' },
+    { id: '2', time: '11:14:55', node: 'Sydney', threatType: 'Credential boundary violation', status: 'VETOED', severity: 'HIGH', latency: '2.4ms' },
+    { id: '3', time: '11:14:12', node: 'London', threatType: 'PII Leakage blocked', status: 'CONTAINED', severity: 'HIGH', latency: '1.4ms' },
+    { id: '4', time: '11:13:48', node: 'Singapore', threatType: 'Credential boundary violation', status: 'VETOED', severity: 'HIGH', latency: '1.6ms' },
+    { id: '5', time: '11:12:02', node: 'San Francisco', threatType: 'Adversarial Prompt Injection', status: 'DEFLECTED', severity: 'CRITICAL', latency: '0.8ms' }
   ]);
 
-  // Handle active telemetry ticking
+  // Handle ticking radar degree
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRadarDegree(prev => (prev + 3) % 360);
+    }, 45);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Handle active telemetry simulation ticking
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
     if (simulationActive) {
       interval = setInterval(() => {
-        // Increment global statistics gracefully
-        setInspectedTokens(prev => prev + Math.floor(Math.random() * 4800) + 1200);
-        if (Math.random() > 0.4) {
-          setVetoedAttemptsState(prev => prev + 1);
+        // Safe, fluid statistics tick
+        setInspectedTokens(prev => prev + Math.floor(Math.random() * 6400) + 1800);
+        
+        const deflectionAddedChance = Math.random() > 0.45;
+        if (deflectionAddedChance) {
+          setDeflectionsToday(prev => prev + 1);
         }
 
-        // Randomly update threat count on a random node
-        setNodes(prev => prev.map(node => {
-          if (node.id === `node-${Math.floor(Math.random() * 8) + 1}`) {
-            const extra = Math.random() > 0.7 ? 1 : 0;
-            const updatedLevel = node.threatsToday + extra > 1500 ? 'HIGH' : (node.threatsToday + extra > 800 ? 'MEDIUM' : 'LOW');
-            const statusPool: ('SECURE' | 'MITIGATING' | 'DEFLECTING')[] = ['SECURE', 'MITIGATING', 'DEFLECTING'];
-            const randomStatus = statusPool[Math.floor(Math.random() * statusPool.length)];
-            return {
-              ...node,
-              threatsToday: node.threatsToday + extra,
-              threatLevel: updatedLevel as 'LOW' | 'MEDIUM' | 'HIGH',
-              activeStatus: extra > 0 ? randomStatus : node.activeStatus,
-              lastVetoTime: extra > 0 ? `${(Math.random() * 1.5 + 0.2).toFixed(1)}ms ago` : node.lastVetoTime
-            };
-          }
-          return node;
-        }));
+        // Random log injection with genuine-looking security payloads
+        if (Math.random() > 0.65) {
+          const randomNode = nodes[Math.floor(Math.random() * nodes.length)];
+          const threatClasses = [
+            'Indirect Prompt Hijacking',
+            'SSRF Node Boundary Probe',
+            'Credential Boundary Slip',
+            'System Prompt Leak Prevented',
+            'Autonomous Loop Chain Halting',
+            'SQL Mutation Containment Event'
+          ];
+          const severityPool = ['MEDIUM', 'HIGH', 'CRITICAL'] as const;
+          const statusPool = ['VETOED', 'CONTAINED', 'DEFLECTED'] as const;
+          
+          const now = new Date();
+          const timeStr = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
+          
+          const nextLog: LogEntry = {
+            id: Date.now().toString(),
+            time: timeStr,
+            node: randomNode.city,
+            threatType: threatClasses[Math.floor(Math.random() * threatClasses.length)],
+            status: statusPool[Math.floor(Math.random() * statusPool.length)],
+            severity: severityPool[Math.floor(Math.random() * severityPool.length)],
+            latency: `${(Math.random() * 1.8 + 0.2).toFixed(1)}ms`
+          };
 
-        // Dynamically rotate sparklines
+          setLogs(prev => [nextLog, ...prev.slice(0, 5)]);
+
+          // Increment that node's counter
+          setNodes(prev => prev.map(n => {
+            if (n.city === randomNode.city) {
+              const prevThreats = n.threatsToday + 1;
+              const nextLevel = prevThreats > 1500 ? 'HIGH' : (prevThreats > 800 ? 'MEDIUM' : 'LOW');
+              return {
+                ...n,
+                threatsToday: prevThreats,
+                threatLevel: (n.id === 'node-5' ? 'CRITICAL' : nextLevel) as any,
+                lastVetoTime: `${(Math.random() * 1.5 + 0.2).toFixed(1)}ms`
+              };
+            }
+            return n;
+          }));
+        }
+
+        // Rolling sparkline frequency
         setSparklineData(prev => {
           const next = [...prev.slice(1)];
-          const delta = Math.floor(Math.random() * 20) - 9;
-          const newVal = Math.max(8, Math.min(65, prev[prev.length - 1] + delta));
-          next.push(newVal);
+          const variation = Math.floor(Math.random() * 18) - 8;
+          const updated = Math.max(10, Math.min(95, prev[prev.length - 1] + variation));
+          next.push(updated);
           return next;
         });
 
-        // Push new rolling threat log
-        if (Math.random() > 0.6) {
-          const randomNode = nodes[Math.floor(Math.random() * nodes.length)];
-          const threatTypes = [
-            'Indirect Prompt Injection',
-            'Overprivileged API Call',
-            'SSRF Vector via Agent',
-            'PII Leakage blocked',
-            'Infinite loop threshold hit',
-            'Credential boundary violation'
-          ];
-          const severities = ['MEDIUM', 'HIGH', 'CRITICAL'] as const;
-          const statusTypes = ['VETOED', 'CONTAINED', 'ISOLATED'] as const;
-          
-          const now = new Date();
-          const timeString = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
-
-          const newLog: LogEntry = {
-            id: Date.now().toString(),
-            time: timeString,
-            node: randomNode.city,
-            threatType: threatTypes[Math.floor(Math.random() * threatTypes.length)],
-            status: statusTypes[Math.floor(Math.random() * statusTypes.length)],
-            severity: severities[Math.floor(Math.random() * severities.length)],
-            latency: `${(Math.random() * 1.6 + 0.3).toFixed(1)}ms`
-          };
-
-          setLogs(prev => [newLog, ...prev.slice(0, 5)]);
-        }
-
-      }, 1500);
+      }, 1400);
     }
     return () => {
       if (interval) clearInterval(interval);
     };
   }, [simulationActive, nodes]);
 
-  // Filter nodes for user views
-  const filteredNodes = nodes.filter(node => {
-    if (activeFilter === 'ALL') return true;
-    if (activeFilter === 'CRITICAL') return node.threatLevel === 'HIGH';
-    if (activeFilter === 'DEFLECTING') return node.activeStatus === 'DEFLECTING' || node.activeStatus === 'MITIGATING';
-    return true;
-  });
+  // Core visual Scenario triggers to impress C-suite
+  const triggerScenario = (scenarioName: string) => {
+    setActiveScenario(scenarioName);
+    
+    if (scenarioName === 'Prompt Injection Lockout') {
+      setSimulatedLoad(88);
+      // Spike all statistics
+      setDeflectionsToday(prev => prev + 12);
+      // Alter node levels to high/critical
+      setNodes(prev => prev.map(n => ({
+        ...n,
+        threatLevel: (n.id === 'node-1' || n.id === 'node-3' || n.id === 'node-5') ? 'CRITICAL' : 'HIGH',
+        activeStatus: 'DEFLECTING',
+        lastVetoTime: '0.2ms'
+      })));
 
-  const selectedNode = nodes.find(n => n.id === selectedNodeId) || nodes[0];
+      const emergencyLog: LogEntry = {
+        id: `scen-${Date.now()}`,
+        time: 'SPIKE ENGAGED',
+        node: 'San Francisco',
+        threatType: 'DDoS LLM Token Poisoning Deflected',
+        status: 'EMERGENCY VETO',
+        severity: 'CRITICAL',
+        latency: '0.1ms'
+      };
+      setLogs(prev => [emergencyLog, ...prev.slice(0, 5)]);
 
-  const triggerAttackSpike = () => {
-    setSimulatedLoad(85);
-    setSparklineData(prev => prev.map(v => Math.min(85, v + Math.floor(Math.random() * 35) + 15)));
-    // Instantly add high risk logs
-    const spikeNode = nodes[Math.floor(Math.random() * nodes.length)];
-    const spikeLog: LogEntry = {
-      id: `spike-${Date.now()}`,
-      time: 'SPIKE ACTIVE',
-      node: spikeNode.city,
-      threatType: 'DDoS LLM Token Starvation Attempt',
-      status: 'DEFLECTED',
-      severity: 'CRITICAL',
-      latency: '0.2ms'
-    };
-    setLogs(prev => [spikeLog, ...prev.slice(0, 5)]);
+    } else if (scenarioName === 'PII Exfiltration Veto') {
+      setSimulatedLoad(62);
+      setDeflectionsToday(prev => prev + 4);
+      setNodes(prev => prev.map(n => {
+        if (n.id === 'node-2' || n.id === 'node-4') {
+          return {
+            ...n,
+            threatLevel: 'HIGH',
+            activeStatus: 'ISOLATING',
+            recentThreatType: 'PII Leak Block: SSA Security Guard',
+            lastVetoTime: '0.5ms'
+          };
+        }
+        return n;
+      }));
+      const piiLog: LogEntry = {
+        id: `scen-${Date.now()}`,
+        time: 'MITIGATION',
+        node: 'New York',
+        threatType: 'Customer SSN Regex Leak Mitigated',
+        status: 'CONTAINED',
+        severity: 'HIGH',
+        latency: '0.4ms'
+      };
+      setLogs(prev => [piiLog, ...prev.slice(0, 5)]);
 
+    } else if (scenarioName === 'Recursive Loop Storm') {
+      setSimulatedLoad(94);
+      setNodes(prev => prev.map(n => ({
+        ...n,
+        threatLevel: 'CRITICAL',
+        activeStatus: 'ISOLATING'
+      })));
+      const loopLog: LogEntry = {
+        id: `scen-${Date.now()}`,
+        time: 'LOOP STORM',
+        node: 'Tokyo',
+        threatType: 'Circular Agent Message Cascade Halted',
+        status: 'LOOP TERMINATED',
+        severity: 'CRITICAL',
+        latency: '0.3ms'
+      };
+      setLogs(prev => [loopLog, ...prev.slice(0, 5)]);
+    } else {
+      // Restore standard configuration
+      setSimulatedLoad(31);
+      setNodes(prev => prev.map((n, i) => {
+        const statuses = ['DEFLECTING', 'SECURE', 'DEFLECTING', 'SECURE', 'ISOLATING', 'DEFLECTING', 'SECURE', 'DEFLECTING'];
+        const levels = ['HIGH', 'MEDIUM', 'HIGH', 'LOW', 'CRITICAL', 'HIGH', 'LOW', 'MEDIUM'];
+        return {
+          ...n,
+          threatLevel: levels[i] as any,
+          activeStatus: statuses[i] as any
+        };
+      }));
+    }
+
+    // Smooth recovery delay
     setTimeout(() => {
-      setSimulatedLoad(prev => Math.max(34, prev - 25));
+      setSimulatedLoad(prev => Math.max(30, Math.floor(prev * 0.7)));
     }, 4000);
   };
 
+  const filteredNodes = nodes.filter(node => {
+    if (activeFilter === 'ALL') return true;
+    if (activeFilter === 'CRITICAL') return node.threatLevel === 'HIGH' || node.threatLevel === 'CRITICAL';
+    if (activeFilter === 'DEFLECTING') return node.activeStatus === 'DEFLECTING' || node.activeStatus === 'ISOLATING';
+    return true;
+  });
+  const selectedNode = nodes.find(n => n.id === selectedNodeId) || nodes[0];
   return (
-    <section className="bg-slate-900 text-slate-100 rounded-2xl border border-slate-800 p-6 lg:p-8 relative overflow-hidden shadow-2xl space-y-8">
-      {/* Dynamic Grid Background Overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(244,244,249,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(244,244,249,0.01)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none opacity-40 z-0" />
-      
-      {/* Corner Lights Decor */}
-      <div className="absolute -top-40 -left-40 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+    <section className="bg-gradient-to-b from-[#0a051d] via-[#05020a] to-[#010005] text-slate-100 rounded-2xl border border-purple-500/20 p-6 lg:p-8 relative overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] space-y-8">
+      {/* Hyper-dense glowing backdrop overlays */}
+      <div className="absolute inset-0 bg-[radial-gradient(rgba(147,51,234,0.15)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none opacity-60 z-0" />
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
 
-      {/* Header Info */}
-      <div className="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-6 border-b border-slate-800">
-        <div className="space-y-1.5">
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-[10px] font-mono font-bold text-indigo-400 tracking-wider">
-            <Globe className="w-3.5 h-3.5 text-indigo-400 animate-spin-slow" />
-            LIVE SECURITY OBSERVATORIES
+      {/* Futuristic Header with High Tech Coordinates */}
+      <div className="relative z-10 flex flex-col xl:flex-row justify-between items-start xl:items-center gap-6 pb-6 border-b border-purple-500/20">
+        <div className="space-y-2">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-purple-500/10 border border-purple-500/30 text-[10px] font-mono font-bold text-purple-300 tracking-wider uppercase">
+              <Radio className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
+              GLOBAL INTRUSION DEFLECTION MATRIX
+            </span>
+            <span className="text-[10px] font-mono text-cyan-400/80 tracking-widest hidden sm:inline">
+              SECURE_PLANE_V4.92 // PORT 3000 // CONSOLE_MODE
+            </span>
           </div>
-          <h3 className="font-display font-black text-xl sm:text-2xl text-white tracking-tight">
-            Real-time Global Threat Deflection Matrix
+          
+          <h3 className="font-display font-extrabold text-2xl lg:text-3xl text-white tracking-tight leading-none">
+            Real-Time Edge Agent Safeguards
           </h3>
-          <p className="text-xs text-slate-400 max-w-2xl font-light">
-            An interactive live status model monitoring prompt injection deflection, PII leak containment, and cognitive execution drifts across our distributed edge validation endpoints.
+          <p className="text-[13px] text-purple-200/70 max-w-3xl font-normal leading-relaxed">
+            Interactive visual control telemetry tracking cognitive model drift, recursive loop traps, and instant local prompt injection deflections at global CDN point-of-presence validation rings.
           </p>
         </div>
 
-        {/* Live Status indicator */}
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-950/60 border border-slate-800/80">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-[10px] font-mono uppercase tracking-wider text-slate-300 font-bold">bastion engine ACTIVE</span>
-          </div>
-          <button 
-            onClick={triggerAttackSpike}
-            className="px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-[11px] font-bold font-mono transition-all flex items-center gap-1.5 shadow-lg shadow-indigo-600/15"
+        {/* Dynamic simulator switches and state feeds */}
+        <div className="flex flex-wrap items-center gap-3 w-full xl:w-auto">
+          {/* Pause/Play toggle */}
+          <button
+            onClick={() => setSimulationActive(!simulationActive)}
+            className={`px-3 py-1.5 rounded-lg border text-[11px] font-mono font-bold transition-all flex items-center gap-1.5 ${
+              simulationActive 
+                ? 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30 hover:bg-emerald-500/25' 
+                : 'bg-amber-500/15 text-amber-300 border-amber-500/30 hover:bg-amber-500/25'
+            }`}
           >
-            <Zap className="w-3.5 h-3.5 text-amber-300 animate-bounce" />
-            SIMULATE PEAK STRESS
+            {simulationActive ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 text-amber-300 animate-ping" />}
+            {simulationActive ? 'SYSTEM ACTIVE' : 'SYSTEM PAUSED'}
           </button>
+
+          {/* Quick Scenario Picker */}
+          <div className="flex items-center gap-1.5 bg-slate-950/60 p-1 rounded-lg border border-purple-500/20">
+            {[
+              { name: 'Standard', key: 'Standard Monitor' },
+              { name: 'Prompt Spike', key: 'Prompt Injection Lockout' },
+              { name: 'PII Exfil', key: 'PII Exfiltration Veto' },
+              { name: 'Loop Storm', key: 'Recursive Loop Storm' }
+            ].map((scen) => (
+              <button
+                key={scen.key}
+                onClick={() => triggerScenario(scen.key)}
+                className={`px-2.5 py-1 rounded text-[10px] font-mono font-bold transition-all ${
+                  activeScenario === scen.key
+                    ? 'bg-gradient-to-r from-cyan-500 to-indigo-500 font-extrabold text-white shadow-[0_0_12px_rgba(6,182,212,0.4)] border-purple-500/30'
+                    : 'text-purple-200/60 hover:text-white hover:bg-white/5'
+                }`}
+              >
+                {scen.name}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Top statistics banners */}
+      {/* Cybernetic telemetry display cards */}
       <div className="relative z-10 grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-slate-950/40 border border-slate-800/80 rounded-xl p-4 flex items-center justify-between shadow-inner">
-          <div className="space-y-1.5">
-            <span className="text-[9.5px] font-mono tracking-wider text-slate-400 uppercase font-semibold block">Total Inspected Tokens</span>
-            <p className="text-lg md:text-xl font-bold font-mono tracking-tight text-white">{inspectedTokens.toLocaleString()}</p>
+        {/* Dynamic Tokens Inspected card */}
+        <div className="bg-slate-950/60 border border-purple-500/20 rounded-xl p-4 flex items-center justify-between hover:border-cyan-400/50 hover:bg-slate-900/40 transition-all relative overflow-hidden group shadow-md backdrop-blur-md">
+          <div className="absolute top-0 left-0 w-1 h-full bg-cyan-500" />
+          <div className="space-y-1">
+            <span className="text-[10px] font-mono tracking-wider text-purple-300/70 uppercase font-semibold block">Total Inspected Tokens</span>
+            <p className="text-xl md:text-2xl font-black font-mono tracking-tight text-white select-all">
+              {inspectedTokens.toLocaleString()}
+            </p>
           </div>
-          <div className="w-8 h-8 rounded-lg bg-slate-900 border border-slate-850 flex items-center justify-center text-indigo-400">
-            <Cpu className="w-4 h-4" />
-          </div>
-        </div>
-
-        <div className="bg-slate-950/40 border border-slate-800/80 rounded-xl p-4 flex items-center justify-between shadow-inner">
-          <div className="space-y-1.5">
-            <span className="text-[9.5px] font-mono tracking-wider text-slate-400 uppercase font-semibold block">Deflections today</span>
-            <p className="text-lg md:text-xl font-bold font-mono tracking-tight text-[#10b981]">{vetoedAttemptsState.toLocaleString()}</p>
-          </div>
-          <div className="w-8 h-8 rounded-lg bg-slate-900 border border-slate-850 flex items-center justify-center text-emerald-400">
-            <Shield className="w-4 h-4" />
+          <div className="w-10 h-10 rounded-lg bg-cyan-950/50 border border-cyan-800/50 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">
+            <Cpu className="w-5 h-5" />
           </div>
         </div>
 
-        <div className="bg-slate-950/40 border border-slate-800/80 rounded-xl p-4 flex items-center justify-between shadow-inner">
-          <div className="space-y-1.5">
-            <span className="text-[9.5px] font-mono tracking-wider text-slate-400 uppercase font-semibold block">Veto Execution Latency</span>
-            <p className="text-lg md:text-xl font-bold font-mono tracking-tight text-white">1.2ms <span className="text-[9px] text-slate-500">avg</span></p>
+        {/* Dynamic Deflections card */}
+        <div className="bg-slate-950/60 border border-purple-500/20 rounded-xl p-4 flex items-center justify-between hover:border-[#10b981]/50 hover:bg-slate-900/40 transition-all relative overflow-hidden group shadow-md backdrop-blur-md">
+          <div className="absolute top-0 left-0 w-1 h-full bg-[#10b981]" />
+          <div className="space-y-1">
+            <span className="text-[10px] font-mono tracking-wider text-purple-300/70 uppercase font-semibold block">Deflections Today</span>
+            <p className="text-xl md:text-2xl font-black font-mono tracking-tight text-[#10b981] select-all">
+              {deflectionsToday.toLocaleString()}
+            </p>
           </div>
-          <div className="w-8 h-8 rounded-lg bg-slate-900 border border-slate-850 flex items-center justify-center text-indigo-400">
-            <Activity className="w-4 h-4" />
+          <div className="w-10 h-10 rounded-lg bg-emerald-950/50 border border-emerald-800/50 flex items-center justify-center text-[#10b981] group-hover:scale-110 transition-transform shadow-[0_0_10px_rgba(16,185,129,0.2)]">
+            <Shield className="w-5 h-5 animate-pulse" />
           </div>
         </div>
 
-        <div className="bg-slate-950/40 border border-slate-800/80 rounded-xl p-4 flex items-center justify-between shadow-inner">
-          <div className="space-y-1.5 w-full">
-            <span className="text-[9.5px] font-mono tracking-wider text-slate-400 uppercase font-semibold block flex justify-between">
-              <span>Real-time Host Load</span>
-              <span className="text-indigo-400">{simulatedLoad}%</span>
-            </span>
-            <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+        {/* Average Latency card */}
+        <div className="bg-slate-950/60 border border-purple-500/20 rounded-xl p-4 flex items-center justify-between hover:border-pink-400/50 hover:bg-slate-900/40 transition-all relative overflow-hidden group shadow-md backdrop-blur-md">
+          <div className="absolute top-0 left-0 w-1 h-full bg-pink-500" />
+          <div className="space-y-1">
+            <span className="text-[10px] font-mono tracking-wider text-purple-300/70 uppercase font-semibold block">Veto Latency Core</span>
+            <p className="text-xl md:text-2xl font-black font-mono tracking-tight text-white">
+              0.8ms <span className="text-xs text-pink-400 font-medium tracking-normal align-middle">avg</span>
+            </p>
+          </div>
+          <div className="w-10 h-10 rounded-lg bg-pink-950/50 border border-pink-800/50 flex items-center justify-center text-pink-400 group-hover:scale-110 transition-transform">
+            <Activity className="w-5 h-5" />
+          </div>
+        </div>
+
+        {/* Simulated Load progress bar */}
+        <div className="bg-slate-950/60 border border-purple-500/20 rounded-xl p-4 flex items-center justify-between hover:border-indigo-400/50 hover:bg-slate-900/40 transition-all relative overflow-hidden shadow-md backdrop-blur-md">
+          <div className="absolute top-0 left-0 w-1 h-full bg-amber-500" />
+          <div className="space-y-2 w-full">
+            <div className="flex justify-between items-center text-[10px] font-mono">
+              <span className="text-purple-300/70 uppercase font-semibold">Active Threat Load</span>
+              <span className={`font-bold ${simulatedLoad > 75 ? 'text-rose-400 animate-pulse' : 'text-cyan-400'}`}>{simulatedLoad}%</span>
+            </div>
+            <div className="w-full bg-slate-900 h-2.5 rounded-full overflow-hidden border border-slate-800">
               <div 
-                className="bg-gradient-to-r from-emerald-500 to-indigo-500 h-full transition-all duration-500" 
+                className={`h-full transition-all duration-700 rounded-full bg-gradient-to-r ${
+                  simulatedLoad > 75 ? 'from-amber-400 to-rose-500' : 'from-cyan-500 to-indigo-500'
+                }`} 
                 style={{ width: `${simulatedLoad}%` }} 
               />
             </div>
@@ -358,25 +486,26 @@ export default function ThreatHeatmap() {
         </div>
       </div>
 
-      {/* Main interactive segment Grid layout */}
+      {/* Main split dashboard section */}
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
         
-        {/* Left column: Feed & Filters (lg:col-span-4) */}
-        <div className="lg:col-span-4 flex flex-col justify-between space-y-4">
-          <div className="bg-slate-950/50 border border-slate-800/70 rounded-xl p-4 space-y-4 flex flex-col flex-1">
-            <div className="flex items-center justify-between">
-              <span className="text-[10px] font-mono tracking-wider text-slate-400 uppercase font-bold flex items-center gap-1.5">
-                <Terminal className="w-3.5 h-3.5 text-indigo-400" /> Live Prevention stream
+        {/* Left column: Feed stream with premium scrolling & Spark Graph */}
+        <div className="lg:col-span-4 flex flex-col justify-between space-y-6">
+          <div className="bg-slate-950/60 border border-purple-500/20 rounded-xl p-4 space-y-4 flex flex-col flex-1 shadow-md backdrop-blur-md">
+            <div className="flex items-center justify-between pb-2 border-b border-purple-500/20">
+              <span className="text-[10px] font-mono tracking-wider text-purple-200 uppercase font-bold flex items-center gap-1.5">
+                <Terminal className="w-3.5 h-3.5 text-cyan-400 animate-pulse" /> 
+                System Deflection Feed
               </span>
               <div className="flex gap-1">
                 {['ALL', 'CRITICAL', 'DEFLECTING'].map((filt) => (
                   <button
                     key={filt}
                     onClick={() => setActiveFilter(filt)}
-                    className={`px-1.5 py-0.5 rounded text-[8px] font-mono font-bold transition-all ${
+                    className={`px-2 py-0.5 rounded text-[9px] font-mono font-bold transition-all ${
                       activeFilter === filt 
-                        ? 'bg-indigo-600/30 text-indigo-400 border border-indigo-500/30' 
-                        : 'text-slate-500 border border-transparent hover:text-slate-350'
+                        ? 'bg-cyan-500 text-slate-950 font-black shadow-[0_0_10px_rgba(6,182,212,0.4)]' 
+                        : 'text-purple-300/70 hover:text-white hover:bg-white/5'
                     }`}
                   >
                     {filt}
@@ -385,61 +514,76 @@ export default function ThreatHeatmap() {
               </div>
             </div>
 
-            {/* Simulated Live logs stack */}
-            <div className="space-y-2.5 overflow-hidden flex-1 overflow-y-auto max-h-[290px] pr-1">
+            {/* Simulated Live logs slider stack */}
+            <div className="space-y-2.5 overflow-hidden flex-1 overflow-y-auto max-h-[295px] pr-1 scrollbar-thin scrollbar-thumb-purple-900">
               <AnimatePresence initial={false}>
-                {logs.map((log) => (
-                  <motion.div
-                    key={log.id}
-                    initial={{ opacity: 0, y: -8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 15 }}
-                    transition={{ duration: 0.3 }}
-                    className="p-2.5 rounded-lg bg-slate-900/60 border border-slate-800/80 text-[11px] flex justify-between items-center group/log cursor-crosshair hover:bg-slate-900 transition-colors"
-                  >
-                    <div className="space-y-1 truncate max-w-[80%]">
-                      <div className="flex items-center gap-1.5">
-                        <span className="text-[9px] font-mono text-slate-500">{log.time}</span>
-                        <span className="font-mono font-bold text-slate-300 truncate">{log.node} Node</span>
+                {logs.map((log) => {
+                  const nodeInstance = nodes.find(n => n.city === log.node);
+                  return (
+                    <motion.div
+                      key={log.id}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: 10 }}
+                      transition={{ duration: 0.25 }}
+                      onClick={() => {
+                        if (nodeInstance) setSelectedNodeId(nodeInstance.id);
+                      }}
+                      className="p-3 rounded-lg bg-[#0c0822]/60 border border-purple-950 hover:bg-[#120a2f]/70 hover:border-cyan-500/40 text-[11.5px] flex justify-between items-center group/log cursor-pointer transition-all shadow-sm hover:shadow-[0_0_15px_rgba(6,182,212,0.1)]"
+                    >
+                      <div className="space-y-1.5 truncate max-w-[76%]">
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-[9px] font-mono text-purple-300/50 font-medium">{log.time}</span>
+                          <span className="font-mono font-bold text-cyan-400 select-all truncate uppercase">{log.node} NODE</span>
+                        </div>
+                        <p className="text-purple-100 font-normal truncate group-hover/log:text-white transition-colors">
+                          {log.threatType}
+                        </p>
                       </div>
-                      <p className="text-slate-400 font-light truncate group-hover/log:text-white transition-colors">{log.threatType}</p>
-                    </div>
 
-                    <div className="text-right flex flex-col items-end gap-1 flex-shrink-0">
-                      <span className={`px-1.5 py-0.2 rounded text-[7.5px] font-mono font-bold ${
-                        log.severity === 'CRITICAL' 
-                          ? 'bg-rose-500/10 text-rose-400 border border-rose-500/20' 
-                          : log.severity === 'HIGH'
-                          ? 'bg-indigo-500/10 text-indigo-400 border border-indigo-500/20'
-                          : 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
-                      }`}>
-                        {log.severity}
-                      </span>
-                      <span className="text-[8.5px] font-mono text-slate-500">{log.latency}</span>
-                    </div>
-                  </motion.div>
-                ))}
+                      <div className="text-right flex flex-col items-end gap-1 flex-shrink-0">
+                        <span className={`px-2 py-0.5 rounded-md text-[8px] font-mono font-black ${
+                          log.severity === 'CRITICAL' 
+                            ? 'bg-rose-500/25 text-rose-300 border border-rose-500/40 animate-pulse' 
+                            : log.severity === 'HIGH'
+                            ? 'bg-purple-500/25 text-[#c7d2fe] border border-purple-500/40'
+                            : 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
+                        }`}>
+                          {log.severity}
+                        </span>
+                        <span className="text-[9px] font-mono text-purple-300/70">{log.latency}</span>
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </AnimatePresence>
             </div>
           </div>
 
-          {/* Quick diagnostics spark graph */}
-          <div className="bg-slate-950/50 border border-slate-800/70 rounded-xl p-4 space-y-2.5">
-            <div className="flex justify-between items-center text-[10px] font-mono">
-              <span className="text-slate-400 font-bold uppercase flex items-center gap-1">
-                <Sliders className="w-3.5 h-3.5 text-emerald-400" /> DEVIATION FREQUENCY
+          {/* Spark telemetry graph segment */}
+          <div className="bg-slate-950/60 border border-purple-500/20 rounded-xl p-4 space-y-3 shadow-md backdrop-blur-md">
+            <div className="flex justify-between items-center text-[10px] font-mono text-purple-300 uppercase">
+              <span className="font-bold flex items-center gap-1.5">
+                <Sliders className="w-3.5 h-3.5 text-cyan-400 animate-pulse" /> 
+                DEVIATION TELEMETRY SCAN
               </span>
-              <span className="text-[#10b981] font-bold">1.2ms Avg response</span>
+              <span className="text-emerald-400 font-bold select-all">88.58% INLINE CONFORMITY</span>
             </div>
 
-            {/* Sparkline Canvas rendering */}
-            <div className="h-12 w-full flex items-end gap-[3px] pt-2">
+            {/* Telemetry spark graphs */}
+            <div className="h-14 w-full flex items-end gap-[4px] pt-3 px-1 border-b border-purple-500/20">
               {sparklineData.map((val, id) => (
                 <div key={id} className="flex-1 flex flex-col justify-end h-full">
                   <div 
-                    className="bg-gradient-to-t from-indigo-650/40 to-indigo-400 rounded-sm w-full transition-all duration-300"
+                    className={`rounded-sm w-full transition-all duration-300 ${
+                      val > 75 
+                        ? 'bg-gradient-to-t from-rose-500/50 to-rose-500 shadow-[0_0_10px_rgba(239,68,68,0.4)]' 
+                        : val > 45 
+                        ? 'bg-gradient-to-t from-indigo-500/50 to-indigo-400 shadow-[0_0_10px_rgba(99,102,241,0.3)]' 
+                        : 'bg-gradient-to-t from-cyan-500/50 to-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.3)]'
+                    }`}
                     style={{ height: `${val}%` }}
-                    title={`Metric slot ${id}: ${val} telemetry signals`}
+                    title={`Slot ${id}: ${val} metrics`}
                   />
                 </div>
               ))}
@@ -447,65 +591,92 @@ export default function ThreatHeatmap() {
           </div>
         </div>
 
-        {/* Middle column: Map & Coordinates (lg:col-span-8) */}
-        <div className="lg:col-span-8 bg-slate-950/60 border border-slate-800/70 rounded-xl p-4 flex flex-col justify-between relative min-h-[380px]">
+        {/* Middle column: Premium map center with cyber grid overlay & coordinates (lg:col-span-8) */}
+        <div className="lg:col-span-8 bg-slate-950/60 border border-purple-500/20 rounded-xl p-5 flex flex-col justify-between relative min-h-[440px] shadow-2xl backdrop-blur-md">
           
-          <div className="flex items-center justify-between text-xs text-slate-400 font-mono pb-2 border-b border-slate-850">
-            <span className="flex items-center gap-1.5"><Sliders className="w-3.5 h-3.5 text-indigo-400" /> BASTION CONTROL PLANE: COORDINATE PROJECTION</span>
-            <span className="text-[10px] text-slate-500 uppercase">{filteredNodes.length} ACTIVE OPERATIONAL NODES SECURED</span>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between text-[11px] text-purple-300 font-mono pb-3 border-b border-purple-500/20 gap-2">
+            <span className="flex items-center gap-1.5"><Compass className="w-3.5 h-3.5 text-cyan-400" /> BASTION CONTROL PLANE COORDINATION SCANNER</span>
+            <span className="text-[10px] text-purple-300 font-bold uppercase tracking-widest bg-purple-950/60 px-2 py-0.5 rounded border border-purple-500/30">
+              {nodes.length} GLOBAL GATEWAYS LIVE
+            </span>
           </div>
 
-          {/* Global Abstract Grid Vector Coordinate stage */}
-          <div className="relative w-full h-[260px] md:h-[300px] flex items-center justify-center my-4 select-none">
-            {/* World grid background map SVG pattern representation */}
-            <svg className="absolute inset-0 w-full h-full text-slate-800/25 opacity-40" viewBox="0 0 1000 450" fill="currentColor">
-              {/* Abstract Dotted Continents Maps */}
-              {/* North America */}
-              <circle cx="150" cy="120" r="15" />
-              <circle cx="180" cy="140" r="28" />
-              <circle cx="210" cy="180" r="20" />
-              <circle cx="110" cy="160" r="10" />
-              {/* South America */}
-              <circle cx="340" cy="300" r="18" />
-              <circle cx="350" cy="340" r="25" />
-              <circle cx="370" cy="380" r="12" />
-              {/* Europe & Africa */}
-              <circle cx="480" cy="150" r="22" />
-              <circle cx="510" cy="170" r="30" />
-              <circle cx="520" cy="240" r="20" />
-              <circle cx="540" cy="310" r="28" />
-              <circle cx="560" cy="360" r="15" />
-              {/* Asia & Australia */}
-              <circle cx="720" cy="160" r="25" />
-              <circle cx="760" cy="180" r="35" />
-              <circle cx="820" cy="210" r="40" />
-              <circle cx="780" cy="260" r="15" />
-              <circle cx="840" cy="350" r="22" />
-              <circle cx="860" cy="380" r="18" />
+          {/* High resolution cybernetic grid vectors representation */}
+          <div className="relative w-full h-[280px] md:h-[320px] flex items-center justify-center my-4 overflow-hidden rounded-lg border border-purple-950/40 bg-[#04010b] select-none">
+            {/* Cyber compass / grid coordinate backing lines */}
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(147,51,234,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(147,51,234,0.15)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none opacity-80" />
+            
+            {/* Concentric target lines */}
+            <div className="absolute w-[450px] h-[450px] border border-purple-500/10 rounded-full opacity-60 pointer-events-none" />
+            <div className="absolute w-[300px] h-[300px] border border-indigo-500/15 rounded-full opacity-50 pointer-events-none" />
+            <div className="absolute w-[150px] h-[150px] border border-cyan-500/10 rounded-full opacity-40 pointer-events-none" />
 
-              {/* Laser telemetries scanning paths */}
-              {nodes.map((node, i) => {
-                const targetNode = nodes[(i + 1) % nodes.length];
+            {/* Sweep radar line using simulated state angle */}
+            <div 
+              className="absolute w-[380px] h-0 border-t border-cyan-400/20 origin-center z-10 opacity-40 pointer-events-none"
+              style={{ transform: `rotate(${radarDegree}deg)` }}
+            />
+
+            {/* Interactive World map matrix */}
+            <svg className="absolute inset-0 w-full h-full text-purple-600 opacity-25 z-0 animate-fade-in" viewBox="0 0 1000 450" fill="currentColor">
+              {/* Complex Digital Dotted representation of world continents */}
+              {/* North America */}
+              <rect x="80" y="80" width="140" height="120" rx="40" className="opacity-10" />
+              <circle cx="120" cy="110" r="14" />
+              <circle cx="150" cy="130" r="28" />
+              <circle cx="190" cy="170" r="24" />
+              <circle cx="210" cy="190" r="15" />
+              <circle cx="90" cy="140" r="12" />
+              <circle cx="230" cy="150" r="10" />
+              {/* South America */}
+              <rect x="300" y="260" width="110" height="150" rx="30" className="opacity-15" />
+              <circle cx="330" cy="290" r="18" />
+              <circle cx="340" cy="330" r="28" />
+              <circle cx="360" cy="370" r="15" />
+              <circle cx="380" cy="400" r="8" />
+              {/* Europe & Africa */}
+              <rect x="440" y="100" width="150" height="260" rx="45" className="opacity-15" />
+              <circle cx="480" cy="130" r="22" />
+              <circle cx="510" cy="160" r="30" />
+              <circle cx="520" cy="220" r="20" />
+              <circle cx="530" cy="290" r="28" />
+              <circle cx="550" cy="340" r="15" />
+              {/* Asia & Australia */}
+              <rect x="680" y="100" width="220" height="310" rx="55" className="opacity-10" />
+              <circle cx="710" cy="140" r="22" />
+              <circle cx="750" cy="160" r="32" />
+              <circle cx="810" cy="200" r="38" />
+              <circle cx="770" cy="250" r="18" />
+              <circle cx="830" cy="330" r="24" />
+              <circle cx="850" cy="360" r="18" />
+              <circle cx="870" cy="390" r="12" />
+ 
+              {/* Scanning visual matrix links between dynamic node entities */}
+              {nodes.map((node, index) => {
+                const targetNode = nodes[(index + 1) % nodes.length];
                 const x1 = (node.x / 100) * 1000;
                 const y1 = (node.y / 100) * 450;
                 const x2 = (targetNode.x / 100) * 1000;
                 const y2 = (targetNode.y / 100) * 450;
                 return (
-                  <g key={`path-${node.id}`} className="opacity-15">
+                  <g key={`cyber-line-${node.id}`} className="opacity-45">
                     <line 
                       x1={x1} y1={y1} x2={x2} y2={y2} 
-                      stroke="#818cf8" strokeWidth="1" 
-                      strokeDasharray="5,5" 
+                      stroke="#a78bfa" strokeWidth="1" 
+                      strokeDasharray="4,6" 
                     />
+                    <circle cx={x1} cy={y1} r="1.5" fill="#a78bfa" />
                   </g>
                 );
               })}
             </svg>
 
-            {/* Glowing interactive nodes points mapped onto percentage coordinates */}
+            {/* Render node targets on high fidelity coordinates */}
             {filteredNodes.map((node) => {
               const isSelected = node.id === selectedNodeId;
-              const isDeflecting = node.activeStatus === 'DEFLECTING' || node.activeStatus === 'MITIGATING';
+              const isUrgent = node.activeStatus === 'ISOLATING' || node.threatLevel === 'CRITICAL';
+              const isMitigating = node.activeStatus === 'DEFLECTING';
+              
               return (
                 <div
                   key={node.id}
@@ -513,67 +684,98 @@ export default function ThreatHeatmap() {
                   style={{ left: `${node.x}%`, top: `${node.y}%` }}
                   className="absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer z-20 group"
                 >
-                  {/* Outer pulsing ring */}
-                  <span className={`absolute inset-0 rounded-full w-8 h-8 -left-2.5 -top-2.5 animate-ping opacity-25 ${
-                    isDeflecting ? 'bg-indigo-400' : 'bg-emerald-400'
+                  {/* Outer laser radar concentric scan rings */}
+                  <span className={`absolute inset-0 rounded-full w-10 h-10 -left-3.5 -top-3.5 block animate-ping opacity-35 ${
+                    isUrgent ? 'bg-rose-500' : isMitigating ? 'bg-cyan-400' : 'bg-purple-500'
                   }`} />
                   
-                  {/* Medium glowing outline */}
-                  <span className={`absolute inset-0 rounded-full w-5 h-5 -left-1 -top-1 block ${
-                    isDeflecting ? 'bg-indigo-500/30' : 'bg-emerald-500/30'
-                  } ${isSelected ? 'scale-125' : 'group-hover:scale-110'} transition-all`} />
+                  {/* Glowing halo outline */}
+                  <span className={`absolute inset-0 rounded-full w-6 h-6 -left-1.5 -top-1.5 block ${
+                    isUrgent ? 'bg-rose-500/20' : isMitigating ? 'bg-cyan-500/20' : 'bg-purple-500/20'
+                  } ${isSelected ? 'scale-125 border border-cyan-400/40' : 'group-hover:scale-110'} transition-all`} />
 
-                  {/* Core pointer */}
-                  <div className={`w-3 h-3 rounded-full border-2 border-white relative z-30 transition-transform ${
-                    isDeflecting ? 'bg-indigo-600' : 'bg-emerald-500'
-                  } ${isSelected ? 'scale-125 shadow-lg shadow-indigo-600/50' : 'group-hover:scale-110'}`} />
+                  {/* Node solid beacon core */}
+                  <div className={`w-3.5 h-3.5 rounded-full border-2 border-slate-950 relative z-30 transition-all ${
+                    isUrgent ? 'bg-rose-500 animate-pulse' : isMitigating ? 'bg-cyan-400' : 'bg-purple-500'
+                  } ${isSelected ? 'scale-125 shadow-[0_0_15px_rgba(6,182,212,0.85)]' : 'group-hover:scale-115'}`} />
 
-                  {/* Micro label card */}
-                  <div className="absolute top-4 left-1/2 -translate-x-1/2 whitespace-nowrap bg-slate-950/90 border border-slate-800 px-1.5 py-0.5 rounded text-[8px] font-mono tracking-tight text-white opacity-0 group-hover:opacity-100 pointer-events-none transition-all">
-                    {node.city}
+                  {/* Mini-indicator tags projecting coordinate stats on hover */}
+                  <div className="absolute top-5 left-1/2 -translate-x-1/2 whitespace-nowrap bg-slate-950 border border-purple-800 px-2 py-0.5 rounded text-[9px] font-mono tracking-tight text-white opacity-0 group-hover:opacity-100 pointer-events-none transition-all duration-200 shadow-xl z-50">
+                    <span className="font-extrabold">{node.city}</span> ({node.threatLevel})
                   </div>
                 </div>
               );
             })}
           </div>
 
-          {/* Dynamic focused diagnostics card overlay (Under map) */}
-          <div className="bg-slate-950/60 border border-slate-850 rounded-xl p-4 relative z-20 flex flex-col md:flex-row justify-between gap-4 items-stretch shadow-lg">
-            <div className="space-y-2 max-w-lg">
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-bold text-white font-display uppercase tracking-wider">{selectedNode.city} Edge Gateway</span>
-                <span className={`px-1.5 py-0.5 rounded text-[8.5px] font-mono font-bold uppercase leading-none ${
-                  selectedNode.activeStatus === 'DEFLECTING' 
-                    ? 'bg-indigo-500/10 text-indigo-400 border border-indigo-500/20' 
-                    : selectedNode.activeStatus === 'MITIGATING' 
-                    ? 'bg-rose-500/10 text-rose-400 border border-rose-500/20 animate-pulse'
-                    : 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+          {/* Focused Node Console readout overlay */}
+          <div className="bg-gradient-to-r from-[#120831] to-[#04010d] border border-purple-500/30 rounded-xl p-4.5 relative z-20 flex flex-col md:flex-row justify-between gap-5 items-stretch shadow-[0_0_20px_rgba(139,92,246,0.15)] relative overflow-hidden">
+            {/* Visual tech indicator corner */}
+            <div className="absolute top-0 left-0 w-1.5 h-full bg-cyan-500" />
+            
+            <div className="space-y-3 max-w-xl md:pl-2">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-13px font-bold text-white font-display uppercase tracking-wide flex items-center gap-1">
+                  <Fingerprint className="w-4 h-4 text-cyan-400" />
+                  {selectedNode.city} Edge Gateway
+                </span>
+                
+                <span className={`px-2 py-0.5 rounded text-[9px] font-mono font-black border uppercase tracking-wider ${
+                  selectedNode.activeStatus === 'ISOLATING'
+                    ? 'bg-rose-500/20 text-rose-300 border-rose-500/30 animate-pulse'
+                    : selectedNode.activeStatus === 'DEFLECTING'
+                    ? 'bg-indigo-500/20 text-[#a5b4fc] border-indigo-500/30'
+                    : 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'
                 }`}>
                   {selectedNode.activeStatus}
                 </span>
+
+                <span className="text-[10px] font-mono text-purple-300/60">
+                  REF_LOC: {selectedNode.x}°N / {selectedNode.y}°W
+                </span>
               </div>
-              <div className="grid grid-cols-2 text-[10.5px] font-mono text-slate-400 gap-x-4 gap-y-1">
-                <div>IP Address: <span className="text-white font-normal">{selectedNode.ip}</span></div>
-                <div>Risk Index: <span className={`font-semibold ${
-                  selectedNode.threatLevel === 'HIGH' ? 'text-rose-400' : selectedNode.threatLevel === 'MEDIUM' ? 'text-amber-400' : 'text-emerald-400'
-                }`}>{selectedNode.threatLevel} LEVEL</span></div>
-                <div>Recent Deflection: <span className="text-slate-300 font-normal">{selectedNode.recentThreatType}</span></div>
-                <div>Latency of Veto: <span className="text-indigo-400 font-semibold">{selectedNode.lastVetoTime}</span></div>
+
+              {/* Advanced detailed diagnostic fields */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 text-[11px] font-mono text-purple-100/90 gap-x-6 gap-y-1.5">
+                <div className="flex justify-between sm:justify-start gap-2">
+                  <span className="text-purple-300/50">IP ADDRESS:</span>
+                  <span className="text-white select-all font-semibold">{selectedNode.ip}</span>
+                </div>
+                <div className="flex justify-between sm:justify-start gap-2">
+                  <span className="text-purple-300/50">RISK CLASS:</span>
+                  <span className={`font-black uppercase ${
+                    selectedNode.threatLevel === 'CRITICAL' ? 'text-rose-400 animate-pulse' : selectedNode.threatLevel === 'HIGH' ? 'text-purple-300 font-extrabold' : 'text-emerald-400'
+                  }`}>{selectedNode.threatLevel} STATUS</span>
+                </div>
+                <div className="flex justify-between sm:justify-start gap-2 col-span-1 sm:col-span-2">
+                  <span className="text-purple-300/50">LAST CONTAINED ATTACK:</span>
+                  <span className="text-white font-normal truncate max-w-xs">{selectedNode.recentThreatType}</span>
+                </div>
+                <div className="flex justify-between sm:justify-start gap-2">
+                  <span className="text-purple-300/50">VETO INLINE TIME:</span>
+                  <span className="text-cyan-400 font-extrabold">{selectedNode.lastVetoTime}</span>
+                </div>
               </div>
             </div>
 
-            <div className="flex flex-row md:flex-col justify-between items-end border-t md:border-t-0 md:border-l border-slate-800 pt-3 md:pt-0 md:pl-4 self-stretch text-right min-w-[140px] flex-shrink-0">
+            {/* Quick action buttons / Deflections summary indicators */}
+            <div className="flex flex-row md:flex-col justify-between items-end border-t md:border-t-0 md:border-l border-purple-500/20 pt-4.5 md:pt-0 md:pl-5 self-stretch text-right min-w-[150px] flex-shrink-0 gap-3">
               <div className="text-left md:text-right">
-                <span className="text-[9px] font-mono text-slate-500 uppercase block">NODE DEFLECTIONS TODAY</span>
-                <span className="text-lg font-black font-mono text-white leading-tight">{selectedNode.threatsToday.toLocaleString()}</span>
+                <span className="text-[9px] font-mono text-purple-300/50 uppercase tracking-wider block">NODE DEFLECTIONS</span>
+                <span className="text-2xl font-black font-mono text-white leading-none">
+                  {selectedNode.threatsToday.toLocaleString()}
+                </span>
               </div>
+              
               <button 
                 onClick={() => {
-                  setSelectedNodeId(nodes[(nodes.findIndex(n => n.id === selectedNodeId) + 1) % nodes.length].id);
+                  const currIdx = nodes.findIndex(n => n.id === selectedNodeId);
+                  const nextNode = nodes[(currIdx + 1) % nodes.length];
+                  setSelectedNodeId(nextNode.id);
                 }}
-                className="text-[9.5px] font-mono font-bold text-indigo-400 hover:text-indigo-300 cursor-pointer flex items-center gap-1 leading-none"
+                className="text-[10px] font-mono font-black text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1 hover:underline self-end"
               >
-                NEXT OBSERVATORY &gt;
+                NEXT GATEWAY &gt;
               </button>
             </div>
           </div>
@@ -582,18 +784,18 @@ export default function ThreatHeatmap() {
 
       </div>
 
-      {/* Footer Systemic Assurance Info block */}
-      <div className="bg-slate-950/20 border border-slate-850/80 rounded-xl p-3.5 text-center flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono">
-        <div className="flex items-center gap-2 text-slate-400">
-          <CheckCircle2 className="w-4 h-4 text-[#10b981]" />
-          <span>Fiduciary Agent compliance validation confirmed. Real-time protection ring covering 8 global edge nodes.</span>
+      {/* Futuristic Compliance Assurance Panel */}
+      <div className="bg-[#0d0724] border border-purple-500/20 rounded-xl p-4 text-center flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono shadow-md">
+        <div className="flex items-center gap-2 text-purple-200/90">
+          <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 animate-pulse" />
+          <span>Fiduciary compliance audits confirmed. Real-time active deflection rings enforced across 8 global nodes.</span>
         </div>
-        <div className="flex items-center gap-3 text-[10px] text-slate-500">
-          <span>PII ANONYMIZER: ON</span>
+        <div className="flex flex-wrap justify-center items-center gap-3 text-[10px] text-purple-200/90">
+          <span className="bg-black/40 px-2 py-0.5 rounded border border-purple-500/30">PII ANONYMIZER: PASS</span>
           <span>•</span>
-          <span>VETO TIMEOUT LIMIT: 4ms</span>
+          <span className="bg-black/40 px-2 py-0.5 rounded border border-purple-500/30">LATENCY SLOS: &lt;4ms</span>
           <span>•</span>
-          <span>ZERO DATA PERSISTED</span>
+          <span className="bg-black/40 px-2 py-0.5 rounded border border-purple-500/30">ZERO LOG RETENTION</span>
         </div>
       </div>
 

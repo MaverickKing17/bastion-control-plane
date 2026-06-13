@@ -26,13 +26,15 @@ import {
   Clock,
   Sparkles,
   Cloud,
-  Database
+  Database,
+  Server
 } from 'lucide-react';
 
 import DashboardDemo from './components/DashboardDemo';
 import ArchitectureDiagram from './components/ArchitectureDiagram';
 import DesignPartnerModal from './components/DesignPartnerModal';
 import ThreatHeatmap from './components/ThreatHeatmap';
+import CognitiveShieldDemo from './components/CognitiveShieldDemo';
 
 // Reference the generated ballroom meetings photo safely
 const boardroomImg = '/src/assets/images/boardroom_meeting_1781371964505.jpg';
@@ -194,10 +196,10 @@ export default function App() {
       </nav>
 
       {/* Hero Section */}
-      <header className="relative max-w-7xl mx-auto px-6 pt-16 md:pt-24 pb-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <header className="relative max-w-7xl mx-auto px-6 pt-16 md:pt-24 pb-16 grid grid-cols-1 xl:grid-cols-12 gap-12 items-center">
         
         {/* Left Side: Typography Intro */}
-        <div className="lg:col-span-7 space-y-6">
+        <div className="xl:col-span-5 space-y-6">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-indigo-50 border border-indigo-100 rounded-full text-[10.5px] text-indigo-700 font-mono font-semibold uppercase tracking-wider">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             Built for Financial Services. Engineered for Trust.
@@ -247,65 +249,9 @@ export default function App() {
           </div>
         </div>
 
-        {/* Right Side: High-tech 3D Interactive Abstract Wireframe */}
-        <div className="lg:col-span-5 flex items-center justify-center relative">
-          <div className="absolute inset-0 bg-radial from-bastion-azure/10 to-transparent pointer-events-none rounded-full blur-2xl" />
-          
-          <div className="relative w-full max-w-[380px] aspect-square rounded-full border border-bastion-border/40 flex items-center justify-center bg-black/10 shadow-2xl overflow-hidden">
-            {/* Pulsing circular grid background panels */}
-            <div className="absolute inset-4 rounded-full border border-bastion-border/20" />
-            <div className="absolute inset-12 rounded-full border border-bastion-border/10" />
-            <div className="absolute inset-24 rounded-full border border-bastion-border/5" />
-
-            {/* Glowing Bastion Custom SVG Logo Shield Graph */}
-            <svg viewBox="0 0 400 400" className="w-full h-full p-4 relative z-10">
-              {/* Connections forming the shield logo */}
-              <g stroke="#0078D4" strokeWidth="1.5">
-                <line x1="200" y1="80" x2="300" y2="120" strokeWidth="2" className="animate-pulse" />
-                <line x1="300" y1="120" x2="300" y2="240" />
-                <line x1="300" y1="240" x2="200" y2="320" strokeWidth="2.5" />
-                <line x1="200" y1="320" x2="100" y2="240" />
-                <line x1="100" y1="240" x2="100" y2="120" />
-                <line x1="100" y1="120" x2="200" y2="80" />
-
-                {/* Inner diagonal cross lines resembling the B symbol */}
-                <line x1="200" y1="80" x2="200" y2="320" strokeWidth="1" strokeDasharray="4 4" />
-                <path d="M 200,80 Q 280,140 200,200 Q 280,260 200,320" fill="none" stroke="#0078D4" strokeWidth="3" />
-                <line x1="100" y1="180" x2="200" y2="200" />
-                <line x1="300" y1="180" x2="200" y2="200" />
-              </g>
-
-              {/* Glowing Interactive Nodes */}
-              <circle cx="200" cy="80" r="8" fill="#0078D4" stroke="#fff" strokeWidth="1.5" />
-              <text x="200" y="60" fontSize="9" fill="#8fa3b7" textAnchor="middle" fontFamily="monospace">CERTIFICATION</text>
-
-              <circle cx="300" cy="120" r="6" fill="#0b1e32" stroke="#0078D4" strokeWidth="1.5" />
-              <text x="315" y="123" fontSize="8" fill="#8fa3b7" textAnchor="start" fontFamily="monospace">OP_LIMIT</text>
-
-              <circle cx="300" cy="240" r="7" fill="#0078D4" stroke="#fff" strokeWidth="1.5" />
-              <text x="315" y="244" fontSize="8" fill="#8fa3b7" textAnchor="start" fontFamily="monospace">EVIDENCE_LOG</text>
-
-              <circle cx="200" cy="320" r="8" fill="#0078D4" stroke="#fff" strokeWidth="1.5" />
-              <text x="200" y="340" fontSize="9" fill="#8fa3b7" textAnchor="middle" fontFamily="monospace">GUARDRAIL_VETO</text>
-
-              <circle cx="100" cy="240" r="6" fill="#0b1e32" stroke="#0078D4" strokeWidth="1.5" />
-              <text x="85" y="244" fontSize="8" fill="#8fa3b7" textAnchor="end" fontFamily="monospace">DB_ROW_LIMIT</text>
-
-              <circle cx="100" cy="120" r="7" fill="#0078D4" stroke="#fff" strokeWidth="1.5" />
-              <text x="85" y="123" fontSize="8" fill="#8fa3b7" textAnchor="end" fontFamily="monospace">ENTRA_CRED</text>
-
-              {/* Core pulse */}
-              <circle cx="200" cy="200" r="16" fill="#0078D4" className="animate-ping opacity-25" />
-              <circle cx="200" cy="200" r="12" fill="#0078D4" stroke="#fff" strokeWidth="2" />
-              <text x="200" y="228" fontSize="10" fill="#fff" fontWeight="bold" textAnchor="middle" fontFamily="monospace">BASTION_CORE</text>
-            </svg>
-
-            {/* Glowing Corner Accents */}
-            <div className="absolute top-2 left-2 w-4 h-4 border-l border-t border-bastion-azure" />
-            <div className="absolute top-2 right-2 w-4 h-4 border-r border-t border-bastion-azure" />
-            <div className="absolute bottom-2 left-2 w-4 h-4 border-l border-b border-bastion-azure" />
-            <div className="absolute bottom-2 right-2 w-4 h-4 border-r border-b border-bastion-azure" />
-          </div>
+        {/* Right Side: Highly visual, interactive cognitive shield component */}
+        <div className="xl:col-span-7 w-full">
+          <CognitiveShieldDemo />
         </div>
 
       </header>
@@ -472,14 +418,48 @@ export default function App() {
       <section id="why-bastion" className="max-w-7xl mx-auto px-6 py-20 md:py-28 space-y-16">
         
         {/* Headings */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="text-[10px] font-mono tracking-widest text-[#4f46e5] font-bold uppercase block">Architectural Gap Analysis</span>
+        <div className="text-center max-w-4xl mx-auto space-y-6">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-[10px] font-mono font-bold text-indigo-700 tracking-wider">
+            <span className="w-1.5 h-1.5 rounded-full bg-indigo-600 animate-pulse" />
+            ARCHITECTURAL GAP ANALYSIS
+          </div>
+          
           <h2 className="font-display font-black text-2.5xl sm:text-4xl text-slate-900 tracking-tight leading-snug">
             Why Existing Security Platforms Are Not Enough
           </h2>
-          <p className="text-sm text-bastion-text-muted max-w-2xl mx-auto font-normal">
-            Firewalls, IAM rules, SIEM pipelines, and database permissions secure physical server architectures. Bastion controls independent, autonomous cognitive agents acting <strong>across</strong> that architecture.
-          </p>
+          
+          {/* Executive Comparative Plate */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-3xl mx-auto mt-6">
+            {/* Infrastructure Block */}
+            <div className="group p-5 rounded-xl bg-slate-50 border border-slate-200/70 hover:bg-slate-100/40 transition-all flex gap-3.5 shadow-xs relative">
+              <div className="w-10 h-10 rounded-xl bg-slate-200/65 flex-shrink-0 flex items-center justify-center text-slate-600 group-hover:scale-105 transition-all">
+                <Server className="w-5 h-5" />
+              </div>
+              <div className="space-y-1.5 min-w-0">
+                <span className="text-[9px] font-mono text-slate-500 font-extrabold tracking-wider block uppercase">Physical Architecture</span>
+                <p className="text-[12.5px] text-slate-650 leading-relaxed font-normal">
+                  Firewalls, IAM rules, SIEM pipelines, and database permissions secure physical server architectures.
+                </p>
+              </div>
+            </div>
+
+            {/* Cognitive Agent Block */}
+            <div className="group p-5 rounded-xl bg-indigo-50/30 border border-indigo-100 hover:bg-indigo-50/50 transition-all flex gap-3.5 shadow-xs relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-500/5 rounded-full blur-2xl pointer-events-none" />
+              <div className="w-10 h-10 rounded-xl bg-indigo-100 flex-shrink-0 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300">
+                <Shield className="w-5 h-5" />
+              </div>
+              <div className="space-y-1.5 min-w-0">
+                <span className="text-[9px] font-mono text-indigo-700 font-extrabold tracking-wider block uppercase flex items-center gap-1.5">
+                  Cognitive Action
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse" />
+                </span>
+                <p className="text-[12.5px] text-slate-800 leading-relaxed font-semibold">
+                  Bastion controls independent, autonomous cognitive agents acting <span className="text-indigo-700 underline decoration-indigo-300 decoration-2 underline-offset-2">across</span> that architecture.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Message and comparative visuals */}
@@ -670,89 +650,151 @@ export default function App() {
       </section>
 
       {/* SECTION 5: Design Partner Program */}
-      <section id="design-partners" className="bg-slate-50 border-t border-slate-200 py-20 md:py-28 px-6 relative overflow-hidden">
-        <div className="absolute top-0 right-1/4 w-[400px] h-[400px] ambient-glow rounded-full opacity-35 pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
-          {/* Left Side: Program description and structured bullets */}
-          <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-[10px] text-amber-600 font-mono font-bold uppercase tracking-wider">
-              <Sparkles className="w-3 h-3" /> Design Partner Program
-            </div>
-
-            <h2 className="font-display font-black text-3xl sm:text-4.5xl text-slate-900 tracking-tight leading-tight">
-              Seeking 4 Financial Services <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-indigo-700">Design Partners</span>
-            </h2>
-
-            <p className="text-sm text-bastion-text-muted leading-relaxed font-normal max-w-xl">
-              We coordinate directly with leading hedge funds, credit unions, multi-family offices, and security leaders to refine compliance and cognitive risk boundaries for active AI agents.
-            </p>
-
-            {/* Bullets stack */}
-            <div className="space-y-3 pt-2">
-              {[
-                { title: 'Synthetic data only', desc: 'Runs zero risk during baseline analysis. No custom private databases accessed.' },
-                { title: 'No production access required', desc: 'Operates in sandboxed, isolated simulated environments to protect data privacy.' },
-                { title: 'No customer data required', desc: 'Maintains perfect compliance with GDPR, HIPAA, and SEC regulations.' },
-                { title: 'White-label architecture review', desc: 'Direct feedback and analysis from lead system software engineers during build.' },
-                { title: 'Direct influence on product roadmap', desc: 'Customize core compliance rules and security formats to fit your exact legal parameters.' }
-              ].map((bullet, idx) => (
-                <div key={idx} className="flex items-start gap-3">
-                  <div className="p-1.5 bg-indigo-50 text-indigo-600 border border-indigo-100 rounded-full mt-0.5">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#4f46e5]" />
-                  </div>
-                  <div>
-                    <strong className="text-xs text-slate-800 block font-display uppercase">{bullet.title}</strong>
-                    <p className="text-[11.5px] text-bastion-text-muted mt-0.5 leading-snug">{bullet.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="pt-4">
-              <button
-                onClick={() => setModalOpen(true)}
-                className="bg-bastion-azure hover:bg-bastion-azure-light text-white text-xs font-bold px-6 py-3.5 rounded-lg border border-white/10 shadow-xl cursor-pointer transition-colors inline-flex items-center gap-2"
-              >
-                Request 15-Minute Review <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-
-          {/* Right Side: Professional Boardroom Photo (Desaturated corporate style) */}
-          <div className="lg:col-span-5 relative">
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-500/10 to-transparent opacity-80 z-10 pointer-events-none" />
+      <section id="design-partners" className="bg-slate-100/40 border-t border-slate-200 py-16 md:py-24 px-4 sm:px-6 relative overflow-hidden">
+        {/* Subtle executive tech grid overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.02)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none" />
+        <div className="absolute top-0 right-1/3 w-[500px] h-[500px] bg-indigo-50/65 rounded-full blur-[120px] pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto">
+          {/* Main Card Wrapper: Extremely clean, modern, with crisp shadow and borders */}
+          <div className="bg-white rounded-3xl border border-slate-200/90 shadow-[0_20px_50px_rgba(15,23,42,0.06)] p-6 md:p-10 lg:p-12 relative overflow-hidden">
             
-            <div className="relative rounded-xl border border-slate-200 shadow-2xl overflow-hidden group">
-              {/* Premium desaturated monochrome overlay with dark tint */}
-              <div className="absolute inset-0 bg-slate-900/10 mix-blend-multiply group-hover:bg-slate-900/5 transition-all z-10 duration-500" />
-              
-              <img 
-                src={boardroomImg} 
-                alt="Advisory Boardroom and Financial Security Meeting" 
-                className="w-full h-auto object-cover opacity-85 group-hover:scale-[1.03] transition-all duration-700 max-h-[380px]"
-                id="design-partner-img"
-              />
+            {/* Ambient gradients inside this beautiful card */}
+            <div className="absolute -top-12 -right-12 w-[350px] h-[350px] bg-indigo-500/5 rounded-full blur-[80px] pointer-events-none" />
+            <div className="absolute -bottom-12 -left-12 w-[350px] h-[350px] bg-amber-500/5 rounded-full blur-[80px] pointer-events-none" />
 
-              {/* Secure Stamp Graphic */}
-              <div className="absolute bottom-4 left-4 z-20 p-2.5 bg-slate-900/90 border border-indigo-400/30 backdrop-blur-md rounded font-mono text-[9.5px] space-y-0.5 text-slate-300">
-                <div className="flex items-center gap-1 text-white font-bold text-[10px]">
-                  <Building className="w-3.5 h-3.5 text-indigo-400" />
-                  <span>Bastion Advisory Group</span>
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+              
+              {/* Left Side: Program description and structured bullets */}
+              <div className="lg:col-span-7 space-y-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-[10px] text-amber-700 font-mono font-bold uppercase tracking-wider">
+                  <Sparkles className="w-3.5 h-3.5 text-amber-500 animate-pulse" /> Design Partner Program
                 </div>
-                <div className="text-[9px]">Scope: Financial Institutions</div>
-                <div className="text-[9px] text-indigo-400 font-semibold">STATUS: OPEN FOR DESIGN PARTNERS</div>
+
+                <div className="space-y-3">
+                  <h2 className="font-display font-black text-3xl sm:text-4xl lg:text-[40px] text-slate-900 tracking-tight leading-[1.1]">
+                    Seeking 4 Financial Services <br className="hidden sm:inline" />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-violet-600 to-indigo-700">Design Partners</span>
+                  </h2>
+
+                  <p className="text-sm md:text-[14.5px] text-slate-550 leading-relaxed font-normal max-w-xl">
+                    We coordinate directly with leading hedge funds, credit unions, multi-family offices, and security leaders to design, test, and refine compliance and cognitive risk boundaries for active AI agents.
+                  </p>
+                </div>
+
+                {/* Bullets represented as customized clean, colorful card modules */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-3">
+                  {[
+                    { 
+                      title: 'Synthetic data only', 
+                      desc: 'Runs zero risk during baseline analysis. No custom private databases accessed.',
+                      icon: Database,
+                      wrapperClass: 'bg-blue-50/40 hover:bg-blue-50 border-blue-500/10 hover:border-blue-500/30 text-blue-900',
+                      iconClass: 'bg-blue-500/10 text-blue-600 border border-blue-500/10'
+                    },
+                    { 
+                      title: 'No production access required', 
+                      desc: 'Operates in sandboxed, isolated simulated environments to protect data privacy.',
+                      icon: Lock,
+                      wrapperClass: 'bg-emerald-50/40 hover:bg-emerald-50 border-emerald-500/10 hover:border-emerald-500/30 text-emerald-900',
+                      iconClass: 'bg-emerald-500/10 text-emerald-600 border border-emerald-500/10'
+                    },
+                    { 
+                      title: 'No customer data required', 
+                      desc: 'Maintains perfect compliance with GDPR, HIPAA, and SEC regulations.',
+                      icon: Shield,
+                      wrapperClass: 'bg-rose-50/40 hover:bg-rose-50 border-rose-500/10 hover:border-rose-500/30 text-rose-900',
+                      iconClass: 'bg-rose-500/10 text-rose-600 border border-rose-500/10'
+                    },
+                    { 
+                      title: 'White-label architecture review', 
+                      desc: 'Direct feedback and analysis from lead system software engineers during build.',
+                      icon: Layers,
+                      wrapperClass: 'bg-amber-50/40 hover:bg-amber-50 border-amber-500/10 hover:border-amber-500/30 text-amber-900',
+                      iconClass: 'bg-amber-500/10 text-amber-600 border border-amber-500/10'
+                    },
+                    { 
+                      title: 'Direct influence on product roadmap', 
+                      desc: 'Customize core compliance rules and security formats to fit your exact legal parameters.',
+                      icon: Sparkles,
+                      wrapperClass: 'bg-purple-50/40 hover:bg-purple-50 border-purple-500/10 hover:border-purple-500/30 text-purple-900 md:col-span-2',
+                      iconClass: 'bg-purple-500/10 text-purple-600 border border-purple-500/10'
+                    }
+                  ].map((bullet, idx) => {
+                    const Icon = bullet.icon;
+                    return (
+                      <div 
+                        key={idx} 
+                        className={`flex gap-3.5 p-4 rounded-xl border transition-all duration-300 md:hover:-translate-y-0.5 md:hover:shadow-xs group/item ${bullet.wrapperClass}`}
+                      >
+                        <div className={`p-2 rounded-lg self-start flex-shrink-0 transition-transform group-hover/item:scale-105 ${bullet.iconClass}`}>
+                          <Icon className="w-4 h-4" />
+                        </div>
+                        <div className="space-y-1">
+                          <strong className="text-[11.5px] font-extrabold uppercase tracking-wide font-display block leading-none">
+                            {bullet.title}
+                          </strong>
+                          <p className="text-[11px] opacity-80 leading-normal font-light">
+                            {bullet.desc}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                <div className="pt-4 flex flex-col sm:flex-row items-center gap-4">
+                  <button
+                    onClick={() => setModalOpen(true)}
+                    className="w-full sm:w-auto bg-bastion-azure hover:bg-bastion-azure-light text-white text-xs font-bold px-6 py-3.5 rounded-lg border border-white/10 shadow-xl cursor-pointer transition-colors inline-flex items-center justify-center gap-2"
+                  >
+                    Request 15-Minute Review <ArrowRight className="w-4 h-4" />
+                  </button>
+                  <span className="text-[11px] font-mono text-slate-400">
+                    * Limited spots available for Q3 cohorts
+                  </span>
+                </div>
               </div>
+
+              {/* Right Side: Professional Boardroom Photo (Desaturated corporate style) */}
+              <div className="lg:col-span-5 relative w-full h-full min-h-[300px]">
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 to-transparent opacity-80 z-10 pointer-events-none rounded-2xl" />
+                
+                <div className="relative rounded-2xl border border-slate-200/80 shadow-xl overflow-hidden group w-full h-full">
+                  {/* Premium desaturated monochrome overlay with dark tint */}
+                  <div className="absolute inset-0 bg-indigo-950/10 mix-blend-multiply group-hover:bg-indigo-950/5 transition-all z-10 duration-500" />
+                  
+                  <img 
+                    src={boardroomImg} 
+                    alt="Advisory Boardroom and Financial Security Meeting" 
+                    className="w-full h-full object-cover opacity-90 group-hover:scale-[1.03] transition-all duration-700 min-h-[300px] max-h-[440px]"
+                    id="design-partner-img"
+                  />
+
+                  {/* Secure Stamp Graphic */}
+                  <div className="absolute bottom-4 left-4 z-20 p-3 bg-slate-950/95 border border-indigo-400/30 backdrop-blur-md rounded-xl font-mono text-[9.5px] space-y-1 text-slate-300 shadow-lg">
+                    <div className="flex items-center gap-1.5 text-white font-bold text-[10px]">
+                      <Building className="w-3.5 h-3.5 text-indigo-400" />
+                      <span>Bastion Advisory Group</span>
+                    </div>
+                    <div className="text-[9px]">Scope: Global Financial Institutions</div>
+                    <div className="text-[9px] text-[#10b981] font-bold flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
+                      STATUS: OPEN FOR COHORT APPLICANTS
+                    </div>
+                  </div>
+                </div>
+
+                {/* Glowing Corner Accents */}
+                <div className="absolute top-2 left-2 w-4 h-4 border-l border-t border-indigo-500/50 z-20" />
+                <div className="absolute top-2 right-2 w-4 h-4 border-r border-t border-indigo-500/50 z-20" />
+                <div className="absolute bottom-2 left-2 w-4 h-4 border-l border-b border-indigo-500/50 z-20" />
+                <div className="absolute bottom-2 right-2 w-4 h-4 border-r border-b border-indigo-500/50 z-20" />
+              </div>
+
             </div>
 
-            {/* Glowing Corner Accents */}
-            <div className="absolute top-2 left-2 w-4 h-4 border-l border-t border-bastion-azure z-20" />
-            <div className="absolute top-2 right-2 w-4 h-4 border-r border-t border-bastion-azure z-20" />
-            <div className="absolute bottom-2 left-2 w-4 h-4 border-l border-b border-bastion-azure z-20" />
-            <div className="absolute bottom-2 right-2 w-4 h-4 border-r border-b border-bastion-azure z-20" />
           </div>
-
         </div>
       </section>
 
@@ -888,85 +930,146 @@ export default function App() {
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-bastion-border bg-[#05111d] py-16 px-6">
-        <div className="max-w-7xl mx-auto space-y-12">
+      <footer className="relative border-t border-slate-800/80 bg-gradient-to-b from-[#070d19] via-[#040710] to-[#010205] py-20 px-4 sm:px-6 overflow-hidden">
+        {/* Subtle radiant background grid & color glows */}
+        <div className="absolute inset-0 bg-[radial-gradient(rgba(99,102,241,0.06)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none opacity-80" />
+        <div className="absolute top-0 left-1/4 w-[400px] h-[300px] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-1/2 right-1/4 w-[400px] h-[300px] bg-purple-500/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 left-1/3 w-[350px] h-[300px] bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-indigo-500/40 via-purple-500/40 via-cyan-500/30 to-transparent" />
+
+        <div className="max-w-7xl mx-auto space-y-12 relative z-10">
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
             
-            {/* Left Brand Summary Column */}
-            <div className="lg:col-span-2 space-y-4">
-              <div className="flex items-center gap-2.5">
-                <div className="w-7 h-7 bg-bastion-azure rounded-lg flex items-center justify-center border border-white/10 shadow-md">
-                  <Shield className="w-4 h-4 text-white" />
+            {/* Left Brand Summary Column - Col Span 4 */}
+            <div className="lg:col-span-4 bg-slate-950/40 border border-white/5 p-6 rounded-2xl relative overflow-hidden flex flex-col justify-between shadow-lg group hover:border-indigo-500/20 transition-all duration-300">
+              <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-indigo-500 via-indigo-600 to-violet-600" />
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 bg-indigo-600 rounded-xl flex items-center justify-center border border-white/20 shadow-md">
+                    <Shield className="w-5 h-5 text-white animate-pulse" />
+                  </div>
+                  <div>
+                    <div className="font-display font-black text-white text-base tracking-wider uppercase">
+                      BASTION <span className="text-indigo-400 font-medium">AUDIT</span>
+                    </div>
+                    <span className="text-[9px] font-mono text-indigo-400 tracking-widest block uppercase font-bold">COGNITIVE CONTROL SYSTEM</span>
+                  </div>
                 </div>
-                <div className="font-display font-extrabold text-[#ffffff] text-xs tracking-wider uppercase">
-                  BASTION <span className="text-[#0078D4] font-medium">AUDIT</span>
-                </div>
+                <p className="text-[12.5px] text-white leading-relaxed font-light">
+                  AI Control Plane for Autonomous Agents. Calibrating real-time safety indices and cryptographic audit proofs for financial services and institutional ecosystems.
+                </p>
               </div>
-              <p className="text-xs text-bastion-text-muted leading-relaxed font-normal max-w-sm">
-                AI Control Plane for Autonomous Agents. Calibrating real-time safety indices and cryptographic audit proofs for financial services and institutional ecosystems.
-              </p>
               
-              <div className="flex items-center gap-4 text-[10px] font-mono text-[#8fa3b7]">
-                <span className="flex items-center gap-1"><Lock className="w-3.5 h-3.5 text-bastion-azure" /> SOC2 COMPLIANT</span>
-                <span className="flex items-center gap-1"><CheckCircle2 className="w-3.5 h-3.5 text-bastion-azure" /> ISO-27001</span>
+              <div className="flex flex-wrap items-center gap-3 text-[10px] font-mono text-slate-300 mt-6 pt-4 border-t border-white/5">
+                <span className="flex items-center gap-1.5 px-2 py-1 rounded bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 font-bold uppercase">
+                  <Lock className="w-3 h-3 text-indigo-400" /> SOC2 COMPLIANT
+                </span>
+                <span className="flex items-center gap-1.5 px-2 py-1 rounded bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 font-bold uppercase">
+                  <CheckCircle2 className="w-3 h-3 text-cyan-400" /> ISO-27001
+                </span>
               </div>
             </div>
 
-            {/* Col 2: Enterprise AI Resources */}
-            <div className="space-y-3 text-xs">
-              <h5 className="font-bold text-white font-mono text-[10px] tracking-widest uppercase">AI Governance Resources</h5>
-              <ul className="space-y-2 text-[11.5px] text-bastion-text-muted font-normal">
-                <li className="hover:text-white transition-colors cursor-pointer flex items-center gap-1">Compliance Whitepaper <ArrowRight className="w-2.5 h-2.5 opacity-0 hover:opacity-100 transition-opacity" /></li>
-                <li className="hover:text-white transition-colors cursor-pointer flex items-center gap-1">Fiduciary AI Guidelines <ArrowRight className="w-2.5 h-2.5 opacity-0 hover:opacity-100 transition-opacity" /></li>
-                <li className="hover:text-white transition-colors cursor-pointer flex items-center gap-1">Continuous Integration Standards <ArrowRight className="w-2.5 h-2.5 opacity-0 hover:opacity-100 transition-opacity" /></li>
-                <li className="hover:text-white transition-colors cursor-pointer flex items-center gap-1">DORA Risk Checklist <ArrowRight className="w-2.5 h-2.5 opacity-0 hover:opacity-100 transition-opacity" /></li>
+            {/* Col 2: Enterprise AI Resources - Col Span 2 */}
+            <div className="lg:col-span-2 bg-slate-950/40 border border-white/5 p-6 rounded-2xl relative overflow-hidden shadow-lg group hover:border-purple-500/20 transition-all duration-300">
+              <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-purple-500 to-fuchsia-500" />
+              <h5 className="font-bold text-white font-mono text-[11px] tracking-widest uppercase mb-4 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
+                Resources
+              </h5>
+              <ul className="space-y-3.5 text-[12.5px] text-slate-100 font-light font-sans">
+                <li className="hover:text-purple-300 hover:translate-x-1 transition-all cursor-pointer flex items-center justify-between group/link">
+                  <span>Compliance Whitepaper</span>
+                  <ArrowRight className="w-3 h-3 text-purple-400 opacity-0 group-hover/link:opacity-100 transition-all transform translate-x-[-4px] group-hover/link:translate-x-0" />
+                </li>
+                <li className="hover:text-purple-300 hover:translate-x-1 transition-all cursor-pointer flex items-center justify-between group/link">
+                  <span>Fiduciary AI standard</span>
+                  <ArrowRight className="w-3 h-3 text-purple-400 opacity-0 group-hover/link:opacity-100 transition-all transform translate-x-[-4px] group-hover/link:translate-x-0" />
+                </li>
+                <li className="hover:text-purple-300 hover:translate-x-1 transition-all cursor-pointer flex items-center justify-between group/link">
+                  <span>CI Integration Guide</span>
+                  <ArrowRight className="w-3 h-3 text-purple-400 opacity-0 group-hover/link:opacity-100 transition-all transform translate-x-[-4px] group-hover/link:translate-x-0" />
+                </li>
+                <li className="hover:text-purple-300 hover:translate-x-1 transition-all cursor-pointer flex items-center justify-between group/link">
+                  <span>DORA Safety Limits</span>
+                  <ArrowRight className="w-3 h-3 text-purple-400 opacity-0 group-hover/link:opacity-100 transition-all transform translate-x-[-4px] group-hover/link:translate-x-0" />
+                </li>
               </ul>
             </div>
 
-            {/* Col 3: Architecture Overview */}
-            <div className="space-y-3 text-xs">
-              <h5 className="font-bold text-white font-mono text-[10px] tracking-widest uppercase">Architecture Overview</h5>
-              <ul className="space-y-2 text-[11.5px] text-bastion-text-muted font-normal">
-                <li className="hover:text-white transition-colors cursor-pointer flex items-center gap-1" onClick={() => handleScrollTo('architecture')}>API Connectors</li>
-                <li className="hover:text-white transition-colors cursor-pointer flex items-center gap-1" onClick={() => handleScrollTo('architecture')}>Cryptographic Ledger</li>
-                <li className="hover:text-white transition-colors cursor-pointer flex items-center gap-1" onClick={() => handleScrollTo('interactive-demo')}>Sentinel Integration sync</li>
-                <li className="hover:text-white transition-colors cursor-pointer flex items-center gap-1">Entra Identity Schema</li>
+            {/* Col 3: Architecture Overview - Col Span 2 */}
+            <div className="lg:col-span-2 bg-slate-950/40 border border-white/5 p-6 rounded-2xl relative overflow-hidden shadow-lg group hover:border-cyan-500/20 transition-all duration-300">
+              <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-cyan-500 to-blue-500" />
+              <h5 className="font-bold text-white font-mono text-[11px] tracking-widest uppercase mb-4 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                Overview
+              </h5>
+              <ul className="space-y-3.5 text-[12.5px] text-slate-100 font-light font-sans">
+                <li className="hover:text-cyan-300 hover:translate-x-1 transition-all cursor-pointer flex items-center justify-between group/link" onClick={() => handleScrollTo('architecture')}>
+                  <span>API Connectors</span>
+                  <ArrowRight className="w-3 h-3 text-cyan-400 opacity-0 group-hover/link:opacity-100 transition-all transform translate-x-[-4px] group-hover/link:translate-x-0" />
+                </li>
+                <li className="hover:text-cyan-300 hover:translate-x-1 transition-all cursor-pointer flex items-center justify-between group/link" onClick={() => handleScrollTo('architecture')}>
+                  <span>Cryptographic Ledger</span>
+                  <ArrowRight className="w-3 h-3 text-cyan-400 opacity-0 group-hover/link:opacity-100 transition-all transform translate-x-[-4px] group-hover/link:translate-x-0" />
+                </li>
+                <li className="hover:text-cyan-300 hover:translate-x-1 transition-all cursor-pointer flex items-center justify-between group/link" onClick={() => handleScrollTo('interactive-demo')}>
+                  <span>Sentinel Sync logs</span>
+                  <ArrowRight className="w-3 h-3 text-cyan-400 opacity-0 group-hover/link:opacity-100 transition-all transform translate-x-[-4px] group-hover/link:translate-x-0" />
+                </li>
+                <li className="hover:text-cyan-300 hover:translate-x-1 transition-all cursor-pointer flex items-center justify-between group/link">
+                  <span>Entra Identity Gate</span>
+                  <ArrowRight className="w-3 h-3 text-cyan-400 opacity-0 group-hover/link:opacity-100 transition-all transform translate-x-[-4px] group-hover/link:translate-x-0" />
+                </li>
               </ul>
             </div>
 
-            {/* Col 4: Advisory & Contact */}
-            <div className="space-y-3 text-xs">
-              <h5 className="font-bold text-white font-mono text-[10px] tracking-widest uppercase">Contact Advisory Desk</h5>
-              <p className="text-[11px] text-bastion-text-muted leading-normal">Our dedicated advisory desk supports financial institutions seeking security audits.</p>
+            {/* Col 4: Advisory & Contact - Col Span 4 */}
+            <div className="lg:col-span-4 bg-slate-950/40 border border-white/5 p-6 rounded-2xl relative overflow-hidden shadow-lg group hover:border-emerald-500/20 transition-all duration-300 flex flex-col justify-between">
+              <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-emerald-500 to-teal-500" />
+              <div className="space-y-4">
+                <h5 className="font-bold text-white font-mono text-[11px] tracking-widest uppercase flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  Contact Advisory Desk
+                </h5>
+                <p className="text-[12.5px] text-white leading-relaxed font-light">
+                  Our dedicated advisory desk supports financial institutions seeking certified safety frameworks.
+                </p>
+              </div>
               
-              <div className="space-y-2 text-[11px] font-mono text-white">
-                <div className="flex items-center gap-2">
-                  <Mail className="w-3.5 h-3.5 text-bastion-azure" />
-                  <span>advisory@bastionaudit.com</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <PhoneCall className="w-3.5 h-3.5 text-bastion-azure" />
-                  <span>+1 (800) BSTN-AUDT</span>
-                </div>
+              <div className="space-y-2 mt-6 pt-4 border-t border-white/5 font-mono text-[11px] text-white">
+                <a href="mailto:advisory@bastionaudit.com" className="flex items-center gap-3 p-2.5 rounded-xl bg-white/5 hover:bg-emerald-500/10 border border-white/5 hover:border-emerald-500/20 transition-all group/contact duration-205">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 border border-emerald-500/20 group-hover/contact:scale-105 transition-transform">
+                    <Mail className="w-4 h-4" />
+                  </div>
+                  <span className="font-bold tracking-wide group-hover/contact:text-emerald-300 transition-colors">advisory@bastionaudit.com</span>
+                </a>
+                <a href="tel:+18002786283" className="flex items-center gap-3 p-2.5 rounded-xl bg-white/5 hover:bg-teal-500/10 border border-white/5 hover:border-teal-500/20 transition-all group/contact duration-205">
+                  <div className="w-8 h-8 rounded-lg bg-teal-500/10 flex items-center justify-center text-teal-400 border border-teal-500/25 group-hover/contact:scale-105 transition-transform">
+                    <PhoneCall className="w-4 h-4" />
+                  </div>
+                  <span className="font-bold tracking-wide group-hover/contact:text-teal-300 transition-colors">+1 (800) BSTN-AUDT</span>
+                </a>
               </div>
             </div>
 
           </div>
 
           {/* Bottom Copyright stamp */}
-          <div className="border-t border-bastion-border/60 pt-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-xs text-bastion-text-muted font-normal">
-            <div>
-              <p>© 2026 Bastion Audit. All rights reserved. Engineered for financial institutions and global enterprise infrastructures.</p>
-              <p className="text-[10px] text-slate-500 mt-1 font-mono">Simulators configured on current time: 2026-06-13. Built in Cloud Native Core.</p>
+          <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 text-xs text-slate-300 font-light relative z-10">
+            <div className="space-y-1">
+              <p className="text-white text-[12px] font-normal">© 2026 Bastion Audit. All rights reserved. Engineered for financial institutions and global enterprise infrastructures.</p>
+              <p className="text-[10.5px] text-slate-400 font-mono">Simulators configured on current time: 2026-06-13. Built in Cloud Native Core.</p>
             </div>
             
-            <div className="flex gap-4 font-mono text-[10px] text-sky-400">
-              <span className="hover:underline cursor-pointer">Security Ledger</span>
-              <span>•</span>
-              <span className="hover:underline cursor-pointer">Privacy Guidelines</span>
-              <span>•</span>
-              <span className="hover:underline cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Control Room Top</span>
+            <div className="flex flex-wrap gap-4 font-mono text-[10.5px] text-cyan-400 font-semibold bg-cyan-950/20 border border-cyan-500/10 px-4 py-2 rounded-xl">
+              <span className="hover:text-cyan-300 hover:underline cursor-pointer transition-colors">Security Ledger</span>
+              <span className="text-slate-600">•</span>
+              <span className="hover:text-cyan-300 hover:underline cursor-pointer transition-colors">Privacy Guidelines</span>
+              <span className="text-slate-600">•</span>
+              <span className="hover:text-cyan-300 hover:underline cursor-pointer transition-colors" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Control Room Top</span>
             </div>
           </div>
 
