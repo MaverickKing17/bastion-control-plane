@@ -164,7 +164,7 @@ export default function IntegrationEcosystem() {
           <h2 className="font-display font-black text-3xl sm:text-4.5xl text-white tracking-tight leading-none text-center">
             Integration Ecosystem
           </h2>
-          <p className="text-sm text-slate-350 max-w-xl mx-auto font-light leading-relaxed">
+          <p className="text-sm text-slate-300 max-w-xl mx-auto font-light leading-relaxed">
             Create premium, zero-latency connections across leading enterprise platforms to collect, normalize, and audit multi-hop security signals.
           </p>
         </div>
@@ -173,9 +173,9 @@ export default function IntegrationEcosystem() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
           
           {/* Left Column: Interactive lists of cards categorized (Col Span 5) */}
-          <div className="lg:col-span-5 bg-slate-950/40 p-4 rounded-3xl border border-white/5 flex flex-col justify-between max-h-[640px] overflow-y-auto scrollbar-thin">
+          <div className="lg:col-span-5 bg-[#0b1d33]/80 p-4 rounded-3xl border border-white/10 flex flex-col justify-between max-h-[640px] overflow-y-auto scrollbar-thin shadow-[0_10px_35px_rgba(0,0,0,0.4)]">
             <div className="space-y-4">
-              <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest font-black block p-2">
+              <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest font-black block p-2">
                 ACTIVE CONNECTORS ({integrations.length})
               </span>
 
@@ -189,8 +189,8 @@ export default function IntegrationEcosystem() {
                       onClick={() => setActiveId(item.id)}
                       className={`w-full flex items-center justify-between p-3.5 rounded-xl border transition-all duration-300 text-left select-none cursor-pointer ${
                         isSelected 
-                          ? 'bg-[#0078D4]/10 border-[#0078D4] text-white shadow-md' 
-                          : 'bg-slate-900/40 border-white/5 hover:border-white/10 hover:bg-slate-900/60 text-slate-300'
+                          ? 'bg-[#0078D4]/15 border-[#0078D4] text-white shadow-md' 
+                          : 'bg-[#071524]/60 border-white/10 hover:border-[#0078D4]/40 hover:bg-[#071524] text-slate-300'
                       }`}
                     >
                       <div className="flex items-center gap-3">
@@ -215,29 +215,29 @@ export default function IntegrationEcosystem() {
           </div>
 
           {/* Right Column: Premium Inspector HUD (Col Span 7) */}
-          <div className="lg:col-span-7 bg-slate-950 border border-white/5 p-6 sm:p-8 rounded-3xl relative overflow-hidden flex flex-col justify-between shadow-[0_20px_40px_rgba(0,120,212,0.06)]">
+          <div className="lg:col-span-7 bg-[#0b1d33] border border-white/10 p-6 sm:p-8 rounded-3xl relative overflow-hidden flex flex-col justify-between shadow-[0_20px_50px_rgba(0,120,212,0.15)] hover:border-[#0078D4]/60 hover:shadow-[0_0_35px_rgba(0,120,212,0.25)] transition-all duration-300 animate-fadeIn">
             {/* Top color bar */}
             <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-teal-500 to-[#0078D4]" />
-            <div className="absolute -top-12 -right-12 w-64 h-64 bg-[#0078D4]/5 rounded-full blur-[100px] pointer-events-none" />
+            <div className="absolute -top-12 -right-12 w-64 h-64 bg-[#0078D4]/10 rounded-full blur-[100px] pointer-events-none" />
 
             <div className="space-y-8">
               {/* Header metadata */}
-              <div className="flex items-center justify-between border-b border-white/5 pb-4">
-                <span className="px-2.5 py-1 rounded inline-flex items-center gap-1 text-[9px] font-mono font-bold uppercase bg-[#0078D4]/10 border border-[#0078D4]/20 text-sky-305">
+              <div className="flex items-center justify-between border-b border-white/10 pb-4">
+                <span className="px-2.5 py-1 rounded inline-flex items-center gap-1 text-[9px] font-mono font-bold uppercase bg-[#0078D4]/10 border border-[#0078D4]/20 text-sky-300 animate-pulse">
                   CATEGORY: {activeItem.category}
                 </span>
-                <span className="text-[10px] font-mono text-slate-400">
+                <span className="text-[10px] font-mono text-slate-300">
                   CONNECTOR: OK (TLS 1.3 SECURE)
                 </span>
               </div>
 
               {/* Title layout */}
               <div className="flex items-center gap-4">
-                <div className="p-3 bg-slate-900 text-white rounded-xl border border-white/10">
+                <div className="p-3 bg-[#071524] text-white rounded-xl border border-white/10 shadow-inner">
                   <activeItem.icon className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-bold font-display text-white tracking-tight">
+                  <h3 className="text-xl sm:text-2xl font-bold font-display text-white tracking-tight animate-fadeIn">
                     {activeItem.name} Connector
                   </h3>
                   <p className="text-xs text-teal-400 font-mono uppercase">
@@ -250,60 +250,60 @@ export default function IntegrationEcosystem() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 
                 {/* 1. Signals collected */}
-                <div className="bg-slate-900 border border-white/5 p-4 rounded-xl flex flex-col justify-between">
+                <div className="bg-[#071524] border border-white/10 p-4 rounded-xl flex flex-col justify-between">
                   <div className="space-y-1">
                     <span className="text-[8.5px] font-mono text-sky-400 font-bold uppercase tracking-widest block">
                       📡 Signals Collected:
                     </span>
-                    <p className="text-[11.5px] text-slate-205 leading-relaxed font-light">
+                    <p className="text-[11.5px] text-slate-200 leading-relaxed font-light">
                       {activeItem.signalsCollected}
                     </p>
                   </div>
                 </div>
 
                 {/* 2. Governance value */}
-                <div className="bg-slate-900 border border-white/5 p-4 rounded-xl flex flex-col justify-between">
+                <div className="bg-[#071524] border border-white/10 p-4 rounded-xl flex flex-col justify-between">
                   <div className="space-y-1">
                     <span className="text-[8.5px] font-mono text-[#0078D4] font-bold uppercase tracking-widest block">
                       ⚖️ Governance Value:
                     </span>
-                    <p className="text-[11.5px] text-slate-205 leading-relaxed font-light">
+                    <p className="text-[11.5px] text-slate-200 leading-relaxed font-light">
                       {activeItem.governanceValue}
                     </p>
                   </div>
                 </div>
 
                 {/* 3. Trust impact */}
-                <div className="bg-slate-900 border border-white/5 p-4 rounded-xl flex flex-col justify-between">
+                <div className="bg-[#071524] border border-white/10 p-4 rounded-xl flex flex-col justify-between">
                   <div className="space-y-1">
                     <span className="text-[8.5px] font-mono text-teal-400 font-bold uppercase tracking-widest block">
                       🛡️ Trust Impact:
                     </span>
-                    <p className="text-[11.5px] text-slate-205 leading-relaxed font-light">
+                    <p className="text-[11.5px] text-slate-200 leading-relaxed font-light">
                       {activeItem.trustImpact}
                     </p>
                   </div>
                 </div>
 
                 {/* 4. Evidence impact */}
-                <div className="bg-slate-900 border border-white/5 p-4 rounded-xl flex flex-col justify-between">
+                <div className="bg-[#071524] border border-white/10 p-4 rounded-xl flex flex-col justify-between">
                   <div className="space-y-1">
                     <span className="text-[8.5px] font-mono text-purple-400 font-bold uppercase tracking-widest block">
                       📁 Evidence Impact:
                     </span>
-                    <p className="text-[11.5px] text-slate-205 leading-relaxed font-light">
+                    <p className="text-[11.5px] text-slate-200 leading-relaxed font-light">
                       {activeItem.evidenceImpact}
                     </p>
                   </div>
                 </div>
 
                 {/* 5. Ownership correlation */}
-                <div className="bg-slate-900 border border-white/5 p-4 rounded-xl sm:col-span-2">
+                <div className="bg-[#071524] border border-white/10 p-4 rounded-xl sm:col-span-2">
                   <div className="space-y-1">
-                    <span className="text-[8.5px] font-mono text-amber-400 font-bold uppercase tracking-widest block">
+                    <span className="text-[8.5px] font-mono text-amber-405 font-bold uppercase tracking-widest block">
                       👥 Ownership Correlation:
                     </span>
-                    <p className="text-[11.5px] text-slate-205 leading-relaxed font-normal">
+                    <p className="text-[11.5px] text-slate-200 leading-relaxed font-normal">
                       {activeItem.ownershipCorrelation}
                     </p>
                   </div>
@@ -314,8 +314,8 @@ export default function IntegrationEcosystem() {
             </div>
 
             {/* Bottom summary indicator */}
-            <div className="mt-8 pt-4 border-t border-white/5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-xs">
-              <p className="text-slate-400 font-light font-mono">
+            <div className="mt-8 pt-4 border-t border-white/10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-xs">
+              <p className="text-slate-300 font-light font-mono">
                 &gt; Secure Link Status: ACTIVE Handshake Verified
               </p>
               

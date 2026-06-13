@@ -135,9 +135,9 @@ export default function EnterpriseTrustFramework() {
           </div>
 
           {/* Right: Premium HUD Details display Panel */}
-          <div className="lg:col-span-7 bg-slate-950 border border-white/5 p-6 sm:p-8 rounded-3xl relative overflow-hidden flex flex-col justify-between shadow-[0_20px_50px_rgba(0,120,212,0.1)]">
+          <div className="lg:col-span-7 bg-[#0b1d33]/90 border border-white/10 p-6 sm:p-8 rounded-3xl relative overflow-hidden flex flex-col justify-between shadow-[0_20px_50px_rgba(0,120,212,0.15)] hover:border-[#0078D4]/50 hover:shadow-[0_0_25px_rgba(0,120,212,0.25)] transition-all duration-300">
             <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-teal-500 to-[#0078D4]" />
-            <div className="absolute -top-12 -right-12 w-64 h-64 bg-teal-505/5 rounded-full blur-[100px] pointer-events-none" />
+            <div className="absolute -top-12 -right-12 w-64 h-64 bg-teal-500/5 rounded-full blur-[100px] pointer-events-none" />
 
             <div className="space-y-6">
               {/* Badge info */}
@@ -145,7 +145,7 @@ export default function EnterpriseTrustFramework() {
                 <span className="px-2.5 py-1 rounded inline-flex items-center gap-1.5 text-[9px] font-mono font-bold uppercase bg-teal-500/10 border border-teal-500/20 text-teal-300">
                   <ShieldCheck className="w-3.5 h-3.5 text-teal-400" /> {active.badge}
                 </span>
-                <span className="text-[10.5px] font-mono text-slate-400">
+                <span className="text-[10.5px] font-mono text-slate-200">
                   STANDARD: {active.name}
                 </span>
               </div>
@@ -164,21 +164,21 @@ export default function EnterpriseTrustFramework() {
               <div className="space-y-4">
                 
                 {/* Segment 1: Why it matters to AI governance */}
-                <div className="bg-slate-900 border border-white/5 p-4 rounded-2xl">
+                <div className="bg-[#071524] border border-white/10 p-4 rounded-2xl">
                   <span className="text-[9.5px] font-mono text-[#0078D4] font-extrabold uppercase block tracking-widest mb-1.5">
                     💡 Why It Matters to AI Governance
                   </span>
-                  <p className="text-[12.5px] text-slate-205 leading-relaxed font-light">
+                  <p className="text-[12.5px] text-slate-200 leading-relaxed font-light">
                     {active.whyAI}
                   </p>
                 </div>
 
                 {/* Segment 2: Financial institutions focus */}
-                <div className="bg-slate-900 border border-white/5 p-4 rounded-2xl">
+                <div className="bg-[#071524] border border-[#0078D4]/20 p-4 rounded-2xl">
                   <span className="text-[9.5px] font-mono text-teal-400 font-extrabold uppercase block tracking-widest mb-1.5">
                     🏦 Focus on Financial Institutions
                   </span>
-                  <p className="text-[12.5px] text-slate-205 leading-relaxed font-normal">
+                  <p className="text-[12.5px] text-slate-100 leading-relaxed font-normal">
                     {active.financialFocus}
                   </p>
                 </div>

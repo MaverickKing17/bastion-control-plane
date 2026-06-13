@@ -120,14 +120,14 @@ export default function WhereBastionFits() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
           
           {/* Vertical Schematic Flow (Col Span 7) */}
-          <div className="lg:col-span-7 space-y-3 bg-slate-950/50 p-6 sm:p-8 rounded-3xl border border-white/5 relative">
-            <div className="absolute top-4 right-4 text-[9px] font-mono text-slate-500 tracking-widest uppercase">
+          <div className="lg:col-span-7 space-y-3 bg-[#0b1d33]/80 p-6 sm:p-8 rounded-3xl border border-white/10 relative shadow-[0_10px_35px_rgba(0,0,0,0.4)]">
+            <div className="absolute top-4 right-4 text-[9px] font-mono text-slate-400 tracking-widest uppercase">
               COGNITIVE CONTROL STACK
             </div>
 
-            <div className="space-y-2 relative">
+            <div className="space-y-2 relative mt-6">
               {/* Connecting line on the left side of the steps */}
-              <div className="absolute left-6 top-6 bottom-6 w-[1.5px] bg-[#0078D4]/20 pointer-events-none hidden sm:block" />
+              <div className="absolute left-6 top-6 bottom-6 w-[1.5px] bg-[#0078D4]/35 pointer-events-none hidden sm:block" />
 
               {steps.map((step, idx) => {
                 const isActive = activeStep === idx;
@@ -138,15 +138,15 @@ export default function WhereBastionFits() {
                     onClick={() => setActiveStep(idx)}
                     className={`flex items-start gap-4 p-3.5 rounded-xl border transition-all duration-300 cursor-pointer text-left select-none ${
                       isActive 
-                        ? 'bg-[#0078D4]/10 border-[#0078D4] shadow-[0_0_20px_rgba(0,120,212,0.15)] translate-x-1 sm:translate-x-2' 
-                        : 'bg-slate-900/40 border-white/5 hover:border-white/10 hover:bg-slate-900/60'
+                        ? 'bg-[#0a233c] border-[#0078D4] shadow-[0_0_25px_rgba(0,120,212,0.35)] translate-x-1 sm:translate-x-2' 
+                        : 'bg-[#071524]/70 border-white/10 hover:border-[#0078D4]/40 hover:bg-[#071524]'
                     }`}
                   >
                     {/* Circle badge */}
                     <div className={`w-8.5 h-8.5 rounded-lg flex items-center justify-center font-mono text-xs font-black flex-shrink-0 transition-all border sm:z-10 ${
                       isActive 
-                        ? 'bg-[#0078D4] text-white border-white/10 scale-105' 
-                        : 'bg-slate-950 text-slate-400 border-white/5'
+                        ? 'bg-[#0078D4] text-white border-white/20 scale-105 shadow-[0_0_12px_rgba(0,120,212,0.5)]' 
+                        : 'bg-slate-905 text-slate-300 border-white/10'
                     }`}>
                       0{step.id + 1}
                     </div>
@@ -154,13 +154,13 @@ export default function WhereBastionFits() {
                     <div className="space-y-1 min-w-0 flex-1">
                       <div className="flex items-center justify-between gap-2">
                         <h4 className={`text-sm font-bold font-display tracking-tight transition-colors ${
-                          isActive ? 'text-white' : 'text-slate-300'
+                          isActive ? 'text-white' : 'text-slate-200 hover:text-white'
                         }`}>
                           {step.title}
                         </h4>
                         <span className={`text-[9.5px] font-mono px-2 py-0.5 rounded border uppercase flex-shrink-0 tracking-wide font-semibold ${
                           isActive 
-                            ? 'bg-sky-500/15 border-sky-400/20 text-sky-300'
+                            ? 'bg-sky-500/15 border-sky-400/30 text-sky-300 shadow-[0_0_10px_rgba(56,189,248,0.15)]'
                             : 'bg-white/5 border-white/5 text-slate-400'
                         }`}>
                           {step.short}
@@ -182,7 +182,7 @@ export default function WhereBastionFits() {
                             {step.nodes.map((node, i) => (
                               <span 
                                 key={i} 
-                                className="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-950 border border-white/5 text-slate-300 font-semibold"
+                                className="text-[9px] font-mono px-2 py-0.5 rounded bg-slate-950 border border-white/10 text-slate-200 font-semibold"
                               >
                                 {node}
                               </span>
@@ -192,7 +192,7 @@ export default function WhereBastionFits() {
                       )}
                     </div>
 
-                    <ChevronRight className={`w-4 h-4 text-slate-500 self-center transition-transform ${
+                    <ChevronRight className={`w-4 h-4 text-slate-400 self-center transition-transform ${
                       isActive ? 'rotate-90 text-[#0078D4]' : ''
                     }`} />
                   </div>
@@ -202,17 +202,17 @@ export default function WhereBastionFits() {
           </div>
 
           {/* Detailed Inspector Panel (Col Span 5) */}
-          <div className="lg:col-span-5 flex flex-col justify-between bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950 p-6 sm:p-8 rounded-3xl border border-white/5 relative overflow-hidden">
+          <div className="lg:col-span-5 flex flex-col justify-between bg-[#0b1d33] p-6 sm:p-8 rounded-3xl border border-white/10 shadow-[0_15px_40px_rgba(0,120,212,0.15)] hover:border-[#0078D4]/60 hover:shadow-[0_0_30px_rgba(0,120,212,0.3)] transition-all duration-300 relative overflow-hidden">
             {/* Top Indicator Accent gradient */}
-            <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-[#0078D4] via-cyan-500 to-teal-500" />
-            <div className="absolute -top-12 -right-12 w-64 h-64 bg-[#0078D4]/5 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#0078D4] via-cyan-500 to-teal-500" />
+            <div className="absolute -top-12 -right-12 w-64 h-64 bg-[#0078D4]/10 rounded-full blur-3xl pointer-events-none" />
 
             <div className="space-y-6">
-              <div className="flex items-center justify-between border-b border-white/5 pb-4">
-                <span className="text-[10px] font-mono text-sky-400 uppercase tracking-widest font-bold">
+              <div className="flex items-center justify-between border-b border-white/10 pb-4">
+                <span className="text-[10px] font-mono text-sky-305 uppercase tracking-widest font-bold">
                   Telemetry Inspector
                 </span>
-                <span className="text-[10px] font-mono text-slate-400 bg-slate-900 border border-white/5 px-2 py-1 rounded">
+                <span className="text-[10px] font-mono text-slate-200 bg-slate-900 border border-white/10 px-2 py-1 rounded">
                   STEP 0{steps[activeStep].id + 1} OF 09
                 </span>
               </div>
@@ -228,7 +228,7 @@ export default function WhereBastionFits() {
               </div>
 
               <div className="space-y-4">
-                <div className="bg-slate-900 border border-white/5 p-4 rounded-2xl relative">
+                <div className="bg-[#071524] border border-white/10 p-4 rounded-2xl relative">
                   <span className="text-[9px] font-mono text-[#0078D4] uppercase block tracking-widest mb-1.5 font-bold">
                     🛡️ Governance Objective
                   </span>
@@ -237,22 +237,22 @@ export default function WhereBastionFits() {
                   </p>
                 </div>
 
-                <div className="bg-slate-900 border border-white/5 p-4 rounded-2xl">
+                <div className="bg-[#071524] border border-[#0078D4]/20 p-4 rounded-2xl">
                   <span className="text-[9px] font-mono text-teal-400 uppercase block tracking-widest mb-2 font-bold">
                     ⚙️ Technical Intercept Mechanism
                   </span>
-                  <p className="text-xs text-slate-300 leading-relaxed font-light italic">
+                  <p className="text-xs text-slate-200 leading-relaxed font-light italic">
                     &ldquo;{steps[activeStep].tech}&rdquo;
                   </p>
                 </div>
 
                 <div className="space-y-2">
-                  <span className="text-[9.5px] font-mono text-slate-400 uppercase tracking-widest font-bold block">
+                  <span className="text-[9.5px] font-mono text-slate-300 uppercase tracking-widest font-bold block">
                     Bound Artifacts & Systems
                   </span>
                   <div className="grid grid-cols-2 gap-2 text-[11px]">
                     {steps[activeStep].nodes.map((node, i) => (
-                      <div key={i} className="flex items-center gap-1.5 p-2 rounded-lg bg-slate-950 border border-white/5 text-slate-200">
+                      <div key={i} className="flex items-center gap-1.5 p-2 rounded-lg bg-[#071524] border border-white/10 text-slate-200 hover:border-[#0078D4]/50 transition-colors">
                         <CornerDownRight className="w-3.5 h-3.5 text-[#0078D4] flex-shrink-0" />
                         <span className="truncate">{node}</span>
                       </div>
@@ -263,7 +263,7 @@ export default function WhereBastionFits() {
             </div>
 
             {/* Bottom prompt alignment */}
-            <div className="mt-8 pt-4 border-t border-white/5 space-y-3">
+            <div className="mt-8 pt-4 border-t border-white/10 space-y-3">
               <p className="text-[10px] text-slate-400 font-mono leading-relaxed">
                 * Bastion sits directly above these integration frameworks and registers trace records as safe, immutable logs in the compliance pipeline.
               </p>
@@ -271,9 +271,9 @@ export default function WhereBastionFits() {
                 onClick={() => {
                   setActiveStep((prev) => (prev + 1) % steps.length);
                 }}
-                className="w-full py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all text-xs font-mono font-bold text-white uppercase flex items-center justify-center gap-1.5"
+                className="w-full py-2.5 rounded-xl bg-white/5 hover:bg-[#0078D4] hover:border-[#0078D4] border border-white/10 transition-all text-xs font-mono font-bold text-white uppercase flex items-center justify-center gap-1.5 cursor-pointer shadow-lg"
               >
-                Inspect Next Step <ChevronRight className="w-4 h-4 text-[#0078D4]" />
+                Inspect Next Step <ChevronRight className="w-4 h-4 text-white" />
               </button>
             </div>
 

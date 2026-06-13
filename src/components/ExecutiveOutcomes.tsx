@@ -48,7 +48,7 @@ export default function ExecutiveOutcomes() {
       outcome: "Guarantees secure system execution even during high risk scenarios, establishing robust operational barriers.",
       icon: Award,
       tag: "ALIGNMENT RATINGS",
-      colorClass: "from-[#0078D4]/15 via-[#0078D4]/5 to-transparent border-[#0078D4]/20 text-sky-305 pointer-events-none"
+      colorClass: "from-[#0078D4]/15 via-[#0078D4]/5 to-transparent border-[#0078D4]/20 text-sky-300 pointer-events-none"
     },
     {
       title: "Audit Preparation Time",
@@ -108,7 +108,7 @@ export default function ExecutiveOutcomes() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
-                className={`bg-slate-950/70 border rounded-2xl p-6 flex flex-col justify-between h-[360px] relative overflow-hidden hover:border-slate-700 transition-all duration-300 group`}
+                className="bg-[#0b1d33] border border-white/10 rounded-2xl p-6 flex flex-col justify-between h-[360px] relative overflow-hidden hover:border-[#0078D4]/60 hover:shadow-[0_0_25px_rgba(0,120,212,0.3)] shadow-[0_4px_25px_rgba(0,0,0,0.5)] transition-all duration-300 group"
               >
                 {/* Visual top bar of glowing color gradient */}
                 <div className={`absolute top-0 left-0 w-full h-[2.5px] bg-gradient-to-r ${
@@ -125,7 +125,7 @@ export default function ExecutiveOutcomes() {
 
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-mono text-slate-400 font-bold uppercase tracking-widest bg-slate-900 border border-white/5 px-2.5 py-1 rounded">
+                    <span className="text-[10px] font-mono text-slate-200 font-bold uppercase tracking-widest bg-slate-900 border border-white/10 px-2.5 py-1 rounded">
                       {card.tag}
                     </span>
                     <div className="p-2 rounded-xl bg-white/5 border border-white/10 text-white shadow-inner group-hover:scale-110 transition-transform">
@@ -134,7 +134,7 @@ export default function ExecutiveOutcomes() {
                   </div>
 
                   <div className="space-y-2">
-                    <h3 className="text-base font-bold font-display text-white tracking-tight group-hover:text-sky-300 transition-colors">
+                    <h3 className="text-base font-bold font-display text-white tracking-tight group-hover:text-sky-305 transition-colors">
                       {card.title}
                     </h3>
                     
@@ -151,7 +151,7 @@ export default function ExecutiveOutcomes() {
                     <span className="text-[9px] font-mono text-slate-400 font-extrabold uppercase block tracking-wider">
                       Business Value:
                     </span>
-                    <p className="text-[11.5px] text-slate-205 leading-relaxed font-light">
+                    <p className="text-[11.5px] text-slate-200 leading-relaxed font-light">
                       {card.businessValue}
                     </p>
                   </div>

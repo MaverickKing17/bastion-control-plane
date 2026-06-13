@@ -128,13 +128,13 @@ export default function PlatformModuleEcosystem() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch font-sans">
           
           {/* Left: 9 Module unified grid map (Col Span 7) */}
-          <div className="lg:col-span-7 bg-slate-950/40 p-6 rounded-3xl border border-white/5 flex flex-col justify-between">
+          <div className="lg:col-span-7 bg-[#0b1d33]/85 p-6 rounded-3xl border border-white/10 flex flex-col justify-between shadow-[0_10px_35px_rgba(0,0,0,0.4)]">
             <div className="space-y-4">
-              <div className="flex justify-between items-center border-b border-white/5 pb-3">
-                <span className="text-[10.5px] font-mono text-slate-400 uppercase tracking-widest font-black">
+              <div className="flex justify-between items-center border-b border-white/10 pb-3">
+                <span className="text-[10.5px] font-mono text-slate-300 uppercase tracking-widest font-black">
                   Unified Platform Map
                 </span>
-                <span className="text-[10px] text-slate-500">Click a module to trace telemetry flows</span>
+                <span className="text-[10px] text-slate-400">Click a module to trace telemetry flows</span>
               </div>
 
               {/* 3x3 Grid representing the fully synchronized engine */}
@@ -148,8 +148,8 @@ export default function PlatformModuleEcosystem() {
                       onClick={() => setActiveModule(mod.id)}
                       className={`p-4 rounded-2xl border transition-all duration-300 cursor-pointer flex flex-col justify-between h-[120px] relative overflow-hidden ${
                         isSelected 
-                          ? 'bg-[#0078D4]/10 border-[#0078D4] text-white shadow-lg shadow-[#0078D4]/10' 
-                          : 'bg-slate-900/40 border-white/5 hover:border-white/15 hover:bg-slate-900/60 text-slate-300'
+                          ? 'bg-[#0a233c] border-[#0078D4] text-white shadow-[0_0_20px_rgba(0,120,212,0.35)] scale-102 z-10' 
+                          : 'bg-[#071524]/75 border-white/10 hover:border-[#0078D4]/50 hover:bg-[#0c2440] text-slate-202'
                       }`}
                     >
                       <div className="flex items-center justify-between">
@@ -159,13 +159,13 @@ export default function PlatformModuleEcosystem() {
                           <ModIcon className="w-4 h-4 text-white" />
                         </div>
                         <span className={`text-[8px] font-mono font-bold uppercase tracking-widest ${
-                          isSelected ? 'text-sky-305' : 'text-slate-500'
+                          isSelected ? 'text-sky-300' : 'text-slate-400'
                         }`}>
                           {isSelected ? 'ACTIVE TRACE' : 'STANDBY'}
                         </span>
                       </div>
 
-                      <strong className="text-[11.5px] font-display font-bold font-mono tracking-tight uppercase block leading-none mt-2">
+                      <strong className="text-[11.5px] font-display font-medium font-mono tracking-tight uppercase block leading-none mt-2">
                         {mod.title}
                       </strong>
                     </div>
@@ -174,36 +174,36 @@ export default function PlatformModuleEcosystem() {
               </div>
             </div>
 
-            <div className="mt-6 pt-4 border-t border-white/5 text-[10.5px] font-mono text-slate-500 leading-relaxed">
+            <div className="mt-6 pt-4 border-t border-white/10 text-[10.5px] font-mono text-slate-400 leading-relaxed">
               * The Platform Module Ecosystem interacts natively, operating under strict, read-only parameters. Raw user data is ignored to comply with SOC2 boundaries.
             </div>
           </div>
 
           {/* Right: Flow Telemetry Inspector Column (Col Span 5) */}
-          <div className="lg:col-span-5 bg-slate-950 border border-white/5 p-6 sm:p-8 rounded-3xl relative overflow-hidden flex flex-col justify-between shadow-2xl">
+          <div className="lg:col-span-5 bg-[#0b1d33] border border-white/10 p-6 sm:p-8 rounded-3xl relative overflow-hidden flex flex-col justify-between shadow-[0_20px_50px_rgba(0,120,212,0.15)] hover:border-[#0078D4]/60 hover:shadow-[0_0_35px_rgba(0,120,212,0.25)] transition-all duration-300">
             {/* Edge line decorations */}
             <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#0078D4] to-cyan-500" />
             
             <div className="space-y-6">
-              <div className="flex items-center justify-between border-b border-white/5 pb-4">
+              <div className="flex items-center justify-between border-b border-white/10 pb-4">
                 <span className="text-[10px] font-mono text-sky-400 uppercase tracking-widest font-bold">
                   Telemetry Flow Monitor
                 </span>
-                <span className="text-[9.5px] font-mono text-slate-400 bg-slate-900 border border-white/5 px-2 py-0.5 rounded uppercase font-bold">
+                <span className="text-[9.5px] font-mono text-slate-200 bg-[#071524] border border-white/10 px-2 py-0.5 rounded uppercase font-bold text-center">
                   {active.id}
                 </span>
               </div>
 
               {/* Module Header */}
               <div className="flex items-center gap-3">
-                <div className="p-3 bg-[#0078D4] text-white rounded-xl border border-white/10">
-                  <active.icon className="w-5.5 h-5.5 stroke-[2]" />
+                <div className="p-3 bg-[#071524] text-white rounded-xl border border-white/10 shadow-inner">
+                  <active.icon className="w-5.5 h-5.5 stroke-[2] text-[#0078D4]" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold font-display text-white tracking-tight">
                     {active.title}
                   </h3>
-                  <p className="text-[10.5px] font-mono text-slate-400 uppercase tracking-wide">
+                  <p className="text-[10.5px] font-mono text-slate-300 uppercase tracking-wide">
                     Module Function and Cohesion
                   </p>
                 </div>
@@ -211,36 +211,36 @@ export default function PlatformModuleEcosystem() {
 
               {/* Descriptions & Inputs/Outputs */}
               <div className="space-y-4 pt-2">
-                <p className="text-xs text-slate-205 leading-relaxed font-light bg-slate-905 border border-white/5 p-3 rounded-xl">
+                <p className="text-xs text-slate-200 leading-relaxed font-light bg-[#071524] border border-white/10 p-3 rounded-xl">
                   {active.desc}
                 </p>
 
                 {/* Input Telemetry */}
-                <div className="space-y-1 bg-slate-900/50 p-3 rounded-xl border border-white/5">
+                <div className="space-y-1 bg-[#071524] p-3 rounded-xl border border-white/10">
                   <span className="text-[9px] font-mono text-indigo-400 uppercase tracking-widest block font-bold">
                     📥 Inflow signals:
                   </span>
-                  <p className="text-xs text-slate-300 leading-normal font-light">
+                  <p className="text-xs text-slate-200 leading-normal font-light">
                     {active.flowIn}
                   </p>
                 </div>
 
                 {/* Output Telemetry */}
-                <div className="space-y-1 bg-slate-900/50 p-3 rounded-xl border border-white/5">
+                <div className="space-y-1 bg-[#071524] p-3 rounded-xl border border-white/10">
                   <span className="text-[9px] font-mono text-teal-400 uppercase tracking-widest block font-bold">
                     📤 Outflow telemetry:
                   </span>
-                  <p className="text-xs text-slate-300 leading-normal font-light">
+                  <p className="text-xs text-slate-200 leading-normal font-light">
                     {active.flowOut}
                   </p>
                 </div>
 
                 {/* Cohesion segment */}
-                <div className="space-y-1 bg-slate-900/50 p-3 rounded-xl border border-white/5">
-                  <span className="text-[9px] font-mono text-slate-400 uppercase tracking-widest block font-bold">
+                <div className="space-y-1 bg-[#071524] p-3 rounded-xl border border-teal-500/10">
+                  <span className="text-[9px] font-mono text-slate-450 uppercase tracking-widest block font-bold">
                     ⚖️ Cohesion Role:
                   </span>
-                  <p className="text-xs text-[#0078D4] leading-normal font-semibold italic">
+                  <p className="text-xs text-sky-400 leading-normal font-semibold italic">
                     &gt; {active.cohesion}
                   </p>
                 </div>
@@ -248,7 +248,7 @@ export default function PlatformModuleEcosystem() {
             </div>
 
             {/* Bottom button trigger */}
-            <div className="mt-8 pt-4 border-t border-white/5 flex items-center justify-between gap-4 text-xs">
+            <div className="mt-8 pt-4 border-t border-white/10 flex items-center justify-between gap-4 text-xs">
               <span className="text-slate-400 font-light font-mono leading-none">
                 Telemetry State: Calibrated
               </span>
@@ -257,9 +257,9 @@ export default function PlatformModuleEcosystem() {
                   const nextIdx = (modules.findIndex(m => m.id === activeModule) + 1) % modules.length;
                   setActiveModule(modules[nextIdx].id);
                 }}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all font-mono font-bold text-white uppercase rounded-lg"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/5 hover:bg-[#0078D4] hover:border-[#0078D4] border border-white/10 transition-all font-mono font-bold text-white uppercase rounded-lg cursor-pointer"
               >
-                Scan Next Module <ArrowRight className="w-3.5 h-3.5 text-[#0078D4]" />
+                Scan Next Module <ArrowRight className="w-3.5 h-3.5 text-white animate-bounce" />
               </button>
             </div>
 

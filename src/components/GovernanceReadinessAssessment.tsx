@@ -90,19 +90,19 @@ export default function GovernanceReadinessAssessment({ onRequestReview }: Gover
         
         {/* Header */}
         <div className="text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#0078D4]/10 border border-[#0078D4]/20 rounded-full text-[10px] text-sky-305 font-mono font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#0078D4]/10 border border-[#0078D4]/20 rounded-full text-[10px] text-sky-400 font-mono font-bold uppercase tracking-wider">
             <ClipboardCheck className="w-3.5 h-3.5 text-[#0078D4]" /> Self-Service Auditing Panel
           </div>
           <h2 className="font-display font-black text-3xl sm:text-4.5xl text-white tracking-tight leading-none text-center">
             AI Governance Readiness Assessment
           </h2>
-          <p className="text-sm text-slate-350 max-w-xl mx-auto font-light leading-relaxed">
+          <p className="text-sm text-slate-300 max-w-xl mx-auto font-light leading-relaxed">
             Conduct a quick, 5-question interactive evaluation of your current enterprise posture to calculate your compliance coverage and exposure risk index.
           </p>
         </div>
 
         {/* Assessment Card Grid */}
-        <div className="bg-slate-950 border border-white/5 rounded-3xl p-6 sm:p-10 relative overflow-hidden shadow-2xl">
+        <div className="bg-[#0b1d33] border border-white/10 rounded-3xl p-6 sm:p-10 relative overflow-hidden shadow-2xl hover:border-[#0078D4]/50 hover:shadow-[0_0_35px_rgba(0,120,212,0.25)] transition-all duration-350">
           <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#0078D4] via-indigo-500 to-teal-500" />
           
           <AnimatePresence mode="wait">
@@ -116,17 +116,17 @@ export default function GovernanceReadinessAssessment({ onRequestReview }: Gover
                 className="space-y-8"
               >
                 {/* Progress indicators */}
-                <div className="flex items-center justify-between border-b border-white/5 pb-4">
-                  <span className="text-[10.5px] font-mono text-sky-450 uppercase tracking-widest font-bold">
+                <div className="flex items-center justify-between border-b border-white/10 pb-4">
+                  <span className="text-[10.5px] font-mono text-sky-400 uppercase tracking-widest font-bold">
                     Executive Audit Quiz
                   </span>
-                  <span className="text-[10px] font-mono text-slate-400 bg-slate-900 border border-white/5 px-2.5 py-1 rounded">
+                  <span className="text-[10px] font-mono text-slate-200 bg-[#071524] border border-white/10 px-2.5 py-1 rounded">
                     QUESTION {currentQuestion + 1} OF {questions.length}
                   </span>
                 </div>
 
                 {/* Progress bar */}
-                <div className="w-full h-1.5 bg-slate-900 rounded-full overflow-hidden">
+                <div className="w-full h-1.5 bg-[#071524] rounded-full overflow-hidden">
                   <div 
                     className="h-full bg-gradient-to-r from-[#0078D4] to-teal-400 transition-all duration-300" 
                     style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
@@ -135,10 +135,10 @@ export default function GovernanceReadinessAssessment({ onRequestReview }: Gover
 
                 {/* Question Title & Description */}
                 <div className="space-y-3">
-                  <h3 className="text-xl sm:text-2xl font-bold font-display text-white tracking-tight leading-none">
+                  <h3 className="text-xl sm:text-2xl font-bold font-display text-white tracking-tight leading-none animate-fadeIn">
                     {questions[currentQuestion].text}
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-205 leading-relaxed font-light">
+                  <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-light">
                     {questions[currentQuestion].desc}
                   </p>
                 </div>
@@ -147,43 +147,43 @@ export default function GovernanceReadinessAssessment({ onRequestReview }: Gover
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
                   <button
                     onClick={() => handleAnswer(2)}
-                    className="p-4 rounded-xl bg-slate-900 hover:bg-sky-950/40 border border-white/5 hover:border-[#0078D4] transition-all cursor-pointer text-left group"
+                    className="p-4 rounded-xl bg-[#071524] hover:bg-[#0c2440] border border-white/10 hover:border-[#0078D4] transition-all cursor-pointer text-left group"
                   >
                     <span className="text-emerald-400 font-mono text-[10.5px] font-bold block uppercase tracking-wider mb-1">
                       YES (Fully)
                     </span>
-                    <p className="text-[11.5px] text-slate-300 leading-snug font-light">
+                    <p className="text-[11.5px] text-slate-200 leading-snug font-light">
                       This capability is integrated, fully automated, and actively monitored.
                     </p>
                   </button>
 
                   <button
                     onClick={() => handleAnswer(1)}
-                    className="p-4 rounded-xl bg-slate-900 hover:bg-slate-905 border border-white/5 hover:border-teal-500 transition-all cursor-pointer text-left group"
+                    className="p-4 rounded-xl bg-[#071524] hover:bg-[#0c2440] border border-white/10 hover:border-teal-500 transition-all cursor-pointer text-left group"
                   >
                     <span className="text-amber-400 font-mono text-[10.5px] font-bold block uppercase tracking-wider mb-1">
                       PARTIAL (Ad-Hoc)
                     </span>
-                    <p className="text-[11.5px] text-slate-300 leading-snug font-light">
+                    <p className="text-[11.5px] text-slate-200 leading-snug font-light">
                       We have manual guidelines but lack systemic logs or automatic checks.
                     </p>
                   </button>
 
                   <button
                     onClick={() => handleAnswer(0)}
-                    className="p-4 rounded-xl bg-slate-900 hover:bg-rose-950/20 border border-white/5 hover:border-rose-500 transition-all cursor-pointer text-left group"
+                    className="p-4 rounded-xl bg-[#071524] hover:bg-[#0c2440] border border-white/10 hover:border-rose-500 transition-all cursor-pointer text-left group"
                   >
                     <span className="text-rose-400 font-mono text-[10.5px] font-bold block uppercase tracking-wider mb-1">
                       NO (Absent)
                     </span>
-                    <p className="text-[11.5px] text-slate-300 leading-snug font-light">
+                    <p className="text-[11.5px] text-slate-200 leading-snug font-light">
                       No active logs, identity maps, or compliance validation exists right now.
                     </p>
                   </button>
                 </div>
 
                 {/* Relevance metadata box */}
-                <div className="p-4 rounded-xl bg-slate-900 border border-white/5 text-[11px] text-slate-400 leading-relaxed font-light italic">
+                <div className="p-4 rounded-xl bg-[#071524] border border-white/10 text-[11px] text-slate-300 leading-relaxed font-light italic">
                   <strong>💡 Risk Relevance:</strong> {questions[currentQuestion].relevance}
                 </div>
 
@@ -207,7 +207,7 @@ export default function GovernanceReadinessAssessment({ onRequestReview }: Gover
 
                 {/* Dynamic Radial Score indicator */}
                 <div className="space-y-4">
-                  <div className="inline-flex items-center justify-center relative w-36 h-36 rounded-full bg-slate-900 border border-white/10 shadow-inner">
+                  <div className="inline-flex items-center justify-center relative w-36 h-36 rounded-full bg-[#071524] border border-white/10 shadow-inner">
                     {/* SVG Radial circle */}
                     <svg className="absolute w-full h-full transform -rotate-90">
                       <circle cx="72" cy="72" r="64" stroke="rgba(255,255,255,0.02)" strokeWidth="6" fill="transparent" />
@@ -239,7 +239,7 @@ export default function GovernanceReadinessAssessment({ onRequestReview }: Gover
                        score >= 50 ? "Moderate Regulatory Risk Identified" :
                        "Vulnerable Compliance & Oversight Posture"}
                     </h3>
-                    <p className="text-xs text-slate-355 leading-relaxed font-light">
+                    <p className="text-xs text-slate-200 leading-relaxed font-light">
                       {score >= 80 ? "Your organization possesses structured guidelines, yet continuous automated verification is still required to guarantee 100% SEC audit defense." :
                        score >= 50 ? "You have established basic risk mitigations. However, the lack of cryptographically sealed prompt evidence registers significant exposure spots during formal board evaluations." :
                        "Your systems are currently blind to autonomous model actions. The lack of verified owners and alignment checks creates critical legal & financial compliance liabilities."}
@@ -248,19 +248,19 @@ export default function GovernanceReadinessAssessment({ onRequestReview }: Gover
                 </div>
 
                 {/* Next Steps CTA block */}
-                <div className="p-6 bg-slate-900 border border-white/5 rounded-2xl flex flex-col md:flex-row justify-between items-center gap-4 text-left">
-                  <div className="space-y-1">
+                <div className="p-6 bg-[#071524] border border-white/10 rounded-2xl flex flex-col md:flex-row justify-between items-center gap-4 text-left shadow-md">
+                  <div className="space-y-1 bg-transparent">
                     <span className="text-[10px] font-mono text-teal-400 font-bold block uppercase tracking-wider">
                       📝 RECOMMENDED OUTCOME: ARCHITECTURE REVIEW
                     </span>
-                    <p className="text-xs text-slate-300 leading-relaxed font-light">
+                    <p className="text-xs text-slate-200 leading-relaxed font-light">
                       Establish a secure baseline with our lead engineers. We will review your trace layouts, token schemas, and custom database bindings safely using synthetic pilots.
                     </p>
                   </div>
 
                   <button
                     onClick={onRequestReview}
-                    className="w-full md:w-auto px-5 py-3 rounded-lg bg-gradient-to-r from-[#0078D4] to-sky-505 hover:opacity-90 inline-flex items-center justify-center gap-1.5 text-xs font-mono font-bold text-white uppercase tracking-wider cursor-pointer shadow-lg active:scale-98 transition-all"
+                    className="w-full md:w-auto px-5 py-3 rounded-lg bg-gradient-to-r from-[#0078D4] to-sky-600 hover:opacity-90 inline-flex items-center justify-center gap-1.5 text-xs font-mono font-bold text-white uppercase tracking-wider cursor-pointer shadow-lg active:scale-98 transition-all"
                   >
                     Request Architecture Review <ArrowRight className="w-4 h-4" />
                   </button>
@@ -270,7 +270,7 @@ export default function GovernanceReadinessAssessment({ onRequestReview }: Gover
                 <div className="pt-2 flex justify-center">
                   <button 
                     onClick={resetAssessment}
-                    className="inline-flex items-center gap-1.5 text-slate-500 hover:text-slate-205 font-mono text-[10.5px] cursor-pointer"
+                    className="inline-flex items-center gap-1.5 text-slate-400 hover:text-white font-mono text-[10.5px] cursor-pointer"
                   >
                     <RotateCcw className="w-3.5 h-3.5" /> Retake Governance Self-Assessment
                   </button>
