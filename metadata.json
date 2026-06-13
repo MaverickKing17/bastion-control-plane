@@ -1,0 +1,8 @@
+{
+  "name": "Bastion Audit",
+  "description": "AI Control Plane for Autonomous Agents. An executive-grade security, compliance, and risk containment platform for autonomous AI ecosystems in enterprise and financial services.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
