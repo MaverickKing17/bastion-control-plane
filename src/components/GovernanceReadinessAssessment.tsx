@@ -134,57 +134,57 @@ export default function GovernanceReadinessAssessment({ onRequestReview }: Gover
                 </div>
 
                 {/* Question Title & Description */}
-                <div className="space-y-3">
-                  <h3 className="text-xl sm:text-2xl font-bold font-display text-white tracking-tight leading-none animate-fadeIn">
+                <div className="space-y-4">
+                  <h3 className="text-2xl sm:text-3xl lg:text-3.5xl font-black font-display text-white tracking-tight leading-tight animate-fadeIn drop-shadow-[0_2px_10px_rgba(255,255,255,0.15)]">
                     {questions[currentQuestion].text}
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-light">
+                  <p className="text-sm sm:text-base lg:text-lg text-slate-100 leading-relaxed font-normal">
                     {questions[currentQuestion].desc}
                   </p>
                 </div>
 
                 {/* Multi-tier Answer buttons */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <button
                     onClick={() => handleAnswer(2)}
-                    className="p-4 rounded-xl bg-[#071524] hover:bg-[#0c2440] border border-white/10 hover:border-[#0078D4] transition-all cursor-pointer text-left group"
+                    className="p-5 rounded-xl bg-[#071524] hover:bg-[#0c2440] border-2 border-white/20 hover:border-emerald-400 transition-all cursor-pointer text-left group shadow-lg"
                   >
-                    <span className="text-emerald-400 font-mono text-[10.5px] font-bold block uppercase tracking-wider mb-1">
+                    <span className="text-emerald-400 font-mono text-xs sm:text-sm font-black block uppercase tracking-widest mb-2 group-hover:text-emerald-300">
                       YES (Fully)
                     </span>
-                    <p className="text-[11.5px] text-slate-200 leading-snug font-light">
+                    <p className="text-xs sm:text-[13px] text-white leading-relaxed font-medium">
                       This capability is integrated, fully automated, and actively monitored.
                     </p>
                   </button>
 
                   <button
                     onClick={() => handleAnswer(1)}
-                    className="p-4 rounded-xl bg-[#071524] hover:bg-[#0c2440] border border-white/10 hover:border-teal-500 transition-all cursor-pointer text-left group"
+                    className="p-5 rounded-xl bg-[#071524] hover:bg-[#0c2440] border-2 border-white/20 hover:border-amber-400 transition-all cursor-pointer text-left group shadow-lg"
                   >
-                    <span className="text-amber-400 font-mono text-[10.5px] font-bold block uppercase tracking-wider mb-1">
+                    <span className="text-amber-400 font-mono text-xs sm:text-sm font-black block uppercase tracking-widest mb-2 group-hover:text-amber-300">
                       PARTIAL (Ad-Hoc)
                     </span>
-                    <p className="text-[11.5px] text-slate-200 leading-snug font-light">
+                    <p className="text-xs sm:text-[13px] text-white leading-relaxed font-medium">
                       We have manual guidelines but lack systemic logs or automatic checks.
                     </p>
                   </button>
 
                   <button
                     onClick={() => handleAnswer(0)}
-                    className="p-4 rounded-xl bg-[#071524] hover:bg-[#0c2440] border border-white/10 hover:border-rose-500 transition-all cursor-pointer text-left group"
+                    className="p-5 rounded-xl bg-[#071524] hover:bg-[#0c2440] border-2 border-white/20 hover:border-rose-500 transition-all cursor-pointer text-left group shadow-lg"
                   >
-                    <span className="text-rose-400 font-mono text-[10.5px] font-bold block uppercase tracking-wider mb-1">
+                    <span className="text-rose-405 font-mono text-xs sm:text-sm font-black block uppercase tracking-widest mb-2 group-hover:text-rose-300">
                       NO (Absent)
                     </span>
-                    <p className="text-[11.5px] text-slate-200 leading-snug font-light">
+                    <p className="text-xs sm:text-[13px] text-white leading-relaxed font-medium">
                       No active logs, identity maps, or compliance validation exists right now.
                     </p>
                   </button>
                 </div>
 
                 {/* Relevance metadata box */}
-                <div className="p-4 rounded-xl bg-[#071524] border border-white/10 text-[11px] text-slate-300 leading-relaxed font-light italic">
-                  <strong>💡 Risk Relevance:</strong> {questions[currentQuestion].relevance}
+                <div className="p-4 rounded-xl bg-[#071524] border-2 border-yellow-400/50 text-xs sm:text-sm text-slate-100 leading-relaxed font-medium shadow-[0_0_15px_rgba(234,179,8,0.1)]">
+                  <strong className="text-yellow-405">💡 Risk Relevance:</strong> {questions[currentQuestion].relevance}
                 </div>
 
               </motion.div>

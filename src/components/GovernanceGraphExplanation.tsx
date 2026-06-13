@@ -529,49 +529,53 @@ export default function GovernanceGraphExplanation() {
           <div className="lg:col-span-12 xl:col-span-5 flex flex-col justify-between gap-6">
             
             {/* PANEL 1: RISK PROPAGATION PATH EXPLORER */}
-            <div className="bg-slate-950/80 p-5 rounded-3xl border border-white/10 space-y-4 shadow-2xl relative overflow-hidden">
-              <div className="absolute top-0 right-0 bg-red-550/10 text-red-400 border-l border-b border-red-550/20 px-3 py-1 text-[9px] font-mono uppercase tracking-widest font-bold">
-                Live Pathway Analysis
+            <div className="bg-[#0b1d33]/95 p-6 rounded-3xl border-2 border-rose-500/60 shadow-[0_0_40px_rgba(244,63,94,0.15),0_15px_50px_rgba(0,0,0,0.7)] hover:border-rose-400 hover:shadow-[0_0_55px_rgba(244,63,94,0.25),0_15px_50px_rgba(0,0,0,0.7)] space-y-5 relative overflow-hidden transition-all duration-350">
+              <div className="absolute top-0 right-0 bg-rose-500/20 text-rose-200 border-l border-b border-rose-500/40 px-3.5 py-1 text-[10px] font-mono uppercase tracking-widest font-black animate-pulse">
+                LIVE PATHWAY ACCUMULATION
               </div>
 
-              <div className="space-y-1">
-                <div className="flex items-center gap-1.5 text-rose-450 font-bold">
-                  <AlertOctagon className="w-4 h-4 text-rose-505 animate-pulse" />
-                  <h4 className="text-xs font-mono uppercase tracking-widest text-white">
+              <div className="space-y-1.5">
+                <div className="flex items-center gap-2 text-rose-400 font-black">
+                  <AlertOctagon className="w-5.5 h-5.5 text-rose-500 animate-pulse" />
+                  <h4 className="text-sm sm:text-base font-mono uppercase tracking-widest text-shadow-glow">
                     Risk Path Explorer
                   </h4>
                 </div>
-                <p className="text-[10px] text-slate-400 font-mono">
-                  Identified Multi-hop Vulnerability Thread In Progress
+                <p className="text-xs sm:text-sm text-slate-100 font-mono font-semibold">
+                  &gt; Identified Multi-hop Vulnerability Thread In Progress
                 </p>
               </div>
 
               {/* Cascade Path Nodes */}
-              <div className="space-y-2">
+              <div className="space-y-3">
                 {[
-                  { title: "Compromised Identity", type: "Identity Access", color: "text-sky-450", bg: "bg-sky-505/10", border: 'border-sky-505/30' },
-                  { title: "AI Governance Group", type: "Entra Context", color: "text-cyan-450", bg: "bg-cyan-505/10", border: 'border-cyan-505/30' },
-                  { title: "UnderwriterGPT", type: "Cognitive Executor", color: "text-yellow-450", bg: "bg-yellow-505/10", border: 'border-yellow-505/30' },
-                  { title: "Credit Decision API", type: "Downstream Asset", color: "text-purple-450", bg: "bg-purple-505/10", border: 'border-purple-505/30' },
-                  { title: "Customer Database", type: "Enterprise Storage", color: "text-amber-450", bg: "bg-amber-505/10", border: 'border-amber-505/30' },
-                  { title: "PIPEDA Exposure Violation", type: "Regulatory Penalty", color: "text-rose-450", bg: "bg-rose-505/20", border: 'border-rose-505/40', isEnd: true }
+                  { title: "Compromised Identity", type: "Identity Access", color: "text-sky-305 font-black", bg: "bg-sky-500/20", border: 'border-sky-500/90' },
+                  { title: "AI Governance Group", type: "Entra Context", color: "text-cyan-305 font-black", bg: "bg-cyan-500/20", border: 'border-cyan-500/90' },
+                  { title: "UnderwriterGPT", type: "Cognitive Executor", color: "text-yellow-305 font-black", bg: "bg-yellow-500/20", border: 'border-yellow-500/90' },
+                  { title: "Credit Decision API", type: "Downstream Asset", color: "text-indigo-305 font-black", bg: "bg-indigo-500/20", border: 'border-indigo-505/90' },
+                  { title: "Customer Database", type: "Enterprise Storage", color: "text-amber-305 font-black", bg: "bg-amber-500/20", border: 'border-amber-500/90' },
+                  { title: "PIPEDA Exposure Violation", type: "Regulatory Penalty", color: "text-rose-305 font-black", bg: "bg-rose-510/20", border: 'border-rose-500/95', isEnd: true }
                 ].map((step, idx) => (
                   <div key={idx} className="relative">
                     {/* Connection lines between steps */}
                     {idx < 5 && (
-                      <div className="absolute left-[13px] top-[26px] h-3.5 w-[1.5px] bg-gradient-to-b from-rose-505 to-rose-405 z-0" />
+                      <div className="absolute left-[17px] top-[34px] h-[34px] w-[3px] bg-gradient-to-b from-rose-500 to-rose-600 z-0 opacity-80 animate-pulse" />
                     )}
-                    <div className="flex items-center gap-3 relative z-10">
-                      <div className="w-7 h-7 rounded-lg bg-slate-900 border border-white/10 flex items-center justify-center text-[10.5px] font-mono text-white font-bold">
+                    <div className="flex items-center gap-4 relative z-10">
+                      <div className={`w-9 h-9 rounded-full bg-slate-950 border-2 ${step.border} flex items-center justify-center text-sm font-mono text-white font-black shadow-[0_0_15px_rgba(255,255,255,0.15)] flex-shrink-0 transition-transform duration-350 hover:scale-110`}>
                         {idx + 1}
                       </div>
-                      <div className={`flex-1 flex items-center justify-between p-2 rounded-xl bg-slate-950 border ${step.border} ${step.isEnd ? 'shadow-[0_0_15px_rgba(244,63,94,0.15)]' : ''}`}>
-                        <div className="space-y-0.5">
-                          <span className="text-[10px] text-white font-bold block">{step.title}</span>
-                          <span className="text-[8px] text-slate-400 font-mono uppercase block">{step.type}</span>
+                      <div className={`flex-1 flex items-center justify-between p-3.5 rounded-2xl bg-[#071524] border-2 ${step.border} ${step.isEnd ? 'shadow-[0_0_25px_rgba(244,63,94,0.3)] bg-rose-500/5' : 'hover:bg-slate-900'} transition-all duration-300 hover:scale-[1.015]`}>
+                        <div className="space-y-1">
+                          <span className="text-sm sm:text-base text-white font-black block tracking-wide drop-shadow-[0_1px_5px_rgba(255,255,255,0.2)]">
+                            {step.title}
+                          </span>
+                          <span className={`text-[10px] font-mono uppercase tracking-widest block ${step.color}`}>
+                            {step.type}
+                          </span>
                         </div>
                         {step.isEnd && (
-                          <div className="text-[8.5px] font-mono font-black text-rose-400 uppercase bg-rose-550/15 border border-rose-550/30 px-1.5 py-0.5 rounded animate-bounce">
+                          <div className="text-[10px] font-mono font-black text-rose-100 uppercase bg-rose-600 border-2 border-rose-400 px-2 py-1 rounded-xl animate-bounce shadow-[0_0_15px_rgba(244,63,94,0.5)]">
                             EXPOSING
                           </div>
                         )}
@@ -582,18 +586,24 @@ export default function GovernanceGraphExplanation() {
               </div>
 
               {/* Path Metrics Box */}
-              <div className="grid grid-cols-3 gap-2 pt-3 border-t border-white/10 bg-slate-900/50 p-3 rounded-2xl">
-                <div className="text-center">
-                  <span className="text-[8px] font-mono text-slate-400 uppercase block">Potential Impact</span>
-                  <span className="text-sm font-mono font-black text-white">$3.8M</span>
+              <div className="grid grid-cols-3 gap-3 pt-4 border-t-2 border-white/10 bg-slate-950 p-4 rounded-2xl shadow-inner">
+                <div className="text-center space-y-1">
+                  <span className="text-[9px] sm:text-xs font-mono text-white/80 uppercase tracking-wider block font-bold">Potential Impact</span>
+                  <span className="text-sm sm:text-lg lg:text-xl font-mono font-extrabold text-white block tracking-tight drop-shadow-[0_2px_8px_rgba(255,255,255,0.2)]">
+                    $3.8M
+                  </span>
                 </div>
-                <div className="text-center border-x border-white/10">
-                  <span className="text-[8px] font-mono text-slate-400 uppercase block">Affected Records</span>
-                  <span className="text-sm font-mono font-black text-white">152,000</span>
+                <div className="text-center border-x-2 border-white/10 space-y-1">
+                  <span className="text-[9px] sm:text-xs font-mono text-white/80 uppercase tracking-wider block font-bold">Affected Records</span>
+                  <span className="text-sm sm:text-lg lg:text-xl font-mono font-extrabold text-white block tracking-tight drop-shadow-[0_2px_8px_rgba(255,255,255,0.2)]">
+                    152,000
+                  </span>
                 </div>
-                <div className="text-center">
-                  <span className="text-[8px] font-mono text-slate-400 uppercase block">Risk Score</span>
-                  <span className="text-sm font-mono font-black text-red-400 animate-pulse">92 / 100</span>
+                <div className="text-center space-y-1">
+                  <span className="text-[9px] sm:text-xs font-mono text-white/80 uppercase tracking-wider block font-bold">Risk Score</span>
+                  <span className="text-sm sm:text-lg lg:text-xl font-mono font-extrabold text-rose-400 block tracking-tight drop-shadow-[0_0_12px_rgba(244,63,94,0.4)] animate-pulse">
+                    92 / 100
+                  </span>
                 </div>
               </div>
             </div>
