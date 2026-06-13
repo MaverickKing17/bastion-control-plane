@@ -1,58 +1,58 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Plus Jakarta Sans", "Inter", sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-sans: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Segoe UI Semibold", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: Consolas, "Segoe UI Mono", "Andale Mono", "Courier New", Courier, monospace;
 
-  --color-bastion-bg: #f8fafc;
-  --color-bastion-bg-secondary: #ffffff;
-  --color-bastion-bg-tertiary: #f1f5f9;
-  --color-bastion-azure: #4f46e5;
-  --color-bastion-azure-light: #6366f1;
-  --color-bastion-border: #e2e8f0;
-  --color-bastion-border-hover: #cbd5e1;
-  --color-bastion-text-muted: #64748b;
-  --color-bastion-text-bright: #0f172a;
+  --color-bastion-bg: #071524;
+  --color-bastion-bg-secondary: #0b1d33;
+  --color-bastion-bg-tertiary: #0e2745;
+  --color-bastion-azure: #0078D4;
+  --color-bastion-azure-light: #2b88d9;
+  --color-bastion-border: rgba(255, 255, 255, 0.08);
+  --color-bastion-border-hover: rgba(255, 255, 255, 0.16);
+  --color-bastion-text-muted: #8fa3b7;
+  --color-bastion-text-bright: #ffffff;
 }
 
-/* Custom premium scrollbar for high-end feel */
+/* Custom premium scrollbar for Microsoft high-end console feel */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f8fafc;
+  background: #071524;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #1e293b;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #4f46e5;
+  background: #0078D4;
 }
 
-/* Soft ambient glows resembling Palantir and Apple visuals */
+/* Soft ambient glows resembling Microsoft/Azure and Palantir visuals */
 .ambient-glow {
-  background: radial-gradient(circle at 50% 50%, rgba(79, 70, 229, 0.06) 0%, rgba(248, 250, 252, 0) 70%);
+  background: radial-gradient(circle at 50% 50%, rgba(0, 120, 212, 0.06) 0%, rgba(7, 21, 36, 0) 70%);
 }
 
 /* Scoped dark theme overrides for the interactive-dashboard and architecture-diagram to ensure they remain elite dark console visuals */
 #interactive-dashboard,
 #architecture-diagram,
 #design-partner-modal {
-  --color-bastion-bg: #030712; /* Extreme dark Slate 950 */
-  --color-bastion-bg-secondary: #0f172a; /* Slate 900 */
-  --color-bastion-bg-tertiary: #1e293b; /* Slate 800 */
-  --color-bastion-azure: #4f46e5; /* Indigo 600 */
-  --color-bastion-azure-light: #6366f1; /* Indigo 500 */
+  --color-bastion-bg: #040e1a; /* Secure Deep Dark Blue */
+  --color-bastion-bg-secondary: #071524; /* Dark Slate Blue */
+  --color-bastion-bg-tertiary: #0c233c; /* Mid Blue */
+  --color-bastion-azure: #0078D4; /* Microsoft Blue */
+  --color-bastion-azure-light: #2b88d9; /* Microsoft Light Blue */
   --color-bastion-border: rgba(255, 255, 255, 0.09);
   --color-bastion-border-hover: rgba(255, 255, 255, 0.18);
-  --color-bastion-text-muted: #94a3b8; /* Slate 400 */
-  --color-bastion-text-bright: #f8fafc; /* Slate 50 */
+  --color-bastion-text-muted: #8fa3b7; /* Slate Blue Muted */
+  --color-bastion-text-bright: #ffffff; /* pure white */
   
-  color: #f8fafc;
+  color: #ffffff;
 }
 
 #interactive-dashboard select, 
@@ -113,7 +113,7 @@
   content: '';
   position: absolute;
   inset: -1.5px;
-  background: linear-gradient(135deg, rgba(79, 70, 229, 0.4) 0%, rgba(37, 99, 235, 0.4) 50%, rgba(16, 185, 129, 0.25) 100%);
+  background: linear-gradient(135deg, rgba(0, 120, 212, 0.4) 0%, rgba(43, 136, 217, 0.4) 50%, rgba(20, 184, 166, 0.25) 100%);
   border-radius: inherit;
   z-index: 0;
   opacity: 0.15;
@@ -128,21 +128,21 @@
 .glowing-card:hover {
   transform: translateY(-4px);
   border-color: transparent;
-  box-shadow: 0 20px 40px -15px rgba(59, 130, 246, 0.18), 0 0 15px rgba(79, 70, 229, 0.12);
+  box-shadow: 0 20px 40px -15px rgba(0, 120, 212, 0.18), 0 0 15px rgba(0, 120, 212, 0.12);
 }
 
 /* Dark mode glowing card overrides for dark/command center environments */
 .glowing-card-dark {
   position: relative;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  background: #0f172a;
+  background: #071524;
 }
 
 .glowing-card-dark::before {
   content: '';
   position: absolute;
   inset: -1.5px;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.8) 0%, rgba(59, 130, 246, 0.8) 50%, rgba(16, 185, 129, 0.6) 100%);
+  background: linear-gradient(135deg, rgba(0, 120, 212, 0.8) 0%, rgba(43, 136, 217, 0.8) 50%, rgba(20, 184, 166, 0.6) 100%);
   border-radius: inherit;
   z-index: 0;
   opacity: 0.25;
@@ -156,7 +156,7 @@
 
 .glowing-card-dark:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px -15px rgba(59, 130, 246, 0.4), 0 0 25px rgba(99, 102, 241, 0.25);
+  box-shadow: 0 20px 40px -15px rgba(0, 120, 212, 0.4), 0 0 25px rgba(0, 120, 212, 0.25);
   border-color: transparent;
 }
 
