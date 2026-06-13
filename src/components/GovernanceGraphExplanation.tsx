@@ -65,8 +65,8 @@ export default function GovernanceGraphExplanation() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
           
           {/* Left Column: Interactive Topology Viewer (Col Span 7) */}
-          <div className="lg:col-span-7 flex flex-col justify-between bg-slate-950/50 border border-white/5 p-6 rounded-3xl relative">
-            <div className="absolute top-4 right-4 text-[9px] font-mono text-slate-500 tracking-wider">
+          <div className="lg:col-span-7 flex flex-col justify-between bg-[#0b1d33]/90 border-2 border-yellow-400/90 shadow-[0_0_30px_rgba(234,179,8,0.25),0_12px_45px_rgba(0,0,0,0.6)] hover:border-yellow-300 hover:shadow-[0_0_45px_rgba(234,179,8,0.45),0_12px_45px_rgba(0,0,0,0.6)] p-6 rounded-3xl relative transition-all duration-300">
+            <div className="absolute top-4 right-4 text-[9px] font-mono text-slate-400 tracking-wider">
               GRAPH VIEWER v2.0.1
             </div>
 
@@ -83,8 +83,8 @@ export default function GovernanceGraphExplanation() {
                   onClick={() => setActiveSubView(btn.id as GraphSubView)}
                   className={`py-2 rounded-xl text-[10px] font-mono font-bold uppercase tracking-wider text-center transition-all cursor-pointer ${
                     activeSubView === btn.id
-                      ? 'bg-[#0078D4] text-white shadow-md'
-                      : 'text-slate-400 hover:text-slate-205'
+                      ? 'bg-yellow-500 text-slate-950 font-black shadow-md'
+                      : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
                   {btn.label}
@@ -93,7 +93,7 @@ export default function GovernanceGraphExplanation() {
             </div>
 
             {/* Render Custom SVG Topology based on selected view */}
-            <div className="relative w-full aspect-video bg-slate-950 border border-white/5 rounded-2xl flex items-center justify-center p-4 overflow-hidden">
+            <div className="relative w-full aspect-video bg-[#071524] border border-white/10 rounded-2xl flex items-center justify-center p-4 overflow-hidden">
               <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none" />
 
               {/* Dynamic Overlay Graphic */}
@@ -117,21 +117,21 @@ export default function GovernanceGraphExplanation() {
                         {/* Nodes */}
                         <circle cx="200" cy="30" r="14" fill="#0078D4" stroke="#fff" strokeWidth="2" className="animate-pulse" />
                         <text x="200" y="34" fill="#fff" fontSize="10" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">H</text>
-                        <text x="200" y="12" fill="#0078D4" fontSize="8" fontFamily="monospace" textAnchor="middle" fontWeight="bold">HUMAN OWNER</text>
+                        <text x="200" y="12" fill="#38bdf8" fontSize="8" fontFamily="monospace" textAnchor="middle" fontWeight="bold">HUMAN OWNER</text>
 
                         <circle cx="100" cy="100" r="14" fill="#0c1b30" stroke="#0078D4" strokeWidth="2" />
                         <text x="100" y="104" fill="#0078D4" fontSize="10" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">A</text>
-                        <text x="50" y="103" fill="#slate-300" fontSize="8" fontFamily="monospace" textAnchor="middle">AI AGENT</text>
+                        <text x="50" y="103" fill="#cbd5e1" fontSize="8" fontFamily="monospace" textAnchor="middle">AI AGENT</text>
 
                         <circle cx="300" cy="100" r="14" fill="#0c1b30" stroke="#0078D4" strokeWidth="2" />
                         <text x="300" y="104" fill="#0078D4" fontSize="10" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">P</text>
-                        <text x="350" y="103" fill="#slate-300" fontSize="8" fontFamily="monospace" textAnchor="middle">PERMISSION</text>
+                        <text x="350" y="103" fill="#cbd5e1" fontSize="8" fontFamily="monospace" textAnchor="middle">PERMISSION</text>
 
                         <circle cx="200" cy="170" r="14" fill="#1e1b4b" stroke="#3b82f6" strokeWidth="2" />
                         <text x="200" y="174" fill="#60a5fa" fontSize="10" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">E</text>
-                        <text x="200" y="192" fill="#slate-300" fontSize="8" fontFamily="monospace" textAnchor="middle">EVIDENCE RECORD</text>
+                        <text x="200" y="192" fill="#cbd5e1" fontSize="8" fontFamily="monospace" textAnchor="middle">EVIDENCE RECORD</text>
                       </svg>
-                      <span className="text-[10px] font-mono text-slate-400 mt-2">Active Continuous Relationship Mapping Panel</span>
+                      <span className="text-[10px] font-mono text-slate-300 mt-2">Active Continuous Relationship Mapping Panel</span>
                     </div>
                   )}
 
@@ -172,7 +172,7 @@ export default function GovernanceGraphExplanation() {
 
                         <circle cx="200" cy="140" r="16" fill="#0d1b2a" stroke="#10b981" strokeWidth="2" />
                         <text x="200" y="144" fill="#10b981" fontSize="8" fontWeight="bold" textAnchor="middle" fontFamily="monospace">AGENT</text>
-                        <text x="200" y="171" fill="#slate-300" fontSize="8" textAnchor="middle">Active Session Bind Key</text>
+                        <text x="200" y="171" fill="#cbd5e1" fontSize="8" textAnchor="middle">Active Session Bind Key</text>
                       </svg>
                       <span className="text-[10px] font-mono text-emerald-400 mt-2 uppercase font-bold">100% Owner Verified Session Handshake</span>
                     </div>
@@ -186,16 +186,16 @@ export default function GovernanceGraphExplanation() {
                         <line x1="100" y1="50" x2="200" y2="150" stroke="#0078D4" strokeWidth="1.5" />
                         <line x1="300" y1="50" x2="200" y2="150" stroke="#0078D4" strokeWidth="1.5" />
 
-                        <circle cx="100" cy="50" r="10" fill="#0078D4" stroke="#fff" strokeWidth="1" />
-                        <text x="100" y="70" fill="#slate-300" fontSize="8" textAnchor="middle" fontFamily="monospace">AZURE OPENAI</text>
+                        <circle cx="100" cy="50" r="12" fill="#0078D4" stroke="#fff" strokeWidth="1.5" />
+                        <text x="100" y="72" fill="#cbd5e1" fontSize="9" textAnchor="middle" fontFamily="monospace" fontWeight="bold">AZURE OPENAI</text>
 
-                        <circle cx="300" cy="50" r="10" fill="#0078D4" stroke="#fff" strokeWidth="1" />
-                        <text x="300" y="70" fill="#slate-300" fontSize="8" textAnchor="middle" fontFamily="monospace">SERVICENOW</text>
+                        <circle cx="300" cy="50" r="12" fill="#0078D4" stroke="#fff" strokeWidth="1.5" />
+                        <text x="300" y="72" fill="#cbd5e1" fontSize="9" textAnchor="middle" fontFamily="monospace" fontWeight="bold">SERVICENOW</text>
 
-                        <circle cx="200" cy="150" r="10" fill="#10b981" stroke="#fff" strokeWidth="1" />
-                        <text x="200" y="172" fill="#10b981" fontSize="8" textAnchor="middle" fontFamily="monospace" fontWeight="bold">BASTION CORE</text>
+                        <circle cx="200" cy="150" r="12" fill="#10b981" stroke="#fff" strokeWidth="1.5" />
+                        <text x="200" y="174" fill="#10b981" fontSize="9" textAnchor="middle" fontFamily="monospace" fontWeight="bold">BASTION CORE</text>
                       </svg>
-                      <span className="text-[10px] font-mono text-slate-400 mt-2">Continuous Multi-Tenant Gateway Trust Assurance</span>
+                      <span className="text-[10px] font-mono text-slate-300 mt-2">Continuous Multi-Tenant Gateway Trust Assurance</span>
                     </div>
                   )}
                 </motion.div>
@@ -224,8 +224,8 @@ export default function GovernanceGraphExplanation() {
           {/* Right Column: Node definitions (Col Span 5) */}
           <div className="lg:col-span-5 space-y-3.5 flex flex-col justify-between">
             
-            <div className="bg-slate-950/60 p-4 rounded-3xl border border-white/5 space-y-4">
-              <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest font-black block">
+            <div className="bg-[#0b1d33]/90 p-4 rounded-3xl border-2 border-yellow-400/90 shadow-[0_0_30px_rgba(234,179,8,0.25),0_12px_45px_rgba(0,0,0,0.6)] hover:border-yellow-300 hover:shadow-[0_0_45px_rgba(234,179,8,0.45),0_12px_45px_rgba(0,0,0,0.6)] space-y-4 transition-all duration-300">
+              <span className="text-[10px] font-mono text-yellow-400 uppercase tracking-widest font-black block">
                 CONTINUOUSLY ACCUMULATED RELATIONSHIP DATA
               </span>
               
@@ -233,13 +233,13 @@ export default function GovernanceGraphExplanation() {
                 {nodesToMap.map((node, i) => {
                   const NodeIcon = node.icon;
                   return (
-                    <div key={i} className="flex gap-3 p-3 bg-slate-900/50 rounded-xl border border-white/5 hover:border-slate-750 hover:bg-slate-900 transition-all">
-                      <div className="p-2 rounded-lg bg-white/5 border border-white/10 text-white flex-shrink-0">
-                        <NodeIcon className="w-4 h-4 text-[#0078D4]" />
+                    <div key={i} className="flex gap-3 p-3 bg-[#071524] rounded-xl border border-white/10 hover:border-yellow-500/50 hover:bg-slate-900 transition-all">
+                      <div className="p-2 rounded-lg bg-white/5 border border-white/10 text-white flex-shrink-0 animate-pulse">
+                        <NodeIcon className="w-4 h-4 text-yellow-400" />
                       </div>
                       <div className="space-y-0.5">
                         <strong className="text-xs font-mono text-white block uppercase tracking-wider font-extrabold">{node.title}</strong>
-                        <p className="text-[11px] text-slate-350 leading-relaxed font-light">
+                        <p className="text-[11px] text-slate-200 leading-relaxed font-light">
                           {node.desc}
                         </p>
                       </div>
@@ -254,7 +254,7 @@ export default function GovernanceGraphExplanation() {
               <span className="text-[9.5px] font-mono text-sky-400 font-bold block uppercase tracking-wider">
                 🛡️ Categorical Breakthrough
               </span>
-              <p className="text-[11.5px] text-slate-205 leading-relaxed font-normal">
+              <p className="text-[11.5px] text-slate-200 leading-relaxed font-normal">
                 Bastion is the first platform to transition AI security from simple firewalls into an interactive relationship model. By defining the topology of who owns, authorizes, and signs each agent action, we provide perfect clarity.
               </p>
             </div>
